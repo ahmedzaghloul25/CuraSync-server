@@ -26,8 +26,13 @@ export class Patient extends CommonProps {
   })
   DOB: Date;
   @Prop({
+    match : /^(\+201|01|00201)[0-2,5]{1}[0-9]{8}/g
+  })
+  phone : string
+  @Prop({
     length: 14,
     required: true,
+    unique : true
   })
   identification: string;
   @Prop({
@@ -48,8 +53,6 @@ export class Patient extends CommonProps {
   })
   file: Types.ObjectId;
 }
-
-// pre-save to create file id
 
 export const PatientSchema = SchemaFactory.createForClass(Patient)
 export const PatientModule = MongooseModule.forFeature([

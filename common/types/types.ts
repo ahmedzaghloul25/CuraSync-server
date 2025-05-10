@@ -120,9 +120,9 @@ export enum OfficerOccupations {
   TRANSLATION_SPECIALIST = "Translation Specialist",
 }
 export const AllOccupations = [
-    ...Object.values(MedicalOccupations),
-    ...Object.values(OfficerOccupations)
-]
+  ...Object.values(MedicalOccupations),
+  ...Object.values(OfficerOccupations),
+];
 export enum OtpType {
   ACTIVATE = "activate",
   PASS_RESET = "passwordReset",
@@ -256,17 +256,76 @@ export enum OperationalServiceUnits {
   OPERATIONS = "Operations",
 }
 
-export const AllUnits =  [
-    ...Object.values(OperationalServiceUnits),
-    ...Object.values(AdministrativeUnits),
-    ...Object.values(MedicalSupportUnits),
-    ...Object.values(SpecializedClinicsUnits),
-    ...Object.values(RehabilitationUnits),
-    ...Object.values(MaternalAndChildUnits),
-    ...Object.values(CriticalCareUnits),
-    ...Object.values(DiagnosticUnits),
-    ...Object.values(SurgicalUnits),
-    ...Object.values(MedicalUnits)
-]
+export const AllUnits = [
+  ...Object.values(OperationalServiceUnits),
+  ...Object.values(AdministrativeUnits),
+  ...Object.values(MedicalSupportUnits),
+  ...Object.values(SpecializedClinicsUnits),
+  ...Object.values(RehabilitationUnits),
+  ...Object.values(MaternalAndChildUnits),
+  ...Object.values(CriticalCareUnits),
+  ...Object.values(DiagnosticUnits),
+  ...Object.values(SurgicalUnits),
+  ...Object.values(MedicalUnits),
+];
 
+export enum FileStatus {
+  ACTIVE = "active",
+  ARCHIVED = "archived",
+}
 
+export enum ServiceRecordTypes {
+  PENDING = 'pending',
+  ASSIGNED = 'assigned',
+  CANCELLED = 'cancelled',
+  COMPLETED = 'completed',
+  CLOSED = 'closed'
+}
+
+export enum BillingStatusType {
+  PENDING = 'pending',
+  PAYED = 'payed'
+}
+
+export enum ServiceTypes {
+  // Medication related charges
+  MEDICATION = "medication",
+
+  // Laboratory related charges
+  LABORATORY = "laboratory",
+
+  // Disposable items and supplies
+  SUPPLIES = "supplies",
+  DISPOSABLES = "disposables",
+  EQUIPMENT_USE = "equipmentUse",
+
+  // Professional services
+  CONSULTATION = "consultation",
+  PHYSICIAN_FEES = "physicianFees",
+  SPECIALIST_FEES = "specialistFees",
+
+  // Room charges
+  ROOM_FEES = "roomFees",
+  ICU = "icu",
+
+  // Procedures and surgery
+  PROCEDURE = "procedure",
+  SURGERY = "surgery",
+  ANESTHESIA = "anesthesia",
+
+  // Imaging services
+  RADIOLOGY = "radiology",
+  IMAGING = "imaging",
+
+  // Therapy services
+  PHYSICAL_THERAPY = "physicalTherapy",
+  OCCUPATIONAL_THERAPY = "occupationalTherapy",
+  RESPIRATORY_THERAPY = "respiratoryTherapy",
+
+  // Other common charges
+  EMERGENCY = "emergency",
+  AMBULANCE = "ambulance",
+  NURSING = "nursing",
+  FACILITY_FEE = "facilityFee",
+  ADMINISTRATIVE = "administrative",
+}
