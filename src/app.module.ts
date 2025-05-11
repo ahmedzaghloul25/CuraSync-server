@@ -1,9 +1,11 @@
-import { Module } from "@nestjs/common";
+import { Module, ValidationPipe } from "@nestjs/common";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { HospitalModule } from "./hospital/hospital.module";
 import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule, ConfigService } from "@nestjs/config";
+import { EmployeeModule } from './employee/employee.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +21,8 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
       isGlobal: true,
       envFilePath: process.cwd() + "/config/.env",
     }),
+    EmployeeModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

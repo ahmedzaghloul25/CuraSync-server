@@ -19,11 +19,6 @@ export class Department extends CommonProps {
   })
   description: string;
   @Prop({
-    ref: "Hospital",
-    required: true,
-  })
-  hospital: Types.ObjectId;
-  @Prop({
     ref: "Employee",
     required: true,
   })

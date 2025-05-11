@@ -23,4 +23,31 @@ export default class CommonProps {
     ref: "Employee",
   })
   confirmedBy: Types.ObjectId;
+  @Prop({
+    ref: "Hospital",
+  })
+  hospital: Types.ObjectId;
+  @Prop({
+    ref: "File",
+  })
+  file: Types.ObjectId;
+
+  @Prop({
+    ref: "Service",
+  })
+  service: Types.ObjectId;
+  @Prop({
+    ref: "Patient",
+    required: true,
+  })
+  patient: Types.ObjectId;
+  @Prop({
+    ref: "Unit",
+    required: true,
+  })
+  unit: Types.ObjectId;
+  @Prop({
+    ref: "Department",
+  })
+  departments: [Types.ObjectId];
 }

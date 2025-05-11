@@ -8,11 +8,6 @@ import { HydratedDocument, Types } from "mongoose";
   toObject: { virtuals: true },
 })
 export class File extends CommonProps {
-  @Prop({
-    ref: "Patient",
-    required: true,
-  })
-  patient: Types.ObjectId;
 
   @Prop({
     enum: _Types.FileStatus,

@@ -5,7 +5,7 @@ import {
   SchemaFactory,
   Virtual,
 } from "@nestjs/mongoose";
-import { CommonProps, _Types } from "common";
+import { CommonProps, MIN_MAX_LENGTH, _Types } from "common";
 
 import { HydratedDocument, Types } from "mongoose";
 
@@ -18,15 +18,15 @@ export class Employee extends CommonProps {
   @Prop({
     trim: true,
     required: true,
-    minlength: 2,
-    maxlength: 50,
+    minlength: MIN_MAX_LENGTH.nameMinInput,
+    maxlength: MIN_MAX_LENGTH.nameMaxInput,
   })
   firstName: string;
   @Prop({
     trim: true,
     required: true,
-    minlength: 2,
-    maxlength: 50,
+    minlength: MIN_MAX_LENGTH.nameMinInput,
+    maxlength: MIN_MAX_LENGTH.nameMaxInput,
   })
   lastName: string;
   @Prop({
@@ -36,16 +36,17 @@ export class Employee extends CommonProps {
   email: string;
   @Prop({
     required: true,
-    minlength: 6,
+    minlength: MIN_MAX_LENGTH.passwordMinLength,
   })
   password: string;
   @Prop({
-    enum: _Types.JobCategory,
+    enum: _Types.JobCategoryTypes,
     required: true,
   })
-  category: string;
+  jobCategory: string;
   @Prop({
     enum: _Types.RoleEnum,
+    default : _Types.RoleEnum.PENDING
   })
   role: string;
   @Prop({
@@ -54,16 +55,8 @@ export class Employee extends CommonProps {
   })
   occupation: string;
   @Prop({
-    ref: "Hospital",
-  })
-  hospital: Types.ObjectId;
-  @Prop({
-    ref: "Department",
-  })
-  departments: [Types.ObjectId];
-  @Prop({
     required: true,
-    length: 11,
+    length: MIN_MAX_LENGTH.phoneNumLength,
   })
   phone: string;
   @Prop({

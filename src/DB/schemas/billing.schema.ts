@@ -10,16 +10,6 @@ import { Decimal128, HydratedDocument, Types } from "mongoose";
 
 @Schema()
 export class Billing extends CommonProps {
-  @Prop({
-    ref: "File",
-    required: true,
-  })
-  file: Types.ObjectId;
-  @Prop({
-    ref: "Patient",
-    required: true,
-  })
-  patient: Types.ObjectId;
 
   @Prop({
     ref: "ServiceRecord",

@@ -43,15 +43,7 @@ export class Patient extends CommonProps {
   initialDiagnosis: string;
   @Prop()
   relative: [{ name: string; phone: string; relation: string }];
-  @Prop({
-    ref : 'Unit',
-    required : true
-  })
-  unit : Types.ObjectId
-  @Prop({
-    ref: "File",
-  })
-  file: Types.ObjectId;
+
 }
 
 export const PatientSchema = SchemaFactory.createForClass(Patient)

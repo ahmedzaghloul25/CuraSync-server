@@ -9,18 +9,6 @@ import { HydratedDocument, Types } from "mongoose";
 })
 export class ServiceRecord extends CommonProps {
   @Prop({
-    ref: "File",
-    required: true,
-  })
-  file: Types.ObjectId;
-
-  @Prop({
-    ref: "Service",
-    required: true,
-  })
-  service: Types.ObjectId;
-
-  @Prop({
     min: 0,
     default: 1,
   })

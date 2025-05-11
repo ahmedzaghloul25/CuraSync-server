@@ -1,4 +1,4 @@
-export enum JobCategory {
+export enum JobCategoryTypes {
   OFFICER = "officer",
   MEDICAL = "medical",
 }
@@ -132,6 +132,7 @@ export enum RoleEnum {
   ADMIN = "admin",
   MEDICAL = "medical",
   OFFICER = "officer",
+  PENDING = 'pending'
 }
 
 export enum Departments {
@@ -275,16 +276,23 @@ export enum FileStatus {
 }
 
 export enum ServiceRecordTypes {
-  PENDING = 'pending',
-  ASSIGNED = 'assigned',
-  CANCELLED = 'cancelled',
-  COMPLETED = 'completed',
-  CLOSED = 'closed'
+  PENDING = "pending",
+  ASSIGNED = "assigned",
+  CANCELLED = "cancelled",
+  COMPLETED = "completed",
+  CLOSED = "closed",
 }
 
 export enum BillingStatusType {
-  PENDING = 'pending',
-  PAYED = 'payed'
+  PENDING = "pending",
+  PAYED = "payed",
+}
+
+export enum TransferStatusType {
+  PENDING = "pending",
+  CANCELLED = "cancelled",
+  APPROVED = "approved",
+  COMPLETED = "completed",
 }
 
 export enum ServiceTypes {
