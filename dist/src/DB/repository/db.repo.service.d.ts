@@ -1,8 +1,8 @@
 import { DeleteResult, FilterQuery, Model, Types } from "mongoose";
 export declare abstract class DbRepoService<T> {
-    private readonly model;
+    protected readonly model: Model<T>;
     constructor(model: Model<T>);
-    create(data: Partial<T>): Promise<T>;
+    create(data: Partial<T | T[]>): Promise<T | T[]>;
     findOne(query: FilterQuery<T>): Promise<T | null>;
     findAll(query: FilterQuery<T>): Promise<T[] | never[]>;
     findById(id: Types.ObjectId): Promise<T | null>;

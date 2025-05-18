@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.signupDto = void 0;
+const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const common_1 = require("../../../common");
-const IsPasswordPatch_decorator_1 = require("../../../common/decorators/IsPasswordPatch.decorator");
 class signupDto {
     firstName;
     lastName;
@@ -28,15 +28,17 @@ exports.signupDto = signupDto;
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(common_1.MIN_MAX_LENGTH.nameMinInput),
-    (0, class_validator_1.MaxLength)(common_1.MIN_MAX_LENGTH.nameMaxInput),
+    (0, class_validator_1.IsAlpha)(),
+    (0, class_validator_1.MinLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.nameMinInput),
+    (0, class_validator_1.MaxLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.nameMaxInput),
     __metadata("design:type", String)
 ], signupDto.prototype, "firstName", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(common_1.MIN_MAX_LENGTH.nameMinInput),
-    (0, class_validator_1.MaxLength)(common_1.MIN_MAX_LENGTH.nameMaxInput),
+    (0, class_validator_1.IsAlpha)(),
+    (0, class_validator_1.MinLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.nameMinInput),
+    (0, class_validator_1.MaxLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.nameMaxInput),
     __metadata("design:type", String)
 ], signupDto.prototype, "lastName", void 0);
 __decorate([
@@ -51,17 +53,15 @@ __decorate([
 ], signupDto.prototype, "password", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, IsPasswordPatch_decorator_1.IsPasswordMatch)(),
+    common_1.DECORATORS.IsPasswordMatch(),
     __metadata("design:type", String)
 ], signupDto.prototype, "confirmPassword", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEnum)(common_1._Types.JobCategoryTypes),
     __metadata("design:type", String)
 ], signupDto.prototype, "jobCategory", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEnum)(common_1._Types.AllOccupations),
     __metadata("design:type", String)
 ], signupDto.prototype, "occupation", void 0);
 __decorate([
@@ -72,6 +72,7 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsDate)(),
+    (0, class_transformer_1.Type)(() => Date),
     __metadata("design:type", Date)
 ], signupDto.prototype, "DOB", void 0);
 //# sourceMappingURL=authDto.js.map

@@ -4,9 +4,9 @@ import { DeleteResult, FilterQuery, Model, Types } from "mongoose";
 
 @Injectable()
 export abstract class DbRepoService<T> {
-  constructor(private readonly model: Model<T>) {}
+  constructor(protected readonly model: Model<T>) {}
 
-  async create(data: Partial<T>): Promise<T> {
+  async create(data: Partial<T | T[]>): Promise<T | T[]> {
     return await this.model.create(data);
   }
 

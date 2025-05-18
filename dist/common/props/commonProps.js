@@ -9,92 +9,68 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.ConfirmableProps = exports.CatalogProps = exports.CoreProps = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
-class CommonProps {
+class CoreProps {
     createdBy;
     isDeleted;
     deletedBy;
     modifiedBy;
+}
+exports.CoreProps = CoreProps;
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], CoreProps.prototype, "createdBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], CoreProps.prototype, "isDeleted", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], CoreProps.prototype, "deletedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], CoreProps.prototype, "modifiedBy", void 0);
+class CatalogProps {
+    addedByHospitalId;
+    addedByEmployeeId;
+}
+exports.CatalogProps = CatalogProps;
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], CatalogProps.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], CatalogProps.prototype, "addedByEmployeeId", void 0);
+class ConfirmableProps extends CoreProps {
     isConfirmed;
     confirmedBy;
-    hospital;
-    file;
-    service;
-    patient;
-    unit;
-    departments;
 }
-exports.default = CommonProps;
+exports.ConfirmableProps = ConfirmableProps;
 __decorate([
     (0, mongoose_1.Prop)({
-        ref: "Employee",
-        required: true,
+        default: false,
     }),
-    __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "createdBy", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
     __metadata("design:type", Boolean)
-], CommonProps.prototype, "isDeleted", void 0);
+], ConfirmableProps.prototype, "isConfirmed", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         ref: "Employee",
+        required: true
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "deletedBy", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        ref: "Employee",
-    }),
-    __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "modifiedBy", void 0);
-__decorate([
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", Boolean)
-], CommonProps.prototype, "isConfirmed", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        ref: "Employee",
-    }),
-    __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "confirmedBy", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        ref: "Hospital",
-    }),
-    __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "hospital", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        ref: "File",
-    }),
-    __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "file", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        ref: "Service",
-    }),
-    __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "service", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        ref: "Patient",
-        required: true,
-    }),
-    __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "patient", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        ref: "Unit",
-        required: true,
-    }),
-    __metadata("design:type", mongoose_2.Types.ObjectId)
-], CommonProps.prototype, "unit", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        ref: "Department",
-    }),
-    __metadata("design:type", Array)
-], CommonProps.prototype, "departments", void 0);
+], ConfirmableProps.prototype, "confirmedBy", void 0);
 //# sourceMappingURL=commonProps.js.map

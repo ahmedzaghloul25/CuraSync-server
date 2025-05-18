@@ -1,4 +1,6 @@
+import { Transform, Type } from "class-transformer";
 import {
+  IsAlpha,
   IsDate,
   IsEmail,
   IsEnum,
@@ -9,19 +11,19 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
-import { _Types, ERROR_MESSAGES, MIN_MAX_LENGTH } from "common";
-import { IsPasswordMatch } from "common/decorators/IsPasswordPatch.decorator";
-
+import { _Types, DECORATORS, CONSTANTS } from "common";
 export class signupDto {
   @IsNotEmpty()
   @IsString()
-  @MinLength(MIN_MAX_LENGTH.nameMinInput)
-  @MaxLength(MIN_MAX_LENGTH.nameMaxInput)
+  @IsAlpha()
+  @MinLength(CONSTANTS.MIN_MAX_LENGTH.nameMinInput)
+  @MaxLength(CONSTANTS.MIN_MAX_LENGTH.nameMaxInput)
   firstName: string;
   @IsNotEmpty()
   @IsString()
-  @MinLength(MIN_MAX_LENGTH.nameMinInput)
-  @MaxLength(MIN_MAX_LENGTH.nameMaxInput)
+  @IsAlpha()
+  @MinLength(CONSTANTS.MIN_MAX_LENGTH.nameMinInput)
+  @MaxLength(CONSTANTS.MIN_MAX_LENGTH.nameMaxInput)
   lastName: string;
 
   @IsNotEmpty()
@@ -33,15 +35,15 @@ export class signupDto {
   password: string;
 
   @IsNotEmpty()
-  @IsPasswordMatch()
+  @DECORATORS.IsPasswordMatch()
   confirmPassword: string;
 
   @IsNotEmpty()
-  @IsEnum(_Types.JobCategoryTypes)
+  // @IsEnum()
   jobCategory: string;
 
   @IsNotEmpty()
-  @IsEnum(_Types.AllOccupations)
+  // @IsEnum(_Types.AllOccupations)
   occupation: string;
   
   @IsNotEmpty()
@@ -50,5 +52,6 @@ export class signupDto {
 
   @IsNotEmpty()
   @IsDate()
+  @Type(()=>Date)
   DOB: Date;
 }

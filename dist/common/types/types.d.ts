@@ -1,222 +1,173 @@
-export declare enum JobCategoryTypes {
-    OFFICER = "officer",
-    MEDICAL = "medical"
-}
-export declare enum MedicalOccupations {
-    GENERAL_PRACTITIONER = "General Practitioner",
-    SURGEON = "Surgeon",
-    CARDIOLOGIST = "Cardiologist",
-    PEDIATRICIAN = "Pediatrician",
-    ONCOLOGIST = "Oncologist",
-    NEUROLOGIST = "Neurologist",
-    RADIOLOGIST = "Radiologist",
-    ANESTHESIOLOGIST = "Anesthesiologist",
-    PSYCHIATRIST = "Psychiatrist",
-    PATHOLOGIST = "Pathologist",
-    EMERGENCY_PHYSICIAN = "Emergency Physician",
-    REGISTERED_NURSE = "Registered Nurse",
-    NURSE_PRACTITIONER = "Nurse Practitioner",
-    CRITICAL_CARE_NURSE = "Critical Care Nurse",
-    MIDWIFE = "Midwife",
-    PHYSICIAN_ASSISTANT = "Physician Assistant",
-    PHYSICAL_THERAPIST = "Physical Therapist",
-    RESPIRATORY_THERAPIST = "Respiratory Therapist",
-    OCCUPATIONAL_THERAPIST = "Occupational Therapist",
-    SPEECH_LANGUAGE_PATHOLOGIST = "Speech-Language Pathologist",
-    DIETITIAN = "Dietitian",
-    PSYCHOLOGIST = "Psychologist",
-    PHARMACIST = "Pharmacist",
-    PHARMACY_TECHNICIAN = "Pharmacy Technician",
-    RADIOLOGIC_TECHNOLOGIST = "Radiologic Technologist",
-    LAB_TECHNICIAN = "Lab Technician",
-    PHLEBOTOMIST = "Phlebotomist",
-    MEDICAL_LAB_SCIENTIST = "Medical Lab Scientist",
-    PARAMEDIC = "Paramedic",
-    EMERGENCY_MEDICAL_TECHNICIAN = "Emergency Medical Technician",
-    SURGICAL_TECHNOLOGIST = "Surgical Technologist",
-    EKG_TECHNICIAN = "EKG Technician",
-    DENTIST = "Dentist",
-    OPTOMETRIST = "Optometrist"
-}
-export declare enum OfficerOccupations {
-    HOSPITAL_ADMINISTRATOR = "Hospital Administrator",
-    OFFICE_MANAGER = "Office Manager",
-    UNIT_SECRETARY = "Unit Secretary",
-    MEDICAL_SECRETARY = "Medical Secretary",
-    FRONT_DESK_RECEPTIONIST = "Front Desk Receptionist",
-    PATIENT_SERVICES_REPRESENTATIVE = "Patient Services Representative",
-    BILLING_SPECIALIST = "Billing Specialist",
-    INSURANCE_COORDINATOR = "Insurance Coordinator",
-    ACCOUNTS_RECEIVABLE_CLERK = "Accounts Receivable Clerk",
-    PAYROLL_COORDINATOR = "Payroll Coordinator",
-    HOSPITAL_ACCOUNTANT = "Hospital Accountant",
-    HR_MANAGER = "HR Manager",
-    RECRUITMENT_COORDINATOR = "Recruitment Coordinator",
-    BENEFITS_ADMINISTRATOR = "Benefits Administrator",
-    TRAINING_COORDINATOR = "Training Coordinator",
-    MEDICAL_RECORDS_CLERK = "Medical Records Clerk",
-    HEALTH_INFORMATION_TECHNICIAN = "Health Information Technician",
-    MEDICAL_CODING_SPECIALIST = "Medical Coding Specialist",
-    TRANSCRIPTIONIST = "Transcriptionist",
-    HEALTHCARE_IT_SPECIALIST = "Healthcare IT Specialist",
-    SYSTEMS_ADMINISTRATOR = "Systems Administrator",
-    CLINICAL_INFORMATICS_ANALYST = "Clinical Informatics Analyst",
-    SUPPLY_CHAIN_COORDINATOR = "Supply Chain Coordinator",
-    PURCHASING_AGENT = "Purchasing Agent",
-    INVENTORY_CLERK = "Inventory Clerk",
-    FACILITIES_COORDINATOR = "Facilities Coordinator",
-    CHIEF_EXECUTIVE_OFFICER = "Chief Executive Officer (CEO)",
-    CHIEF_FINANCIAL_OFFICER = "Chief Financial Officer (CFO)",
-    CHIEF_OPERATING_OFFICER = "Chief Operating Officer (COO)",
-    ADMISSIONS_COORDINATOR = "Admissions Coordinator",
-    DISCHARGE_PLANNER = "Discharge Planner",
-    PATIENT_NAVIGATOR = "Patient Navigator",
-    QUALITY_ASSURANCE_COORDINATOR = "Quality Assurance Coordinator",
-    COMPLIANCE_OFFICER = "Compliance Officer",
-    RISK_MANAGER = "Risk Manager",
-    PUBLIC_RELATIONS_SPECIALIST = "Public Relations Specialist",
-    MARKETING_COORDINATOR = "Marketing Coordinator",
-    COMMUNICATIONS_SPECIALIST = "Communications Specialist",
-    VOLUNTEER_COORDINATOR = "Volunteer Coordinator",
-    MEDICAL_INTERPRETER = "Medical Interpreter",
-    TRANSLATION_SPECIALIST = "Translation Specialist"
-}
-export declare const AllOccupations: (MedicalOccupations | OfficerOccupations)[];
 export declare enum OtpType {
     ACTIVATE = "activate",
     PASS_RESET = "passwordReset"
 }
 export declare enum RoleEnum {
-    SUPER = "super",
-    ADMIN = "admin",
-    MEDICAL = "medical",
-    OFFICER = "officer",
-    PENDING = "pending"
+    OFFICER = "Officer",
+    MEDICAL = "Medical"
 }
-export declare enum Departments {
-    MEDICAL = "Medical Departments",
-    SURGICAL = "Surgical Departments",
-    DIAGNOSTIC = "Diagnostic Departments",
-    CRITICAL_CARE = "Critical Care",
-    MATERNAL_CHILD = "Maternal and Child Health",
-    REHABILITATION = "Rehabilitation Services",
-    SPECIALIZED_CLINICS = "Specialized Clinics",
-    SUPPORT_SERVICES = "Medical Support Services",
-    ADMINISTRATIVE = "Administrative",
-    OPERATIONS = "Operational Services"
+export declare enum connectionNameString {
+    CATALOG = "catalog",
+    HOSPITAL = "hospital",
+    SUPER = "super"
 }
-export declare enum MedicalUnits {
-    INTERNAL_MEDICINE = "Internal Medicine",
-    CARDIOLOGY = "Cardiology",
-    NEUROLOGY = "Neurology",
-    ONCOLOGY = "Oncology",
-    GASTROENTEROLOGY = "Gastroenterology",
-    PULMONOLOGY = "Pulmonology",
-    ENDOCRINOLOGY = "Endocrinology",
-    NEPHROLOGY = "Nephrology",
-    HEMATOLOGY = "Hematology",
-    INFECTIOUS_DISEASE = "Infectious Disease",
-    RHEUMATOLOGY = "Rheumatology",
-    GERIATRICS = "Geriatrics",
-    DERMATOLOGY = "Dermatology",
-    PSYCHIATRY = "Psychiatry"
+export declare enum ImagingTypes {
+    X_RAY = "x-ray",
+    CT = "ct",
+    MRI = "mri",
+    ULTRASOUND = "ultrasound",
+    NUCLEAR = "nuclear",
+    FLUOROSCOPY = "fluoroscopy",
+    MAMMOGRAPHY = "mammography",
+    ANGIOGRAPHY = "angiography",
+    PET = "pet",
+    DEXA = "dexa",
+    OTHER = "other"
 }
-export declare enum SurgicalUnits {
-    GENERAL_SURGERY = "General Surgery",
-    ORTHOPEDICS = "Orthopedics",
-    NEUROSURGERY = "Neurosurgery",
-    CARDIAC_SURGERY = "Cardiac Surgery",
-    VASCULAR_SURGERY = "Vascular Surgery",
-    PLASTIC_SURGERY = "Plastic Surgery",
-    UROLOGY = "Urology",
-    OPHTHALMOLOGY = "Ophthalmology",
-    ENT = "Ear, Nose, and Throat",
-    ANESTHESIOLOGY = "Anesthesiology",
-    TRANSPLANT = "Transplant Surgery"
+export declare enum ImagingBodyRegions {
+    BRAIN = "brain",
+    CHEST = "chest",
+    ABDOMEN = "abdomen",
+    PELVIS = "pelvis",
+    MUSCULOSKELETAL = "musculoskeletal",
+    SPINE = "spine",
+    CARDIAC = "cardiac",
+    VASCULAR = "vascular",
+    PEDIATRIC = "pediatric",
+    OBSTETRIC = "obstetric",
+    MULTIPLE = "multiple",
+    OTHER = "other"
 }
-export declare enum DiagnosticUnits {
-    RADIOLOGY = "Radiology",
-    PATHOLOGY = "Pathology",
-    LABORATORY = "Laboratory Services",
-    NUCLEAR_MEDICINE = "Nuclear Medicine",
-    ELECTRODIAGNOSTICS = "Electrodiagnostic Services"
+export declare enum MedicineUnits {
+    TABLET = "tablet",
+    CAPSULE = "capsule",
+    TUBE = "tube",
+    AMPOULE = "ampoule",
+    VIAL = "vial",
+    BOTTLE = "bottle",
+    SOLUTION = "solution",
+    SACHET = "sachet",
+    SYRINGE = "syringe",
+    SPRAY = "spray",
+    PATCH = "patch",
+    DROPPER = "dropper",
+    OTHER = "other"
 }
-export declare enum CriticalCareUnits {
-    EMERGENCY = "Emergency Department",
-    INTENSIVE_CARE = "Intensive Care Unit",
-    CARDIAC_CARE = "Cardiac Care Unit",
-    NEONATAL_ICU = "Neonatal Intensive Care",
-    PEDIATRIC_ICU = "Pediatric Intensive Care",
-    BURN_UNIT = "Burn Unit"
+export declare enum TransactionTypes {
+    PROCUREMENT = "procurement",
+    DISPENSING = "dispensing",
+    RETURN = "return"
 }
-export declare enum MaternalAndChildUnits {
-    OBSTETRICS = "Obstetrics",
-    GYNECOLOGY = "Gynecology",
-    PEDIATRICS = "Pediatrics",
-    NEONATOLOGY = "Neonatology"
+export declare enum InventoryItemTypes {
+    MEDICINE = "medicine",
+    LABORATORY = "department",
+    DISPOSABLE = "disposable",
+    IMAGING = "imaging"
 }
-export declare enum RehabilitationUnits {
-    PHYSICAL_THERAPY = "Physical Therapy",
-    OCCUPATIONAL_THERAPY = "Occupational Therapy",
-    SPEECH_THERAPY = "Speech Therapy",
-    CARDIAC_REHAB = "Cardiac Rehabilitation"
+export declare enum MedicationForm {
+    TABLET = "tablet",
+    CAPSULE = "capsule",
+    CAPSULE_HARD = "hard capsule",
+    CAPSULE_SOFT = "soft capsule",
+    PILL = "pill",
+    LOZENGE = "lozenge",
+    TROCHE = "troche",
+    SYRUP = "syrup",
+    SUSPENSION_ORAL = "oral suspension",
+    ELIXIR = "elixir",
+    SOLUTION_ORAL = "oral solution",
+    POWDER_ORAL = "oral powder",
+    GRANULES = "granules",
+    SPRINKLES = "sprinkles",
+    TABLET_CHEWABLE = "chewable tablet",
+    TABLET_ORALLY_DISINTEGRATING = "orally disintegrating tablet",
+    TABLET_SUBLINGUAL = "sublingual tablet",
+    TABLET_BUCCAL = "buccal tablet",
+    CREAM = "cream",
+    OINTMENT = "ointment",
+    GEL = "gel",
+    JELLY = "jelly",
+    LOTION = "lotion",
+    PASTE = "paste",
+    FOAM = "foam",
+    PATCH_TRANSDERMAL = "transdermal patch",
+    PLASTER = "plaster",
+    SOLUTION_INJECTABLE = "injectable solution",
+    SUSPENSION_INJECTABLE = "injectable suspension",
+    POWDER_FOR_INJECTION = "powder for injection",
+    IMPLANT = "implant",
+    INHALER_MDI = "metered dose inhaler",
+    INHALER_DPI = "dry powder inhaler",
+    SOLUTION_NEBULIZER = "nebulizer solution",
+    SPRAY_NASAL = "nasal spray",
+    SUPPOSITORY_RECTAL = "rectal suppository",
+    SUPPOSITORY_VAGINAL = "vaginal suppository",
+    ENEMA = "enema",
+    PESSARY = "pessary",
+    TABLET_VAGINAL = "vaginal tablet",
+    RING_VAGINAL = "vaginal ring",
+    CREAM_VAGINAL = "vaginal cream",
+    GEL_VAGINAL = "vaginal gel",
+    DROPS_EYE = "eye drops",
+    OINTMENT_EYE = "eye ointment",
+    DROPS_EAR = "ear drops",
+    TABLET_EXTENDED_RELEASE = "extended release tablet",
+    CAPSULE_EXTENDED_RELEASE = "extended release capsule",
+    TABLET_SUSTAINED_RELEASE = "sustained release tablet",
+    CAPSULE_SUSTAINED_RELEASE = "sustained release capsule",
+    TABLET_CONTROLLED_RELEASE = "controlled release tablet",
+    CAPSULE_CONTROLLED_RELEASE = "controlled release capsule",
+    IRRIGATION_SOLUTION = "irrigation solution",
+    DRESSING_MEDICATED = "medicated dressing",
+    OTHER = "other"
 }
-export declare enum SpecializedClinicsUnits {
-    PAIN_MANAGEMENT = "Pain Management",
-    SLEEP_MEDICINE = "Sleep Medicine",
-    WOUND_CARE = "Wound Care",
-    PALLIATIVE_CARE = "Palliative Care"
+export declare enum LAbTestCategory {
+    HEMATOLOGY = "hematology",
+    CHEMISTRY = "chemistry",
+    MICROBIOLOGY = "microbiology",
+    IMMUNOLOGY = "immunology",
+    URINE_ANALYSIS = "urinalysis",
+    PATHOLOGY = "pathology",
+    GENETIC = "genetic",
+    OTHER = "other"
 }
-export declare enum MedicalSupportUnits {
-    PHARMACY = "Pharmacy",
-    NUTRITION = "Nutrition and Dietetics",
-    RESPIRATORY_THERAPY = "Respiratory Therapy",
-    SOCIAL_SERVICES = "Social Services",
-    CASE_MANAGEMENT = "Case Management",
-    TELEHEALTH = "Telehealth Services"
+export declare enum SpecimenType {
+    BLOOD = "BLOOD",
+    URINE = "URINE",
+    SALIVA = "SALIVA",
+    STOOL = "STOOL",
+    CSF = "CSF",
+    TISSUE = "TISSUE",
+    SWAB = "SWAB",
+    SPUTUM = "SPUTUM",
+    SEMEN = "SEMEN",
+    SYNOVIAL_FLUID = "SYNOVIAL_FLUID",
+    PLEURAL_FLUID = "PLEURAL_FLUID",
+    PERITONEAL_FLUID = "PERITONEAL_FLUID",
+    HAIR = "HAIR",
+    NAIL = "NAIL",
+    BREATH = "BREATH",
+    OTHER = "OTHER"
 }
-export declare enum AdministrativeUnits {
-    ADMINISTRATION = "Administration",
-    HUMAN_RESOURCES = "Human Resources",
-    FINANCE = "Finance",
-    BILLING = "Billing and Claims",
-    MEDICAL_RECORDS = "Medical Records",
-    IT = "Information Technology",
-    LEGAL = "Legal Affairs",
-    PUBLIC_RELATIONS = "Public Relations",
-    COMPLIANCE = "Compliance and Ethics",
-    QUALITY_ASSURANCE = "Quality Assurance",
-    RISK_MANAGEMENT = "Risk Management",
-    PATIENT_ADVOCACY = "Patient Advocacy",
-    ADMISSIONS = "Admissions"
-}
-export declare enum OperationalServiceUnits {
-    FACILITIES = "Facilities Management",
-    SECURITY = "Security",
-    MAINTENANCE = "Maintenance",
-    HOUSEKEEPING = "Housekeeping",
-    FOOD_SERVICES = "Food Services",
-    PROCUREMENT = "Procurement and Supply Chain",
-    VOLUNTEER_SERVICES = "Volunteer Services",
-    RESEARCH = "Research and Development",
-    EDUCATION = "Medical Education",
-    OPERATIONS = "Operations"
-}
-export declare const AllUnits: (OperationalServiceUnits | AdministrativeUnits | MedicalSupportUnits | SpecializedClinicsUnits | RehabilitationUnits | MaternalAndChildUnits | CriticalCareUnits | DiagnosticUnits | SurgicalUnits | MedicalUnits)[];
 export declare enum FileStatus {
     ACTIVE = "active",
     ARCHIVED = "archived"
 }
-export declare enum ServiceRecordTypes {
+export declare enum RecordStatusTypes {
     PENDING = "pending",
-    ASSIGNED = "assigned",
+    IN_PROGRESS = "inProgress",
     CANCELLED = "cancelled",
-    COMPLETED = "completed",
-    CLOSED = "closed"
+    COMPLETED = "completed"
 }
 export declare enum BillingStatusType {
     PENDING = "pending",
     PAYED = "payed"
+}
+export declare enum RecordPriorityTypes {
+    LOW = "low",
+    MEDIUM = "medium",
+    HIGH = "high",
+    URGENT = "urgent"
 }
 export declare enum TransferStatusType {
     PENDING = "pending",

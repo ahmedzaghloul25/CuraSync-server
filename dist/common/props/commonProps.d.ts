@@ -1,15 +1,15 @@
 import { Types } from "mongoose";
-export default class CommonProps {
+export declare abstract class CoreProps {
     createdBy: Types.ObjectId;
     isDeleted: boolean;
     deletedBy: Types.ObjectId;
     modifiedBy: Types.ObjectId;
+}
+export declare abstract class CatalogProps {
+    addedByHospitalId: string;
+    addedByEmployeeId: string;
+}
+export declare abstract class ConfirmableProps extends CoreProps {
     isConfirmed: boolean;
     confirmedBy: Types.ObjectId;
-    hospital: Types.ObjectId;
-    file: Types.ObjectId;
-    service: Types.ObjectId;
-    patient: Types.ObjectId;
-    unit: Types.ObjectId;
-    departments: [Types.ObjectId];
 }

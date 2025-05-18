@@ -1,7 +1,7 @@
 import { Prop } from "@nestjs/mongoose";
 import { Types } from "mongoose";
 
-export default class CommonProps {
+export abstract class CoreProps {
   @Prop({
     ref: "Employee",
     required: true,
@@ -17,37 +17,24 @@ export default class CommonProps {
     ref: "Employee",
   })
   modifiedBy: Types.ObjectId;
+}
+
+export abstract class CatalogProps {
   @Prop()
+  addedByHospitalId: string;
+  @Prop()
+  addedByEmployeeId: string;
+}
+
+export abstract class ConfirmableProps extends CoreProps {
+  @Prop({
+    default: false,
+  })
   isConfirmed: boolean;
   @Prop({
     ref: "Employee",
+    required:  true
   })
   confirmedBy: Types.ObjectId;
-  @Prop({
-    ref: "Hospital",
-  })
-  hospital: Types.ObjectId;
-  @Prop({
-    ref: "File",
-  })
-  file: Types.ObjectId;
-
-  @Prop({
-    ref: "Service",
-  })
-  service: Types.ObjectId;
-  @Prop({
-    ref: "Patient",
-    required: true,
-  })
-  patient: Types.ObjectId;
-  @Prop({
-    ref: "Unit",
-    required: true,
-  })
-  unit: Types.ObjectId;
-  @Prop({
-    ref: "Department",
-  })
-  departments: [Types.ObjectId];
 }
+

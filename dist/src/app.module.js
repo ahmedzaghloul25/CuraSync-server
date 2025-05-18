@@ -10,31 +10,47 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
-const hospital_module_1 = require("./hospital/hospital.module");
 const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
-const employee_module_1 = require("./employee/employee.module");
 const auth_module_1 = require("./auth/auth.module");
+const catalog_module_1 = require("./catalog/catalog.module");
+const common_2 = require("../common");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            hospital_module_1.HospitalModule,
             mongoose_1.MongooseModule.forRootAsync({
                 imports: [config_1.ConfigModule],
                 useFactory: async (configService) => ({
-                    uri: configService.get("DB_URI"),
+                    uri: configService.get("DB_HOSPITAL"),
                 }),
                 inject: [config_1.ConfigService],
+                connectionName: common_2._Types.TYPES.connectionNameString.HOSPITAL,
+            }),
+            mongoose_1.MongooseModule.forRootAsync({
+                imports: [config_1.ConfigModule],
+                useFactory: async (configService) => ({
+                    uri: configService.get("DB_CATALOG"),
+                }),
+                inject: [config_1.ConfigService],
+                connectionName: common_2._Types.TYPES.connectionNameString.CATALOG,
+            }),
+            mongoose_1.MongooseModule.forRootAsync({
+                imports: [config_1.ConfigModule],
+                useFactory: async (configService) => ({
+                    uri: configService.get("DB_SUPER"),
+                }),
+                inject: [config_1.ConfigService],
+                connectionName: common_2._Types.TYPES.connectionNameString.SUPER,
             }),
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
                 envFilePath: process.cwd() + "/config/.env",
             }),
-            employee_module_1.EmployeeModule,
             auth_module_1.AuthModule,
+            catalog_module_1.CatalogModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

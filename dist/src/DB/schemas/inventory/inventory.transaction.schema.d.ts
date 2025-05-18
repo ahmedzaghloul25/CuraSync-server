@@ -1,0 +1,36 @@
+import { COMMON_PROPS } from "common";
+import { HydratedDocument, Types } from "mongoose";
+export declare class InventoryTransaction extends COMMON_PROPS.ConfirmableProps {
+    medicine: Types.ObjectId;
+    labItem: Types.ObjectId;
+    disposableItem: Types.ObjectId;
+    imagingItem: Types.ObjectId;
+    hospital: Types.ObjectId;
+    forItem: string;
+    transactionType: string;
+    procurementQuantity: number;
+    batchNumber: string;
+    expiryDate: Date;
+    invoiceNumber: string;
+    invoiceDate: Date;
+    vendorId: Types.ObjectId;
+    returnedQuantity: number;
+    returnReason: string;
+    originalDispenseTransactionId: Types.ObjectId;
+    dispensedQuantity: number;
+    orderNumber: string;
+    unitId: Types.ObjectId;
+    patientId: Types.ObjectId;
+    notes: string;
+}
+export declare const MedicineTransactionSchema: import("mongoose").Schema<InventoryTransaction, import("mongoose").Model<InventoryTransaction, any, any, any, import("mongoose").Document<unknown, any, InventoryTransaction, any> & InventoryTransaction & {
+    _id: Types.ObjectId;
+} & {
+    __v: number;
+}, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, InventoryTransaction, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<InventoryTransaction>, {}> & import("mongoose").FlatRecord<InventoryTransaction> & {
+    _id: Types.ObjectId;
+} & {
+    __v: number;
+}>;
+export declare const MedicineTransactionModule: import("@nestjs/common").DynamicModule;
+export type MedicineTransactionDocument = HydratedDocument<InventoryTransaction>;
