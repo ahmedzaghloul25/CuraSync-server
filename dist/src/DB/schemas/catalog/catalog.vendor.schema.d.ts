@@ -2,6 +2,7 @@ import { COMMON_PROPS } from "common";
 import { HydratedDocument } from "mongoose";
 export declare class VendorCatalog extends COMMON_PROPS.CatalogProps {
     name: string;
+    slug: string;
     phone: string;
     address: string;
     email: string;

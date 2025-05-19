@@ -7,11 +7,12 @@ import { HydratedDocument } from "mongoose";
 export class DepartmentCatalog extends COMMON_PROPS.CatalogProps {
   @Prop({
     required: true,
-    unique: true,
     trim: true,
   })
   name: string;
-  @Prop()
+  @Prop({
+    unique : true
+  })
   slug: string;
   @Prop({
     minlength: CONSTANTS.MIN_MAX_LENGTH.descMinInput,

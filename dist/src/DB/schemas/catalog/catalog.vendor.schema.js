@@ -12,8 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VendorCatalogModule = exports.VendorCatalogSchema = exports.VendorCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("../../../../common");
+const utils_1 = require("../../../../common/utils");
 let VendorCatalog = class VendorCatalog extends common_1.COMMON_PROPS.CatalogProps {
     name;
+    slug;
     phone;
     address;
     email;
@@ -29,6 +31,10 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], VendorCatalog.prototype, "name", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], VendorCatalog.prototype, "slug", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         required: true,
@@ -67,5 +73,9 @@ exports.VendorCatalog = VendorCatalog = __decorate([
     (0, mongoose_1.Schema)()
 ], VendorCatalog);
 exports.VendorCatalogSchema = mongoose_1.SchemaFactory.createForClass(VendorCatalog);
+exports.VendorCatalogSchema.pre("save", function (next) {
+    this.slug = (0, utils_1._slugify)(this.name);
+    next();
+});
 exports.VendorCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: VendorCatalog.name, schema: exports.VendorCatalogSchema }], common_1._Types.TYPES.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.vendor.schema.js.map

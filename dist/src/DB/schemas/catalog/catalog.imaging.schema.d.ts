@@ -2,6 +2,7 @@ import { COMMON_PROPS } from "common";
 import { HydratedDocument } from "mongoose";
 export declare class ImagingCatalog extends COMMON_PROPS.CatalogProps {
     name: string;
+    slug: string;
     code: string;
     modality: string;
     bodyRegion: string;

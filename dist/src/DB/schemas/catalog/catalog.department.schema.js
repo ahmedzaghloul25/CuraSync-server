@@ -22,13 +22,14 @@ exports.DepartmentCatalog = DepartmentCatalog;
 __decorate([
     (0, mongoose_1.Prop)({
         required: true,
-        unique: true,
         trim: true,
     }),
     __metadata("design:type", String)
 ], DepartmentCatalog.prototype, "name", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        unique: true
+    }),
     __metadata("design:type", String)
 ], DepartmentCatalog.prototype, "slug", void 0);
 __decorate([

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceCatalogModule = exports.ServiceCatalogSchema = exports.ServiceCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("../../../../common");
+const utils_1 = require("../../../../common/utils");
 let ServiceCatalog = class ServiceCatalog extends common_1.COMMON_PROPS.CatalogProps {
     name;
     slug;
@@ -21,14 +22,12 @@ exports.ServiceCatalog = ServiceCatalog;
 __decorate([
     (0, mongoose_1.Prop)({
         required: true,
-        unique: true,
         trim: true,
     }),
     __metadata("design:type", String)
 ], ServiceCatalog.prototype, "name", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        required: true,
         unique: true,
     }),
     __metadata("design:type", String)
@@ -44,5 +43,9 @@ exports.ServiceCatalog = ServiceCatalog = __decorate([
     (0, mongoose_1.Schema)()
 ], ServiceCatalog);
 exports.ServiceCatalogSchema = mongoose_1.SchemaFactory.createForClass(ServiceCatalog);
+exports.ServiceCatalogSchema.pre("save", function (next) {
+    this.slug = (0, utils_1._slugify)(this.name);
+    next();
+});
 exports.ServiceCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: ServiceCatalog.name, schema: exports.ServiceCatalogSchema }], common_1._Types.TYPES.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.service.schema.js.map

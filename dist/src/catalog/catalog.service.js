@@ -33,11 +33,35 @@ let CatalogService = class CatalogService {
     }
     async addDepartmentCatalogArray(body) {
         const department = await this.departmentCatRepoService.create(body.departments);
-        return { message: 'success', department };
+        return { message: "success", department };
     }
     async addUnitCatalogArray(body) {
         const units = await this.unitCatRepoService.create(body.units);
-        return { message: 'success', units };
+        return { message: "success", units };
+    }
+    async addServiceCatalogArray(body) {
+        const services = await this.serviceCatRepoService.create(body.services);
+        return { message: "success", services };
+    }
+    async addLabCatalogArray(body) {
+        const laboratories = await this.labCatRepoService.create(body.laboratories);
+        return { message: "success", laboratories };
+    }
+    async addImagingCatalogArray(body) {
+        const imagings = await this.imagingCatRepoService.create(body.imagings);
+        return { message: "success", imagings };
+    }
+    async addMedicineCatalogArray(body) {
+        const medicines = await this.medicineCatRepoService.create(body.medicines);
+        return { message: "success", medicines };
+    }
+    async addDisposableCatalogArray(body) {
+        const disposables = await this.disposableCatRepoService.create(body.disposables);
+        return { message: "success", disposables };
+    }
+    async addVendorCatalogArray(body) {
+        const vendors = await this.vendorCatRepoService.create(body.vendors);
+        return { message: "success", vendors };
     }
 };
 exports.CatalogService = CatalogService;

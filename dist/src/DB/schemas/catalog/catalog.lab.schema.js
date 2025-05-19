@@ -12,8 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.LabCatalogModule = exports.LabCatalogSchema = exports.LabCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("../../../../common");
+const utils_1 = require("../../../../common/utils");
 let LabCatalog = class LabCatalog extends common_1.COMMON_PROPS.CatalogProps {
     name;
+    slug;
     code;
     loincCode;
     category;
@@ -30,6 +32,12 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], LabCatalog.prototype, "name", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        unique: true
+    }),
+    __metadata("design:type", String)
+], LabCatalog.prototype, "slug", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true, unique: true }),
     __metadata("design:type", String)
@@ -84,5 +92,9 @@ exports.LabCatalog = LabCatalog = __decorate([
     })
 ], LabCatalog);
 exports.LabCatalogSchema = mongoose_1.SchemaFactory.createForClass(LabCatalog);
+exports.LabCatalogSchema.pre("save", function (next) {
+    this.slug = (0, utils_1._slugify)(this.name);
+    next();
+});
 exports.LabCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: LabCatalog.name, schema: exports.LabCatalogSchema }], common_1._Types.TYPES.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.lab.schema.js.map

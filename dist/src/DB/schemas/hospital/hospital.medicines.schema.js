@@ -22,7 +22,6 @@ let HospitalMedicine = class HospitalMedicine extends common_1.COMMON_PROPS.Conf
 exports.HospitalMedicine = HospitalMedicine;
 __decorate([
     (0, mongoose_1.Prop)({
-        ref: "MedicineCatalog",
         required: true,
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)

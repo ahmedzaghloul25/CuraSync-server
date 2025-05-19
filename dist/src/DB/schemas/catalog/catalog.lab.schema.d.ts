@@ -2,6 +2,7 @@ import { COMMON_PROPS } from "common";
 import { HydratedDocument, Types } from "mongoose";
 export declare class LabCatalog extends COMMON_PROPS.CatalogProps {
     name: string;
+    slug: string;
     code: string;
     loincCode: string;
     category: string;

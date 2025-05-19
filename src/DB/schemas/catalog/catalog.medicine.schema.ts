@@ -7,6 +7,7 @@ import { Decimal128, HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
+// Shared Medicine schema across all Hospitals 
 export class MedicineCatalog extends COMMON_PROPS.CatalogProps {
   @Prop({
     minlength: 2,

@@ -7,9 +7,9 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
+// Hospital-specific medicine schema
 export class HospitalMedicine extends COMMON_PROPS.ConfirmableProps {
   @Prop({
-    ref: "MedicineCatalog",
     required: true,
   })
     catalogId: Types.ObjectId;

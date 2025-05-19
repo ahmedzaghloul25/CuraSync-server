@@ -12,8 +12,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImagingCatalogModule = exports.ImagingCatalogSchema = exports.ImagingCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("../../../../common");
+const utils_1 = require("../../../../common/utils");
 let ImagingCatalog = class ImagingCatalog extends common_1.COMMON_PROPS.CatalogProps {
     name;
+    slug;
     code;
     modality;
     bodyRegion;
@@ -30,6 +32,12 @@ __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
 ], ImagingCatalog.prototype, "name", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        unique: true
+    }),
+    __metadata("design:type", String)
+], ImagingCatalog.prototype, "slug", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true, unique: true }),
     __metadata("design:type", String)
@@ -80,5 +88,9 @@ exports.ImagingCatalog = ImagingCatalog = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], ImagingCatalog);
 exports.ImagingCatalogSchema = mongoose_1.SchemaFactory.createForClass(ImagingCatalog);
+exports.ImagingCatalogSchema.pre("save", function (next) {
+    this.slug = (0, utils_1._slugify)(this.name);
+    next();
+});
 exports.ImagingCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: ImagingCatalog.name, schema: exports.ImagingCatalogSchema }], common_1._Types.TYPES.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.imaging.schema.js.map

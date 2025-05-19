@@ -55,6 +55,7 @@ export enum MedicineUnits {
   SPRAY = "spray",
   PATCH = "patch",
   DROPPER = "dropper",
+  SUPPOSITORY = 'suppository',
   OTHER = "other",
 }
 export enum TransactionTypes {
@@ -123,6 +124,7 @@ export enum MedicationForm {
   OINTMENT_EYE = "eye ointment",
   DROPS_EAR = "ear drops",
   // Modified Release Forms
+  TABLET_DELAYED_RELEASE = 'delayed release tablet',
   TABLET_EXTENDED_RELEASE = "extended release tablet",
   CAPSULE_EXTENDED_RELEASE = "extended release capsule",
   TABLET_SUSTAINED_RELEASE = "sustained release tablet",
@@ -301,37 +303,37 @@ export enum TransferStatusType {
   COMPLETED = "completed",
 }
 
-export enum ServiceTypes {
-  // Medication related charges
-  MEDICATION = "medication",
-  // Laboratory related charges
-  LABORATORY = "laboratory",
-  // Disposable items and supplies
-  SUPPLIES = "supplies",
-  DISPOSABLES = "disposables",
-  EQUIPMENT_USE = "equipmentUse",
-  // Professional services
-  CONSULTATION = "consultation",
-  PHYSICIAN_FEES = "physicianFees",
-  SPECIALIST_FEES = "specialistFees",
-  // Room charges
-  ROOM_FEES = "roomFees",
-  ICU = "icu",
-  // Procedures and surgery
-  PROCEDURE = "procedure",
-  SURGERY = "surgery",
-  ANESTHESIA = "anesthesia",
-  // Imaging services
-  RADIOLOGY = "radiology",
-  IMAGING = "imaging",
-  // Therapy services
-  PHYSICAL_THERAPY = "physicalTherapy",
-  OCCUPATIONAL_THERAPY = "occupationalTherapy",
-  RESPIRATORY_THERAPY = "respiratoryTherapy",
-  // Other common charges
-  EMERGENCY = "emergency",
-  AMBULANCE = "ambulance",
-  NURSING = "nursing",
-  FACILITY_FEE = "facilityFee",
-  ADMINISTRATIVE = "administrative",
-}
+// export enum ServiceTypes {
+//   // Medication related charges
+//   MEDICATION = "medication",
+//   // Laboratory related charges
+//   LABORATORY = "laboratory",
+//   // Disposable items and supplies
+//   SUPPLIES = "supplies",
+//   DISPOSABLES = "disposables",
+//   EQUIPMENT_USE = "equipmentUse",
+//   // Professional services
+//   CONSULTATION = "consultation",
+//   PHYSICIAN_FEES = "physicianFees",
+//   SPECIALIST_FEES = "specialistFees",
+//   // Room charges
+//   ROOM_FEES = "roomFees",
+//   ICU = "icu",
+//   // Procedures and surgery
+//   PROCEDURE = "procedure",
+//   SURGERY = "surgery",
+//   ANESTHESIA = "anesthesia",
+//   // Imaging services
+//   RADIOLOGY = "radiology",
+//   IMAGING = "imaging",
+//   // Therapy services
+//   PHYSICAL_THERAPY = "physicalTherapy",
+//   OCCUPATIONAL_THERAPY = "occupationalTherapy",
+//   RESPIRATORY_THERAPY = "respiratoryTherapy",
+//   // Other common charges
+//   EMERGENCY = "emergency",
+//   AMBULANCE = "ambulance",
+//   NURSING = "nursing",
+//   FACILITY_FEE = "facilityFee",
+//   ADMINISTRATIVE = "administrative",
+// }

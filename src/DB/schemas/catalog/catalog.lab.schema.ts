@@ -1,5 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { _Types, COMMON_PROPS } from "common";
+import { _slugify } from "common/utils";
 import { Decimal128, HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -10,6 +11,10 @@ import { Decimal128, HydratedDocument, Types } from "mongoose";
 export class LabCatalog extends COMMON_PROPS.CatalogProps {
   @Prop({ required: true })
   name: string;
+  @Prop({
+    unique : true
+  })
+  slug : string
   @Prop({ required: true, unique: true })
   code: string;
   @Prop()
@@ -39,6 +44,10 @@ export class LabCatalog extends COMMON_PROPS.CatalogProps {
 }
 
 export const LabCatalogSchema = SchemaFactory.createForClass(LabCatalog);
+LabCatalogSchema.pre("save", function (next) {
+  this.slug = _slugify(this.name);
+  next();
+});
 export const LabCatalogModule = MongooseModule.forFeature(
   [{ name: LabCatalog.name, schema: LabCatalogSchema }],
   _Types.TYPES.connectionNameString.CATALOG

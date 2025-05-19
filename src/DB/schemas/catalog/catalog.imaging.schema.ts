@@ -1,12 +1,17 @@
 // src/catalog/schemas/imaging-procedure.schema.ts
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { _Types, COMMON_PROPS } from "common";
+import { _slugify } from "common/utils";
 import { HydratedDocument } from "mongoose";
 
 @Schema({ timestamps: true })
 export class ImagingCatalog extends COMMON_PROPS.CatalogProps {
   @Prop({ required: true })
   name: string;
+  @Prop({
+    unique : true
+  })
+  slug : string
   @Prop({ required: true, unique: true })
   code: string;
   @Prop({
@@ -37,6 +42,10 @@ export class ImagingCatalog extends COMMON_PROPS.CatalogProps {
 
 export const ImagingCatalogSchema =
   SchemaFactory.createForClass(ImagingCatalog);
+ImagingCatalogSchema.pre("save", function (next) {
+  this.slug = _slugify(this.name);
+  next();
+});
 export const ImagingCatalogModule = MongooseModule.forFeature(
   [{ name: ImagingCatalog.name, schema: ImagingCatalogSchema }],
   _Types.TYPES.connectionNameString.CATALOG

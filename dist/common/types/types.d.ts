@@ -51,6 +51,7 @@ export declare enum MedicineUnits {
     SPRAY = "spray",
     PATCH = "patch",
     DROPPER = "dropper",
+    SUPPOSITORY = "suppository",
     OTHER = "other"
 }
 export declare enum TransactionTypes {
@@ -111,6 +112,7 @@ export declare enum MedicationForm {
     DROPS_EYE = "eye drops",
     OINTMENT_EYE = "eye ointment",
     DROPS_EAR = "ear drops",
+    TABLET_DELAYED_RELEASE = "delayed release tablet",
     TABLET_EXTENDED_RELEASE = "extended release tablet",
     CAPSULE_EXTENDED_RELEASE = "extended release capsule",
     TABLET_SUSTAINED_RELEASE = "sustained release tablet",
@@ -174,29 +176,4 @@ export declare enum TransferStatusType {
     CANCELLED = "cancelled",
     APPROVED = "approved",
     COMPLETED = "completed"
-}
-export declare enum ServiceTypes {
-    MEDICATION = "medication",
-    LABORATORY = "laboratory",
-    SUPPLIES = "supplies",
-    DISPOSABLES = "disposables",
-    EQUIPMENT_USE = "equipmentUse",
-    CONSULTATION = "consultation",
-    PHYSICIAN_FEES = "physicianFees",
-    SPECIALIST_FEES = "specialistFees",
-    ROOM_FEES = "roomFees",
-    ICU = "icu",
-    PROCEDURE = "procedure",
-    SURGERY = "surgery",
-    ANESTHESIA = "anesthesia",
-    RADIOLOGY = "radiology",
-    IMAGING = "imaging",
-    PHYSICAL_THERAPY = "physicalTherapy",
-    OCCUPATIONAL_THERAPY = "occupationalTherapy",
-    RESPIRATORY_THERAPY = "respiratoryTherapy",
-    EMERGENCY = "emergency",
-    AMBULANCE = "ambulance",
-    NURSING = "nursing",
-    FACILITY_FEE = "facilityFee",
-    ADMINISTRATIVE = "administrative"
 }
