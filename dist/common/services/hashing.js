@@ -13,11 +13,8 @@ exports.Hashing = void 0;
 const common_1 = require("@nestjs/common");
 const bcrypt = require("bcrypt");
 let Hashing = class Hashing {
-    salt;
-    constructor(salt) {
-        this.salt = salt;
-        salt = Number(process.env.SALT_ROUND);
-    }
+    salt = Number(process.env.SALT_ROUND);
+    constructor() { }
     createHash(data) {
         return bcrypt.hashSync(data, this.salt);
     }
@@ -28,6 +25,6 @@ let Hashing = class Hashing {
 exports.Hashing = Hashing;
 exports.Hashing = Hashing = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [Number])
+    __metadata("design:paramtypes", [])
 ], Hashing);
 //# sourceMappingURL=hashing.js.map

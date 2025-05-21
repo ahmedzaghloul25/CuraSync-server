@@ -23,7 +23,7 @@ export declare class InventoryTransaction extends COMMON_PROPS.ConfirmableProps 
     patientId: Types.ObjectId;
     notes: string;
 }
-export declare const MedicineTransactionSchema: import("mongoose").Schema<InventoryTransaction, import("mongoose").Model<InventoryTransaction, any, any, any, import("mongoose").Document<unknown, any, InventoryTransaction, any> & InventoryTransaction & {
+export declare const InventoryTransactionSchema: import("mongoose").Schema<InventoryTransaction, import("mongoose").Model<InventoryTransaction, any, any, any, import("mongoose").Document<unknown, any, InventoryTransaction, any> & InventoryTransaction & {
     _id: Types.ObjectId;
 } & {
     __v: number;
@@ -32,5 +32,5 @@ export declare const MedicineTransactionSchema: import("mongoose").Schema<Invent
 } & {
     __v: number;
 }>;
-export declare const MedicineTransactionModule: import("@nestjs/common").DynamicModule;
-export type MedicineTransactionDocument = HydratedDocument<InventoryTransaction>;
+export declare const InventoryTransactionModule: import("@nestjs/common").DynamicModule;
+export type InventoryTransactionDocument = HydratedDocument<InventoryTransaction>;

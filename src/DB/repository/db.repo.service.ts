@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
-import { DeleteResult, FilterQuery, Model, Types } from "mongoose";
+import { DeleteResult, FilterQuery, Model, Types, UpdateQuery, UpdateResult } from "mongoose";
 
 
-@Injectable()
+// @Injectable()
 export abstract class DbRepoService<T> {
   constructor(protected readonly model: Model<T>) {}
 
@@ -32,14 +32,14 @@ export abstract class DbRepoService<T> {
 
   async findOneAndUpdate(
     query: FilterQuery<T>,
-    data: Partial<T>
+    data: UpdateQuery<T>
   ): Promise<T | null> {
     return await this.model.findOneAndUpdate(query, data, { new: true });
   }
   async findOneAndDelete(query: FilterQuery<T>): Promise<T | null> {
     return await this.model.findOneAndDelete(query);
   }
-  async updateOne(query: FilterQuery<T>, data: Partial<T>) {
+  async updateOne(query: FilterQuery<T>, data: UpdateQuery<T>) : Promise<UpdateResult> {
     return await this.model.updateOne(query, data);
   }
 }

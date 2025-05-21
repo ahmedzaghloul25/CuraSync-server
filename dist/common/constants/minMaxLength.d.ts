@@ -3,4 +3,5 @@ export declare const MIN_MAX_LENGTH: {
     nameMaxInput: number;
     descMinInput: number;
     descMaxInput: number;
+    otpLength: number;
 };

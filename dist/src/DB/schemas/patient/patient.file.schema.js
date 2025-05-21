@@ -17,6 +17,8 @@ let PatientFile = class PatientFile extends common_1.COMMON_PROPS.CoreProps {
     patient;
     hospital;
     status;
+    admissions;
+    discharges;
 };
 exports.PatientFile = PatientFile;
 __decorate([
@@ -40,6 +42,32 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], PatientFile.prototype, "status", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: [
+            {
+                date: { type: Date, required: true },
+                toUnit: { type: mongoose_2.Types.ObjectId, ref: "Unit" },
+            },
+        ],
+    }),
+    __metadata("design:type", Array)
+], PatientFile.prototype, "admissions", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: [
+            {
+                date: { type: Date, required: true },
+                fromUnit: { type: mongoose_2.Types.ObjectId, ref: "Unit" },
+                reasonOfDischarge: {
+                    enum: ["Improvement", "deceased"],
+                    required: true,
+                },
+            },
+        ],
+    }),
+    __metadata("design:type", Array)
+], PatientFile.prototype, "discharges", void 0);
 exports.PatientFile = PatientFile = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,

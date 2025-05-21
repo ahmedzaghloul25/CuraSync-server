@@ -4,6 +4,15 @@ export declare class PatientFile extends COMMON_PROPS.CoreProps {
     patient: Types.ObjectId;
     hospital: Types.ObjectId;
     status: string;
+    admissions: Array<{
+        date: Date;
+        toUnit: Types.ObjectId;
+    }>;
+    discharges: Array<{
+        date: Date;
+        toUnit: Types.ObjectId;
+        reasonOfDischarge: string;
+    }>;
 }
 export declare const PatientFileSchema: import("mongoose").Schema<PatientFile, import("mongoose").Model<PatientFile, any, any, any, import("mongoose").Document<unknown, any, PatientFile, any> & PatientFile & {
     _id: Types.ObjectId;
@@ -15,4 +24,4 @@ export declare const PatientFileSchema: import("mongoose").Schema<PatientFile, i
     __v: number;
 }>;
 export declare const PatientFileModule: import("@nestjs/common").DynamicModule;
-export type FileDocument = HydratedDocument<PatientFile>;
+export type PatientFileDocument = HydratedDocument<PatientFile>;

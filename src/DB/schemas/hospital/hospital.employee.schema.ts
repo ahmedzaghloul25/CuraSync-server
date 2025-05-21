@@ -14,7 +14,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class Employee extends COMMON_PROPS.ConfirmableProps {
+export class Employee {
   @Prop({
     trim: true,
     required: true,
@@ -38,11 +38,6 @@ export class Employee extends COMMON_PROPS.ConfirmableProps {
     required: true,
   })
   password: string;
-  @Prop({
-    enum: _Types.TYPES.RoleEnum,
-    required: true,
-  })
-  role: string;
   @Prop({
     enum: [
       ...Object.values(_Types.AdminRoles),
@@ -81,7 +76,6 @@ export class Employee extends COMMON_PROPS.ConfirmableProps {
   fullName: string;
   @Prop({
     ref: "Hospital",
-    required: true,
   })
   hospital: Types.ObjectId;
 }

@@ -33,7 +33,6 @@ export abstract class ConfirmableProps extends CoreProps {
   isConfirmed: boolean;
   @Prop({
     ref: "Employee",
-    required:  true
   })
   confirmedBy: Types.ObjectId;
 }

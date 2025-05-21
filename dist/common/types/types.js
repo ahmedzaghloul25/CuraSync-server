@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransferStatusType = exports.RecordPriorityTypes = exports.BillingStatusType = exports.RecordStatusTypes = exports.FileStatus = exports.SpecimenType = exports.LAbTestCategory = exports.MedicationForm = exports.InventoryItemTypes = exports.TransactionTypes = exports.MedicineUnits = exports.ImagingBodyRegions = exports.ImagingTypes = exports.connectionNameString = exports.RoleEnum = exports.OtpType = void 0;
 var OtpType;
 (function (OtpType) {
-    OtpType["ACTIVATE"] = "activate";
-    OtpType["PASS_RESET"] = "passwordReset";
+    OtpType["CONFIRM_MAIL"] = "Confirm Email";
+    OtpType["PASS_RESET"] = "Reset Password";
 })(OtpType || (exports.OtpType = OtpType = {}));
 var RoleEnum;
 (function (RoleEnum) {

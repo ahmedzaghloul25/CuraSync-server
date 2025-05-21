@@ -1,6 +1,6 @@
 export declare class Hashing {
-    private readonly salt;
-    constructor(salt: number);
+    private salt;
+    constructor();
     createHash(data: string): string;
     verifyHash(data: string, hash: string): boolean;
 }

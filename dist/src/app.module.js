@@ -15,12 +15,22 @@ const config_1 = require("@nestjs/config");
 const auth_module_1 = require("./auth/auth.module");
 const catalog_module_1 = require("./catalog/catalog.module");
 const common_2 = require("../common");
+const throttler_1 = require("@nestjs/throttler");
+const core_1 = require("@nestjs/core");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            throttler_1.ThrottlerModule.forRoot({
+                throttlers: [
+                    {
+                        ttl: (0, throttler_1.minutes)(1),
+                        limit: 70
+                    }
+                ]
+            }),
             mongoose_1.MongooseModule.forRootAsync({
                 imports: [config_1.ConfigModule],
                 useFactory: async (configService) => ({
@@ -53,7 +63,7 @@ exports.AppModule = AppModule = __decorate([
             catalog_module_1.CatalogModule,
         ],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [app_service_1.AppService, { provide: core_1.APP_GUARD, useClass: throttler_1.ThrottlerGuard }],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map

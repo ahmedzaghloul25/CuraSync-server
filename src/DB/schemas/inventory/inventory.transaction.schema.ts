@@ -89,11 +89,11 @@ export class InventoryTransaction extends COMMON_PROPS.ConfirmableProps {
   notes: string;
 }
 
-export const MedicineTransactionSchema =
+export const InventoryTransactionSchema =
   SchemaFactory.createForClass(InventoryTransaction);
-export const MedicineTransactionModule = MongooseModule.forFeature(
-  [{ name: InventoryTransaction.name, schema: MedicineTransactionSchema }],
+export const InventoryTransactionModule = MongooseModule.forFeature(
+  [{ name: InventoryTransaction.name, schema: InventoryTransactionSchema }],
   _Types.TYPES.connectionNameString.HOSPITAL
 );
-export type MedicineTransactionDocument =
+export type InventoryTransactionDocument =
   HydratedDocument<InventoryTransaction>;

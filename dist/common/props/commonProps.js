@@ -69,7 +69,6 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         ref: "Employee",
-        required: true
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], ConfirmableProps.prototype, "confirmedBy", void 0);

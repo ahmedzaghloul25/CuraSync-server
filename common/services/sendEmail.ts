@@ -13,15 +13,15 @@ export class SendEmail implements OnModuleInit {
     this.eventEmitter.on("sendOtp", async (data: SendMailOptions) => {
       try {
         const info = await this.transporter.sendMail({
-          from: '"HMS-app" <zaghloul85@gmail.com>', // sender address
+          from: '"CuraSync" <zaghloul85@gmail.com>', // sender address
           to: data.to, // list of receivers
           subject: data.subject, // Subject line
           //text: data.text, // plain text body
           html: data.html, // html body
         });
-        console.log(info.messageId);
+        console.log("Email sent to ", info.messageId);
       } catch (error) {
-        throw new InternalServerErrorException("Unable to send OTP ", error);
+        console.log("Error sending email ", error.message);
       }
     });
   }

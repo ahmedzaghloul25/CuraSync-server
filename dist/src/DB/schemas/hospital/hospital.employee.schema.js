@@ -13,12 +13,11 @@ exports.EmployeeModule = exports.EmployeeSchema = exports.Employee = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("../../../../common");
 const mongoose_2 = require("mongoose");
-let Employee = class Employee extends common_1.COMMON_PROPS.ConfirmableProps {
+let Employee = class Employee {
     firstName;
     lastName;
     email;
     password;
-    role;
     occupation;
     phone;
     DOB;
@@ -61,13 +60,6 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], Employee.prototype, "password", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.RoleEnum,
-        required: true,
-    }),
-    __metadata("design:type", String)
-], Employee.prototype, "role", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         enum: [
@@ -122,7 +114,6 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         ref: "Hospital",
-        required: true,
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], Employee.prototype, "hospital", void 0);

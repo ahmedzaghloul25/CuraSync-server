@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MedicineTransactionModule = exports.MedicineTransactionSchema = exports.InventoryTransaction = void 0;
+exports.InventoryTransactionModule = exports.InventoryTransactionSchema = exports.InventoryTransaction = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("../../../../common");
 const mongoose_2 = require("mongoose");
@@ -158,6 +158,6 @@ __decorate([
 exports.InventoryTransaction = InventoryTransaction = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], InventoryTransaction);
-exports.MedicineTransactionSchema = mongoose_1.SchemaFactory.createForClass(InventoryTransaction);
-exports.MedicineTransactionModule = mongoose_1.MongooseModule.forFeature([{ name: InventoryTransaction.name, schema: exports.MedicineTransactionSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.InventoryTransactionSchema = mongoose_1.SchemaFactory.createForClass(InventoryTransaction);
+exports.InventoryTransactionModule = mongoose_1.MongooseModule.forFeature([{ name: InventoryTransaction.name, schema: exports.InventoryTransactionSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=inventory.transaction.schema.js.map

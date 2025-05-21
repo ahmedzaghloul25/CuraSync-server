@@ -20,15 +20,15 @@ let SendEmail = class SendEmail {
         this.eventEmitter.on("sendOtp", async (data) => {
             try {
                 const info = await this.transporter.sendMail({
-                    from: '"HMS-app" <zaghloul85@gmail.com>',
+                    from: '"CuraSync" <zaghloul85@gmail.com>',
                     to: data.to,
                     subject: data.subject,
                     html: data.html,
                 });
-                console.log(info.messageId);
+                console.log("Email sent to ", info.messageId);
             }
             catch (error) {
-                throw new common_1.InternalServerErrorException("Unable to send OTP ", error);
+                console.log("Error sending email ", error.message);
             }
         });
     }

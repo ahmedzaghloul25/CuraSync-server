@@ -6,9 +6,19 @@ import { ConfigModule, ConfigService } from "@nestjs/config";
 import { AuthModule } from "./auth/auth.module";
 import { CatalogModule } from "./catalog/catalog.module";
 import { _Types } from "common";
+import { minutes, ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
+import { APP_GUARD } from "@nestjs/core";
 
 @Module({
   imports: [
+    ThrottlerModule.forRoot({
+      throttlers : [
+        {
+          ttl : minutes(1),
+          limit : 70
+        }
+      ]
+    }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -41,6 +51,6 @@ import { _Types } from "common";
     CatalogModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, {provide : APP_GUARD, useClass : ThrottlerGuard}],
 })
 export class AppModule {}

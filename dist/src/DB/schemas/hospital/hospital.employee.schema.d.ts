@@ -1,11 +1,9 @@
-import { COMMON_PROPS } from "common";
 import { HydratedDocument, Types } from "mongoose";
-export declare class Employee extends COMMON_PROPS.ConfirmableProps {
+export declare class Employee {
     firstName: string;
     lastName: string;
     email: string;
     password: string;
-    role: string;
     occupation: string;
     phone: string;
     DOB: Date;

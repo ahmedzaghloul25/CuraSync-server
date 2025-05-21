@@ -1,6 +1,6 @@
 export enum OtpType {
-  ACTIVATE = "activate",
-  PASS_RESET = "passwordReset",
+  CONFIRM_MAIL = "Confirm Email",
+  PASS_RESET = "Reset Password",
 }
 
 export enum RoleEnum {

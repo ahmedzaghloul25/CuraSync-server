@@ -23,6 +23,32 @@ export class PatientFile extends COMMON_PROPS.CoreProps {
     default: _Types.TYPES.FileStatus.ACTIVE,
   })
   status: string;
+  @Prop({
+    type: [
+      {
+        date: { type: Date, required: true },
+        toUnit: { type: Types.ObjectId, ref: "Unit" },
+      },
+    ],
+  })
+  admissions: Array<{ date: Date; toUnit: Types.ObjectId }>;
+  @Prop({
+    type: [
+      {
+        date: { type: Date, required: true },
+        fromUnit: { type: Types.ObjectId, ref: "Unit" },
+        reasonOfDischarge: {
+          enum: ["Improvement", "deceased"],
+          required: true,
+        },
+      },
+    ],
+  })
+  discharges: Array<{
+    date: Date;
+    toUnit: Types.ObjectId;
+    reasonOfDischarge: string;
+  }>;
 }
 
 export const PatientFileSchema = SchemaFactory.createForClass(PatientFile);
@@ -30,4 +56,4 @@ export const PatientFileModule = MongooseModule.forFeature(
   [{ name: PatientFile.name, schema: PatientFileSchema }],
   _Types.TYPES.connectionNameString.HOSPITAL
 );
-export type FileDocument = HydratedDocument<PatientFile>;
+export type PatientFileDocument = HydratedDocument<PatientFile>;
