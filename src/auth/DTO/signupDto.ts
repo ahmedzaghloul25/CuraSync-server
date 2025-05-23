@@ -40,10 +40,7 @@ export class SignupDto {
   confirmPassword: string;
 
   @IsNotEmpty()
-  @IsEnum([
-    ...Object.values(_Types.MedicalRoles),
-    ...Object.values(_Types.AdminRoles)
-  ])
+  @IsEnum(_Types.AllRoles)
   occupation: string;
 
   @IsNotEmpty()

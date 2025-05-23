@@ -13,7 +13,7 @@ exports.EmployeeModule = exports.EmployeeSchema = exports.Employee = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const common_1 = require("../../../../common");
 const mongoose_2 = require("mongoose");
-let Employee = class Employee {
+let Employee = class Employee extends common_1.COMMON_PROPS.CoreProps {
     firstName;
     lastName;
     email;
@@ -25,6 +25,7 @@ let Employee = class Employee {
     otp;
     otpFor;
     otpExpireAt;
+    passwordChangedAt;
     fullName;
     hospital;
 };
@@ -62,10 +63,7 @@ __decorate([
 ], Employee.prototype, "password", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: [
-            ...Object.values(common_1._Types.AdminRoles),
-            ...Object.values(common_1._Types.MedicalRoles),
-        ],
+        enum: common_1._Types.AllRoles,
         required: true,
     }),
     __metadata("design:type", String)
@@ -103,6 +101,10 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Date)
 ], Employee.prototype, "otpExpireAt", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Employee.prototype, "passwordChangedAt", void 0);
 __decorate([
     (0, mongoose_1.Virtual)({
         get: function () {

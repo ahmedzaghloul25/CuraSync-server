@@ -1,17 +1,24 @@
+import { Types } from "mongoose";
+
 export enum OtpType {
   CONFIRM_MAIL = "Confirm Email",
   PASS_RESET = "Reset Password",
 }
 
-export enum RoleEnum {
-  OFFICER = "Officer",
-  MEDICAL = "Medical",
-}
+export type TokenPayload = {
+  _id: Types.ObjectId;
+  occupation: string;
+};
 
-export enum connectionNameString{
-  CATALOG = 'catalog',
-  HOSPITAL = 'hospital',
-  SUPER = 'super'
+// export enum RoleEnum {
+//   OFFICER = "Officer",
+//   MEDICAL = "Medical",
+// }
+
+export enum connectionNameString {
+  CATALOG = "catalog",
+  HOSPITAL = "hospital",
+  SUPER = "super",
 }
 
 export enum ImagingTypes {
@@ -55,7 +62,7 @@ export enum MedicineUnits {
   SPRAY = "spray",
   PATCH = "patch",
   DROPPER = "dropper",
-  SUPPOSITORY = 'suppository',
+  SUPPOSITORY = "suppository",
   OTHER = "other",
 }
 export enum TransactionTypes {
@@ -124,7 +131,7 @@ export enum MedicationForm {
   OINTMENT_EYE = "eye ointment",
   DROPS_EAR = "ear drops",
   // Modified Release Forms
-  TABLET_DELAYED_RELEASE = 'delayed release tablet',
+  TABLET_DELAYED_RELEASE = "delayed release tablet",
   TABLET_EXTENDED_RELEASE = "extended release tablet",
   CAPSULE_EXTENDED_RELEASE = "extended release capsule",
   TABLET_SUSTAINED_RELEASE = "sustained release tablet",
@@ -270,7 +277,6 @@ export enum SpecimenType {
 //   EDUCATION = "Medical Education",
 //   OPERATIONS = "Operations",
 // }
-
 
 export enum FileStatus {
   ACTIVE = "active",

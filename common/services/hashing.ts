@@ -11,4 +11,7 @@ export class Hashing {
   verifyHash(data: string, hash: string): boolean {
     return bcrypt.compareSync(data, hash);
   }
+  compareHash(data: string, hash: string): boolean {
+    return bcrypt.compareSync(data, hash);
+  }
 }

@@ -21,6 +21,9 @@ let Hashing = class Hashing {
     verifyHash(data, hash) {
         return bcrypt.compareSync(data, hash);
     }
+    compareHash(data, hash) {
+        return bcrypt.compareSync(data, hash);
+    }
 };
 exports.Hashing = Hashing;
 exports.Hashing = Hashing = __decorate([

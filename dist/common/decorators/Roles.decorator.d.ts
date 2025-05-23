@@ -1,3 +1,3 @@
-import { RoleEnum } from 'common/types/types';
+import { _Types } from 'common';
 export declare const ROLES_KEY = "roles";
-export declare const Roles: (...roles: RoleEnum[]) => import("@nestjs/common").CustomDecorator<string>;
+export declare const Roles: (...roles: _Types.AllRoles[]) => import("@nestjs/common").CustomDecorator<string>;

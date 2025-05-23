@@ -16,16 +16,19 @@ const services_1 = require("../../common/services");
 const common_2 = require("../../common");
 const event_emitter_1 = require("@nestjs/event-emitter");
 const fakeDelay_1 = require("../../common/utils/fakeDelay");
+const jwtToken_1 = require("../../common/services/jwtToken");
 let AuthService = class AuthService {
     employeeRepoService;
     hashing;
     otp;
     event;
-    constructor(employeeRepoService, hashing, otp, event) {
+    jwtToken;
+    constructor(employeeRepoService, hashing, otp, event, jwtToken) {
         this.employeeRepoService = employeeRepoService;
         this.hashing = hashing;
         this.otp = otp;
         this.event = event;
+        this.jwtToken = jwtToken;
     }
     async signup(body) {
         try {
@@ -57,34 +60,38 @@ let AuthService = class AuthService {
     async confirmEmail(body) {
         const employee = await this.employeeRepoService.findOne({
             email: body.email,
+            otpFor: common_2._Types.TYPES.OtpType.CONFIRM_MAIL,
         });
         if (!employee || employee.isEmailConfirmed) {
-            throw new common_1.UnauthorizedException("Email or OTP not valid");
+            await (0, fakeDelay_1.fakeDelay)(200);
+            throw new common_1.BadRequestException("Invalid Credentials");
         }
         const otpVerify = await this.otp.verify(employee, body.otp);
-        if (!otpVerify || employee.otpFor !== common_2._Types.TYPES.OtpType.CONFIRM_MAIL) {
-            throw new common_1.NotAcceptableException("Invalid OTP.");
+        if (!otpVerify) {
+            await (0, fakeDelay_1.fakeDelay)(200);
+            throw new common_1.BadRequestException("Invalid Credentials");
         }
         await this.employeeRepoService.updateOne({ _id: employee._id }, {
             isEmailConfirmed: true,
             $unset: { otp: "", otpExpireAt: "", otpFor: "" },
         });
-        return { message: "Email confirmed successfully" };
+        return { message: "success" };
     }
     async requestNewOtp(body) {
         const employee = await this.employeeRepoService.findOne({
             email: body.email,
+            isDeleted: { $exists: false },
+            otpFor: body.otpFor,
+            otpExpireAt: { $lt: new Date() },
         });
         if (!employee) {
             await (0, fakeDelay_1.fakeDelay)(200);
             return { message: "Check your Inbox in case of valid Email" };
         }
-        if (employee.otpExpireAt > new Date()) {
-            throw new common_1.UnauthorizedException("OTP is not expired yet");
-        }
         if (employee.isEmailConfirmed &&
             body.otpFor === common_2._Types.TYPES.OtpType.CONFIRM_MAIL) {
-            throw new common_1.ConflictException("Email already confirmed");
+            await (0, fakeDelay_1.fakeDelay)(170);
+            return { message: "Check your Inbox in case of valid Email" };
         }
         const { otp, otpExpire } = this.otp.create();
         await this.employeeRepoService.updateOne({ _id: employee._id }, {
@@ -100,6 +107,72 @@ let AuthService = class AuthService {
         this.event.emit("sendOtp", options);
         return { message: "Check your Inbox in case of valid Email" };
     }
+    async login(body, res) {
+        const employee = await this.employeeRepoService.findOne({
+            email: body.email,
+            isEmailConfirmed: true,
+            isDeleted: { $exists: false },
+        });
+        if (!employee ||
+            !this.hashing.verifyHash(body.password, employee.password)) {
+            throw new common_1.NotFoundException("Email/password not valid or email not confirmed");
+        }
+        const token = await this.jwtToken.createToken({
+            _id: employee._id,
+            occupation: employee.occupation,
+        });
+        res.cookie("auth-token", token, {
+            maxAge: 30 * 60 * 1000,
+            httpOnly: true,
+            sameSite: process.env.MODE === "DEV" ? "lax" : "strict",
+            secure: process.env.MODE === "DEV" ? false : true,
+        });
+        return { message: "success" };
+    }
+    async forgotPassword({ email }) {
+        const employee = await this.employeeRepoService.findOne({
+            email,
+            isEmailConfirmed: true,
+            isDeleted: { $exists: false },
+        });
+        if (!employee || employee.otpExpireAt > new Date()) {
+            await (0, fakeDelay_1.fakeDelay)(200);
+            return { message: "OTP sent to your email" };
+        }
+        const { otp, otpExpire } = this.otp.create();
+        await this.employeeRepoService.updateOne({ _id: employee._id }, {
+            otp: this.hashing.createHash(otp),
+            otpExpireAt: otpExpire,
+            otpFor: common_2._Types.TYPES.OtpType.PASS_RESET,
+        });
+        const options = {
+            to: employee.email,
+            subject: common_2._Types.TYPES.OtpType.PASS_RESET,
+            html: `<p>Please use OTP <b>${otp}</b> to ${common_2._Types.TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
+        };
+        this.event.emit("sendOtp", options);
+        return { message: "OTP sent to your email" };
+    }
+    async resetPassword({ email, otp, newPassword }) {
+        const employee = await this.employeeRepoService.findOne({
+            email,
+            isEmailConfirmed: true,
+            otpFor: common_2._Types.TYPES.OtpType.PASS_RESET,
+            otpExpireAt: { $gt: new Date() },
+        });
+        if (!employee || !(await this.otp.verify(employee, otp))) {
+            throw new common_1.BadRequestException("Invalid credentials");
+        }
+        if (this.hashing.compareHash(newPassword, employee.password)) {
+            throw new common_1.BadRequestException("Password can't be the same as old one");
+        }
+        await this.employeeRepoService.updateOne({ _id: employee._id }, {
+            password: this.hashing.createHash(newPassword),
+            passwordChangedAt: new Date(),
+            $unset: { otp: "", otpFor: "", otpExpireAt: "" },
+        });
+        return { message: "success" };
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
@@ -107,6 +180,7 @@ exports.AuthService = AuthService = __decorate([
     __metadata("design:paramtypes", [hospital_emp_repoService_1.EmployeeRepoService,
         services_1.Hashing,
         services_1.Otp,
-        event_emitter_1.EventEmitter2])
+        event_emitter_1.EventEmitter2,
+        jwtToken_1.JwtToken])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

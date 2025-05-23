@@ -14,6 +14,8 @@ const hospital_employee_schema_1 = require("../DB/schemas/hospital/hospital.empl
 const services_1 = require("../../common/services");
 const event_emitter_1 = require("@nestjs/event-emitter");
 const hospital_emp_repoService_1 = require("../DB/repository/hospital/hospital.emp.repoService");
+const jwtToken_1 = require("../../common/services/jwtToken");
+const jwt_1 = require("@nestjs/jwt");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
@@ -21,7 +23,15 @@ exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
         imports: [hospital_employee_schema_1.EmployeeModule, event_emitter_1.EventEmitterModule.forRoot()],
         controllers: [auth_controller_1.AuthController],
-        providers: [hospital_emp_repoService_1.EmployeeRepoService, services_1.Hashing, services_1.Otp, auth_service_1.AuthService, services_1.SendEmail],
+        providers: [
+            hospital_emp_repoService_1.EmployeeRepoService,
+            services_1.Hashing,
+            services_1.Otp,
+            auth_service_1.AuthService,
+            services_1.SendEmail,
+            jwtToken_1.JwtToken,
+            jwt_1.JwtService,
+        ],
     })
 ], AuthModule);
 //# sourceMappingURL=auth.module.js.map

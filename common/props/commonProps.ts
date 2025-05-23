@@ -4,7 +4,6 @@ import { Types } from "mongoose";
 export abstract class CoreProps {
   @Prop({
     ref: "Employee",
-    required: true,
   })
   createdBy: Types.ObjectId;
   @Prop()

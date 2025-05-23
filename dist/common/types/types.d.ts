@@ -1,11 +1,12 @@
+import { Types } from "mongoose";
 export declare enum OtpType {
     CONFIRM_MAIL = "Confirm Email",
     PASS_RESET = "Reset Password"
 }
-export declare enum RoleEnum {
-    OFFICER = "Officer",
-    MEDICAL = "Medical"
-}
+export type TokenPayload = {
+    _id: Types.ObjectId;
+    occupation: string;
+};
 export declare enum connectionNameString {
     CATALOG = "catalog",
     HOSPITAL = "hospital",

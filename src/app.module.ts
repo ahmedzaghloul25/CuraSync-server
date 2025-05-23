@@ -15,7 +15,8 @@ import { APP_GUARD } from "@nestjs/core";
       throttlers : [
         {
           ttl : minutes(1),
-          limit : 70
+          limit : 70,
+          blockDuration : minutes(5)
         }
       ]
     }),

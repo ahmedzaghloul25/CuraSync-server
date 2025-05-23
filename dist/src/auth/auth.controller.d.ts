@@ -1,5 +1,8 @@
 import { AuthService } from "./auth.service";
-import { SignupDto, ConfirmEmailDto, RequestNewOtpDto } from "./DTO";
+import { SignupDto, ConfirmEmailDto, RequestNewOtpDto, ResetPasswordDto } from "./DTO";
+import { LoginDto } from "./DTO/loginDto";
+import { Response } from "express";
+import { ForgotPasswordDto } from "./DTO/forgotPasswordDto";
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
@@ -15,6 +18,15 @@ export declare class AuthController {
         message: string;
     }>;
     requestNewOtp(body: RequestNewOtpDto): Promise<{
+        message: string;
+    }>;
+    login(body: LoginDto, res: Response): Promise<{
+        message: string;
+    }>;
+    forgotPAssword(body: ForgotPasswordDto): Promise<{
+        message: string;
+    }>;
+    resetPassword(body: ResetPasswordDto): Promise<{
         message: string;
     }>;
 }

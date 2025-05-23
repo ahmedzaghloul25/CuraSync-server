@@ -3,4 +3,5 @@ export declare class Hashing {
     constructor();
     createHash(data: string): string;
     verifyHash(data: string, hash: string): boolean;
+    compareHash(data: string, hash: string): boolean;
 }

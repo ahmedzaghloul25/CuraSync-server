@@ -1,5 +1,6 @@
+import { COMMON_PROPS } from "common";
 import { HydratedDocument, Types } from "mongoose";
-export declare class Employee {
+export declare class Employee extends COMMON_PROPS.CoreProps {
     firstName: string;
     lastName: string;
     email: string;
@@ -11,6 +12,7 @@ export declare class Employee {
     otp: string;
     otpFor: string;
     otpExpireAt: Date;
+    passwordChangedAt: Date;
     fullName: string;
     hospital: Types.ObjectId;
 }

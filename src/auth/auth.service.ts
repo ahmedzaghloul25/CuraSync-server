@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ConflictException,
   Injectable,
   InternalServerErrorException,
@@ -6,7 +7,14 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from "@nestjs/common";
-import { SignupDto, ConfirmEmailDto, RequestNewOtpDto } from "./DTO";
+import {
+  SignupDto,
+  ConfirmEmailDto,
+  RequestNewOtpDto,
+  ForgotPasswordDto,
+  LoginDto,
+  ResetPasswordDto,
+} from "./DTO";
 import { EmployeeRepoService } from "src/DB/repository/hospital/hospital.emp.repoService";
 import { Hashing, Otp } from "common/services";
 import { _Types } from "common";
@@ -18,6 +26,8 @@ import { EventEmitter2 } from "@nestjs/event-emitter";
 import { SendMailOptions } from "nodemailer";
 import { UpdateQuery } from "mongoose";
 import { fakeDelay } from "common/utils/fakeDelay";
+import { JwtToken } from "common/services/jwtToken";
+import { Request, Response } from "express";
 
 @Injectable()
 export class AuthService {
@@ -25,7 +35,8 @@ export class AuthService {
     private readonly employeeRepoService: EmployeeRepoService,
     private readonly hashing: Hashing,
     private readonly otp: Otp,
-    private readonly event: EventEmitter2
+    private readonly event: EventEmitter2,
+    private readonly jwtToken: JwtToken
   ) {}
   //============================== signup =================================
   async signup(body: SignupDto) {
@@ -61,13 +72,16 @@ export class AuthService {
   async confirmEmail(body: ConfirmEmailDto) {
     const employee = await this.employeeRepoService.findOne({
       email: body.email,
+      otpFor: _Types.TYPES.OtpType.CONFIRM_MAIL,
     });
     if (!employee || employee.isEmailConfirmed) {
-      throw new UnauthorizedException("Email or OTP not valid");
+      await fakeDelay(200);
+      throw new BadRequestException("Invalid Credentials");
     }
     const otpVerify = await this.otp.verify(employee, body.otp);
-    if (!otpVerify || employee.otpFor !== _Types.TYPES.OtpType.CONFIRM_MAIL) {
-      throw new NotAcceptableException("Invalid OTP.");
+    if (!otpVerify) {
+      await fakeDelay(200);
+      throw new BadRequestException("Invalid Credentials");
     }
     await this.employeeRepoService.updateOne(
       { _id: employee._id },
@@ -76,25 +90,26 @@ export class AuthService {
         $unset: { otp: "", otpExpireAt: "", otpFor: "" },
       }
     );
-    return { message: "Email confirmed successfully" };
+    return { message: "success" };
   }
   //============================= requestNewOtp ============================
   async requestNewOtp(body: RequestNewOtpDto) {
     const employee = await this.employeeRepoService.findOne({
       email: body.email,
+      isDeleted: { $exists: false },
+      otpFor: body.otpFor, //make sure that requested otp is of the same type of expired one.
+      otpExpireAt: { $lt: new Date() }, // make sure OTP expired.
     });
     if (!employee) {
       await fakeDelay(200);
       return { message: "Check your Inbox in case of valid Email" };
     }
-    if (employee.otpExpireAt > new Date()) {
-      throw new UnauthorizedException("OTP is not expired yet");
-    }
     if (
       employee.isEmailConfirmed &&
       body.otpFor === _Types.TYPES.OtpType.CONFIRM_MAIL
     ) {
-      throw new ConflictException("Email already confirmed");
+      await fakeDelay(170);
+      return { message: "Check your Inbox in case of valid Email" };
     }
     const { otp, otpExpire } = this.otp.create();
     await this.employeeRepoService.updateOne(
@@ -114,7 +129,83 @@ export class AuthService {
     return { message: "Check your Inbox in case of valid Email" };
   }
   //================================= login ================================
+  async login(body: LoginDto, res: Response) {
+    const employee = await this.employeeRepoService.findOne({
+      email: body.email,
+      isEmailConfirmed: true,
+      isDeleted: { $exists: false },
+    });
+    if (
+      !employee ||
+      !this.hashing.verifyHash(body.password, employee.password)
+    ) {
+      throw new NotFoundException(
+        "Email/password not valid or email not confirmed"
+      );
+    }
+    const token = await this.jwtToken.createToken({
+      _id: employee._id,
+      occupation: employee.occupation,
+    });
+    res.cookie("auth-token", token, {
+      maxAge: 30 * 60 * 1000, // 30 min
+      httpOnly: true,
+      sameSite: process.env.MODE === "DEV" ? "lax" : "strict",
+      secure: process.env.MODE === "DEV" ? false : true,
+    });
+    return { message: "success" };
+  }
   //============================= forgotPassword ===========================
+  async forgotPassword({ email }: ForgotPasswordDto) {
+    const employee = await this.employeeRepoService.findOne({
+      email,
+      isEmailConfirmed: true,
+      isDeleted: { $exists: false },
+    });
+    if (!employee || employee.otpExpireAt > new Date()) {
+      await fakeDelay(200);
+      return { message: "OTP sent to your email" };
+    }
+    const { otp, otpExpire } = this.otp.create();
+    await this.employeeRepoService.updateOne(
+      { _id: employee._id },
+      {
+        otp: this.hashing.createHash(otp),
+        otpExpireAt: otpExpire,
+        otpFor: _Types.TYPES.OtpType.PASS_RESET,
+      }
+    );
+    const options: SendMailOptions = {
+      to: employee.email,
+      subject: _Types.TYPES.OtpType.PASS_RESET,
+      html: `<p>Please use OTP <b>${otp}</b> to ${_Types.TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
+    };
+    this.event.emit("sendOtp", options);
+    return { message: "OTP sent to your email" };
+  }
   //============================= resetPassword ============================
+  async resetPassword({ email, otp, newPassword }: ResetPasswordDto) {
+    const employee = await this.employeeRepoService.findOne({
+      email,
+      isEmailConfirmed: true,
+      otpFor: _Types.TYPES.OtpType.PASS_RESET,
+      otpExpireAt: { $gt: new Date() }, // valid otp
+    });
+    if (!employee || !(await this.otp.verify(employee, otp))) {
+      throw new BadRequestException("Invalid credentials");
+    }
+    if (this.hashing.compareHash(newPassword, employee.password)) {
+      throw new BadRequestException("Password can't be the same as old one");
+    }
+    await this.employeeRepoService.updateOne(
+      { _id: employee._id },
+      {
+        password: this.hashing.createHash(newPassword),
+        passwordChangedAt: new Date(),
+        $unset: { otp: "", otpFor: "", otpExpireAt: "" },
+      }
+    );
+    return { message: "success" };
+  }
   //================================ update ================================
 }

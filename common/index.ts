@@ -11,5 +11,5 @@ export {
   CONSTANTS,
   DECORATORS,
   SERVICES,
-  UTILS
+  UTILS,
 };

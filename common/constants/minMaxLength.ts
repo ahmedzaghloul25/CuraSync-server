@@ -4,5 +4,6 @@ export const MIN_MAX_LENGTH = {
     nameMaxInput : 50,
     descMinInput : 3,
     descMaxInput : 400,
-    otpLength : 6
+    otpLength : 6,
+    passMinLength : 8
 }

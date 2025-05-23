@@ -14,7 +14,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class Employee {
+export class Employee extends COMMON_PROPS.CoreProps {
   @Prop({
     trim: true,
     required: true,
@@ -39,10 +39,7 @@ export class Employee {
   })
   password: string;
   @Prop({
-    enum: [
-      ...Object.values(_Types.AdminRoles),
-      ...Object.values(_Types.MedicalRoles),
-    ],
+    enum: _Types.AllRoles,
     required: true,
   })
   occupation: string;
@@ -67,7 +64,8 @@ export class Employee {
   otpFor: string;
   @Prop()
   otpExpireAt: Date;
-
+  @Prop()
+  passwordChangedAt: Date;
   @Virtual({
     get: function (this: Employee) {
       return `${this.firstName} ${this.lastName}`;

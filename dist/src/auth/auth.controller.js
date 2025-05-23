@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const DTO_1 = require("./DTO");
 const throttler_1 = require("@nestjs/throttler");
+const loginDto_1 = require("./DTO/loginDto");
+const forgotPasswordDto_1 = require("./DTO/forgotPasswordDto");
 let AuthController = class AuthController {
     authService;
     constructor(authService) {
@@ -30,6 +32,15 @@ let AuthController = class AuthController {
     }
     requestNewOtp(body) {
         return this.authService.requestNewOtp(body);
+    }
+    login(body, res) {
+        return this.authService.login(body, res);
+    }
+    forgotPAssword(body) {
+        return this.authService.forgotPassword(body);
+    }
+    resetPassword(body) {
+        return this.authService.resetPassword(body);
     }
 };
 exports.AuthController = AuthController;
@@ -51,12 +62,36 @@ __decorate([
 ], AuthController.prototype, "confirmEmail", null);
 __decorate([
     (0, common_1.Put)("otp-new"),
-    (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(1), limit: 3 } }),
+    (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(1), limit: 1 } }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [DTO_1.RequestNewOtpDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "requestNewOtp", null);
+__decorate([
+    (0, common_1.Post)("login"),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)({ passthrough: true })),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [loginDto_1.LoginDto, Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "login", null);
+__decorate([
+    (0, common_1.Put)("password-forgot"),
+    (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(1), limit: 10 } }),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [forgotPasswordDto_1.ForgotPasswordDto]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "forgotPAssword", null);
+__decorate([
+    (0, common_1.Post)("password-reset"),
+    (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(15), limit: 5 } }),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [DTO_1.ResetPasswordDto]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "resetPassword", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)({ version: "1", path: "auth" }),
     __metadata("design:paramtypes", [auth_service_1.AuthService])

@@ -57,10 +57,7 @@ __decorate([
 ], SignupDto.prototype, "confirmPassword", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEnum)([
-        ...Object.values(common_1._Types.MedicalRoles),
-        ...Object.values(common_1._Types.AdminRoles)
-    ]),
+    (0, class_validator_1.IsEnum)(common_1._Types.AllRoles),
     __metadata("design:type", String)
 ], SignupDto.prototype, "occupation", void 0);
 __decorate([
