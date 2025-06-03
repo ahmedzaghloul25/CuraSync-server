@@ -12,7 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SignupDto = void 0;
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
-const common_1 = require("../../../common");
+const constants_1 = require("../../../common/constants");
+const decorators_1 = require("../../../common/decorators");
+const types_1 = require("../../../common/types");
 class SignupDto {
     firstName;
     lastName;
@@ -28,16 +30,16 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsAlpha)(),
-    (0, class_validator_1.MinLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.nameMinInput),
-    (0, class_validator_1.MaxLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.nameMaxInput),
+    (0, class_validator_1.MinLength)(constants_1.MIN_MAX_LENGTH.nameMinInput),
+    (0, class_validator_1.MaxLength)(constants_1.MIN_MAX_LENGTH.nameMaxInput),
     __metadata("design:type", String)
 ], SignupDto.prototype, "firstName", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsAlpha)(),
-    (0, class_validator_1.MinLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.nameMinInput),
-    (0, class_validator_1.MaxLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.nameMaxInput),
+    (0, class_validator_1.MinLength)(constants_1.MIN_MAX_LENGTH.nameMinInput),
+    (0, class_validator_1.MaxLength)(constants_1.MIN_MAX_LENGTH.nameMaxInput),
     __metadata("design:type", String)
 ], SignupDto.prototype, "lastName", void 0);
 __decorate([
@@ -52,12 +54,12 @@ __decorate([
 ], SignupDto.prototype, "password", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    common_1.DECORATORS.IsPasswordMatch(),
+    (0, decorators_1.IsPasswordMatch)(),
     __metadata("design:type", String)
 ], SignupDto.prototype, "confirmPassword", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEnum)(common_1._Types.AllRoles),
+    (0, class_validator_1.IsEnum)(types_1.AllRoles),
     __metadata("design:type", String)
 ], SignupDto.prototype, "occupation", void 0);
 __decorate([

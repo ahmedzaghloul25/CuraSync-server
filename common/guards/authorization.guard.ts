@@ -2,10 +2,9 @@ import { Injectable, CanActivate, ExecutionContext } from "@nestjs/common";
 import { Reflector } from "@nestjs/core";
 import { ROLES_KEY } from "common/decorators/Roles.decorator";
 import { AllRoles } from "common/types";
-import { AuthenticationGuard } from "./authentication.guard";
 
 @Injectable()
-export class Authorization implements CanActivate {
+export class AuthorizationGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {

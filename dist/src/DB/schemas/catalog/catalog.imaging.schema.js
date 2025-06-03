@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImagingCatalogModule = exports.ImagingCatalogSchema = exports.ImagingCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let ImagingCatalog = class ImagingCatalog extends common_1.COMMON_PROPS.CatalogProps {
+let ImagingCatalog = class ImagingCatalog extends props_1.CatalogProps {
     name;
     slug;
     code;
@@ -45,14 +46,14 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         type: String,
-        enum: common_1._Types.TYPES.ImagingTypes,
+        enum: types_1.TYPES.ImagingTypes,
     }),
     __metadata("design:type", String)
 ], ImagingCatalog.prototype, "modality", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         type: String,
-        enum: common_1._Types.TYPES.ImagingBodyRegions,
+        enum: types_1.TYPES.ImagingBodyRegions,
     }),
     __metadata("design:type", String)
 ], ImagingCatalog.prototype, "bodyRegion", void 0);
@@ -92,5 +93,5 @@ exports.ImagingCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.ImagingCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: ImagingCatalog.name, schema: exports.ImagingCatalogSchema }], common_1._Types.TYPES.connectionNameString.CATALOG);
+exports.ImagingCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: ImagingCatalog.name, schema: exports.ImagingCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.imaging.schema.js.map

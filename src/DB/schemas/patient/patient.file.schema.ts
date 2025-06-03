@@ -1,5 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { CoreProps } from "common/props";
+import { TYPES } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -7,7 +8,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class PatientFile extends COMMON_PROPS.CoreProps {
+export class PatientFile extends CoreProps {
   @Prop({
     ref: "Patient",
     required: true,
@@ -19,8 +20,8 @@ export class PatientFile extends COMMON_PROPS.CoreProps {
   })
   hospital: Types.ObjectId;
   @Prop({
-    enum: _Types.TYPES.FileStatus,
-    default: _Types.TYPES.FileStatus.ACTIVE,
+    enum: TYPES.FileStatus,
+    default: TYPES.FileStatus.ACTIVE,
   })
   status: string;
   @Prop({
@@ -54,6 +55,6 @@ export class PatientFile extends COMMON_PROPS.CoreProps {
 export const PatientFileSchema = SchemaFactory.createForClass(PatientFile);
 export const PatientFileModule = MongooseModule.forFeature(
   [{ name: PatientFile.name, schema: PatientFileSchema }],
-  _Types.TYPES.connectionNameString.HOSPITAL
+  TYPES.connectionNameString.HOSPITAL
 );
 export type PatientFileDocument = HydratedDocument<PatientFile>;

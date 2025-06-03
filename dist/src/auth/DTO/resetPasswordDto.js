@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ResetPasswordDto = void 0;
 const class_validator_1 = require("class-validator");
-const common_1 = require("../../../common");
+const constants_1 = require("../../../common/constants");
 class ResetPasswordDto {
     email;
     otp;
@@ -25,14 +25,14 @@ __decorate([
 ], ResetPasswordDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MinLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.otpLength),
-    (0, class_validator_1.MaxLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.otpLength),
+    (0, class_validator_1.MinLength)(constants_1.MIN_MAX_LENGTH.otpLength),
+    (0, class_validator_1.MaxLength)(constants_1.MIN_MAX_LENGTH.otpLength),
     __metadata("design:type", String)
 ], ResetPasswordDto.prototype, "otp", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsStrongPassword)(),
-    (0, class_validator_1.MinLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.passMinLength),
+    (0, class_validator_1.MinLength)(constants_1.MIN_MAX_LENGTH.passMinLength),
     __metadata("design:type", String)
 ], ResetPasswordDto.prototype, "newPassword", void 0);
 //# sourceMappingURL=resetPasswordDto.js.map

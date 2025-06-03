@@ -5,7 +5,9 @@ import {
   SchemaFactory,
   Virtual,
 } from "@nestjs/mongoose";
-import { COMMON_PROPS, CONSTANTS, _Types } from "common";
+import { MIN_MAX_LENGTH } from "common/constants";
+import { CoreProps } from "common/props";
+import { AllRoles, TYPES } from "common/types";
 
 import { HydratedDocument, Types } from "mongoose";
 
@@ -14,19 +16,19 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class Employee extends COMMON_PROPS.CoreProps {
+export class Employee extends CoreProps {
   @Prop({
     trim: true,
     required: true,
-    minlength: CONSTANTS.MIN_MAX_LENGTH.nameMinInput,
-    maxlength: CONSTANTS.MIN_MAX_LENGTH.nameMaxInput,
+    minlength: MIN_MAX_LENGTH.nameMinInput,
+    maxlength: MIN_MAX_LENGTH.nameMaxInput,
   })
   firstName: string;
   @Prop({
     trim: true,
     required: true,
-    minlength: CONSTANTS.MIN_MAX_LENGTH.nameMinInput,
-    maxlength: CONSTANTS.MIN_MAX_LENGTH.nameMaxInput,
+    minlength: MIN_MAX_LENGTH.nameMinInput,
+    maxlength: MIN_MAX_LENGTH.nameMaxInput,
   })
   lastName: string;
   @Prop({
@@ -39,7 +41,7 @@ export class Employee extends COMMON_PROPS.CoreProps {
   })
   password: string;
   @Prop({
-    enum: _Types.AllRoles,
+    enum: AllRoles,
     required: true,
   })
   occupation: string;
@@ -59,7 +61,7 @@ export class Employee extends COMMON_PROPS.CoreProps {
   @Prop()
   otp: string;
   @Prop({
-    enum: _Types.TYPES.OtpType,
+    enum: TYPES.OtpType,
   })
   otpFor: string;
   @Prop()
@@ -80,6 +82,6 @@ export class Employee extends COMMON_PROPS.CoreProps {
 export const EmployeeSchema = SchemaFactory.createForClass(Employee);
 export const EmployeeModule = MongooseModule.forFeature(
   [{ name: Employee.name, schema: EmployeeSchema }],
-  _Types.TYPES.connectionNameString.HOSPITAL
+  TYPES.connectionNameString.HOSPITAL
 );
 export type EmployeeDocument = HydratedDocument<Employee>;

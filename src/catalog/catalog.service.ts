@@ -17,13 +17,13 @@ import {
   AddServiceCatArrayDto,
   AddUnitCatArrayDto,
   AddVendorCatalogArrayDto,
-} from "./Dto";
+} from "./DTO";
 import { _slugify } from "common/utils";
 import { DepartmentCatalogDocument } from "src/DB/schemas/catalog/catalog.department.schema";
 import { UnitCatalogDocument } from "src/DB/schemas/catalog/catalog.unit.schema";
 import { ServiceCatalogDocument } from "src/DB/schemas/catalog/catalog.service.schema";
 import { LabCatalogDocument } from "src/DB/schemas/catalog/catalog.lab.schema";
-import { AddImagingCatalogArrayDto } from "./Dto/addImagingCatDto";
+import { AddImagingCatalogArrayDto } from "./DTO/addImagingCatDto";
 import { ImagingCatalogDocument } from "src/DB/schemas/catalog/catalog.imaging.schema";
 import { MedicineCatalogDocument } from "src/DB/schemas/catalog/catalog.medicine.schema";
 import { DisposableCatalogDocument } from "src/DB/schemas/catalog/catalog.disposable.schema";

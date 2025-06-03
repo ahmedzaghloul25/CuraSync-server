@@ -1,9 +1,8 @@
 import {
   BadRequestException,
-  ConflictException,
   Injectable,
   InternalServerErrorException,
-  NotAcceptableException,
+  Logger,
   NotFoundException,
   UnauthorizedException,
 } from "@nestjs/common";
@@ -17,14 +16,10 @@ import {
 } from "./DTO";
 import { EmployeeRepoService } from "src/DB/repository/hospital/hospital.emp.repoService";
 import { Hashing, Otp } from "common/services";
-import { _Types } from "common";
-import {
-  Employee,
-  EmployeeDocument,
-} from "src/DB/schemas/hospital/hospital.employee.schema";
+import { TYPES } from "common/types";
+import { EmployeeDocument } from "src/DB/schemas/hospital/hospital.employee.schema";
 import { EventEmitter2 } from "@nestjs/event-emitter";
 import { SendMailOptions } from "nodemailer";
-import { UpdateQuery } from "mongoose";
 import { fakeDelay } from "common/utils/fakeDelay";
 import { JwtToken } from "common/services/jwtToken";
 import { Request, Response } from "express";
@@ -36,7 +31,8 @@ export class AuthService {
     private readonly hashing: Hashing,
     private readonly otp: Otp,
     private readonly event: EventEmitter2,
-    private readonly jwtToken: JwtToken
+    private readonly jwtToken: JwtToken,
+    private readonly logger: Logger
   ) {}
   //============================== signup =================================
   async signup(body: SignupDto) {
@@ -51,7 +47,7 @@ export class AuthService {
         {
           otp: this.hashing.createHash(otp),
           otpExpireAt: otpExpire,
-          otpFor: _Types.TYPES.OtpType.CONFIRM_MAIL,
+          otpFor: TYPES.OtpType.CONFIRM_MAIL,
         }
       );
       const options: SendMailOptions = {
@@ -72,7 +68,7 @@ export class AuthService {
   async confirmEmail(body: ConfirmEmailDto) {
     const employee = await this.employeeRepoService.findOne({
       email: body.email,
-      otpFor: _Types.TYPES.OtpType.CONFIRM_MAIL,
+      otpFor: TYPES.OtpType.CONFIRM_MAIL,
     });
     if (!employee || employee.isEmailConfirmed) {
       await fakeDelay(200);
@@ -106,7 +102,7 @@ export class AuthService {
     }
     if (
       employee.isEmailConfirmed &&
-      body.otpFor === _Types.TYPES.OtpType.CONFIRM_MAIL
+      body.otpFor === TYPES.OtpType.CONFIRM_MAIL
     ) {
       await fakeDelay(170);
       return { message: "Check your Inbox in case of valid Email" };
@@ -163,6 +159,10 @@ export class AuthService {
       isDeleted: { $exists: false },
     });
     if (!employee || employee.otpExpireAt > new Date()) {
+      this.logger.warn(
+        `[AuthService] failed attempt to forgotPassword, input: ${email}`,
+        "AuthService"
+      );
       await fakeDelay(200);
       return { message: "OTP sent to your email" };
     }
@@ -172,13 +172,13 @@ export class AuthService {
       {
         otp: this.hashing.createHash(otp),
         otpExpireAt: otpExpire,
-        otpFor: _Types.TYPES.OtpType.PASS_RESET,
+        otpFor: TYPES.OtpType.PASS_RESET,
       }
     );
     const options: SendMailOptions = {
       to: employee.email,
-      subject: _Types.TYPES.OtpType.PASS_RESET,
-      html: `<p>Please use OTP <b>${otp}</b> to ${_Types.TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
+      subject: TYPES.OtpType.PASS_RESET,
+      html: `<p>Please use OTP <b>${otp}</b> to ${TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
     };
     this.event.emit("sendOtp", options);
     return { message: "OTP sent to your email" };
@@ -188,7 +188,7 @@ export class AuthService {
     const employee = await this.employeeRepoService.findOne({
       email,
       isEmailConfirmed: true,
-      otpFor: _Types.TYPES.OtpType.PASS_RESET,
+      otpFor: TYPES.OtpType.PASS_RESET,
       otpExpireAt: { $gt: new Date() }, // valid otp
     });
     if (!employee || !(await this.otp.verify(employee, otp))) {
@@ -205,7 +205,10 @@ export class AuthService {
         $unset: { otp: "", otpFor: "", otpExpireAt: "" },
       }
     );
+    this.logger.warn(
+      `[AuthService] password reset for employee: ${employee._id}`,
+      "AuthService"
+    );
     return { message: "success" };
   }
-  //================================ update ================================
 }

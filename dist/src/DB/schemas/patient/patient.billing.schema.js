@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BillingModule = exports.BillingSchema = exports.Billing = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let Billing = class Billing extends common_1.COMMON_PROPS.ConfirmableProps {
+let Billing = class Billing extends props_1.ConfirmableProps {
     file;
     medicine;
     lab;
@@ -81,8 +82,8 @@ __decorate([
 ], Billing.prototype, "amountPaid", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.BillingStatusType,
-        default: common_1._Types.TYPES.BillingStatusType.PENDING,
+        enum: types_1.TYPES.BillingStatusType,
+        default: types_1.TYPES.BillingStatusType.PENDING,
     }),
     __metadata("design:type", String)
 ], Billing.prototype, "status", void 0);
@@ -105,5 +106,5 @@ exports.BillingSchema.pre("save", function (next) {
         next(error);
     }
 });
-exports.BillingModule = mongoose_1.MongooseModule.forFeature([{ name: Billing.name, schema: exports.BillingSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.BillingModule = mongoose_1.MongooseModule.forFeature([{ name: Billing.name, schema: exports.BillingSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.billing.schema.js.map

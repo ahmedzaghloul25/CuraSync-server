@@ -1,5 +1,8 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { CONTAINS } from "class-validator";
+import { MIN_MAX_LENGTH } from "common/constants";
+import { ConfirmableProps } from "common/props";
+import { TYPES } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -7,30 +10,75 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class Hospital extends COMMON_PROPS.ConfirmableProps {
+export class Hospital extends ConfirmableProps {
   @Prop({
     unique: true,
     required: true,
     trim: true,
-    minlength: 2,
-    maxlength: 100,
+    minlength: MIN_MAX_LENGTH.nameMinInput,
+    maxlength: MIN_MAX_LENGTH.nameMaxInput,
   })
   name: string;
   @Prop({
-    minlength: 2,
-    maxlength: 400,
+    unique: true,
+    required: true,
+  })
+  slug: string;
+  @Prop({
+    minlength: MIN_MAX_LENGTH.descMinInput,
+    maxlength: MIN_MAX_LENGTH.descMaxInput,
   })
   address: string;
   @Prop({
     required: true,
     unique: true,
   })
-  licenseNumber: string;
+  medicalLicenseNumber: string;
   @Prop({
-    required : true
+    required: true,
   })
-  docs: [{ secure_url: string; public_id: string }];
-  @Prop()
+  medicalLicenseExpiry: Date;
+  @Prop({
+    required: true,
+    unique: true,
+  })
+  commercialRegNumber: string;
+  @Prop({
+    required: true,
+  })
+  commercialRegExpiry: Date;
+  @Prop({
+    required: true,
+    unique: true,
+  })
+  TIN: string;
+  @Prop({
+    type: { secure_url: String, Public_id: String },
+    required:  true
+  })
+  medicalLicenseDoc: {
+    secure_url: string;
+    public_id: string;
+  };
+  @Prop({
+    type: { secure_url: String, Public_id: String },
+    required:  true
+  })
+  commercialRegDoc: {
+    secure_url: string;
+    public_id: string;
+  };
+  @Prop({
+    type: { secure_url: String, Public_id: String },
+    required:  true
+  })
+  TINdoc: {
+    secure_url: string;
+    public_id: string;
+  };
+  @Prop({
+    type: { secure_url: String, Public_id: String },
+  })
   logo: {
     secure_url: string;
     public_id: string;
@@ -38,7 +86,8 @@ export class Hospital extends COMMON_PROPS.ConfirmableProps {
 }
 
 export const HospitalSchema = SchemaFactory.createForClass(Hospital);
-export const HospitalModule = MongooseModule.forFeature(
+export const hospitalModule = MongooseModule.forFeature(
   [{ name: Hospital.name, schema: HospitalSchema }],
-_Types.TYPES.connectionNameString.HOSPITAL);
+  TYPES.connectionNameString.HOSPITAL
+);
 export type HospitalDocument = HydratedDocument<Hospital>;

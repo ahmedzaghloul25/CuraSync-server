@@ -1,5 +1,6 @@
 import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator";
-import { _Types, CONSTANTS } from "common";
+import { TYPES } from "common/types";
+import { MIN_MAX_LENGTH } from "common/constants";
 
 
 export class LoginDto{
@@ -9,6 +10,6 @@ export class LoginDto{
 
     @IsNotEmpty()
     @IsString()
-    @MinLength(CONSTANTS.MIN_MAX_LENGTH.passMinLength)
+    @MinLength(MIN_MAX_LENGTH.passMinLength)
     password : string
 }

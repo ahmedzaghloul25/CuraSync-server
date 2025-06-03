@@ -1,13 +1,26 @@
-import { COMMON_PROPS } from "common";
+import { ConfirmableProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class Hospital extends COMMON_PROPS.ConfirmableProps {
+export declare class Hospital extends ConfirmableProps {
     name: string;
+    slug: string;
     address: string;
-    licenseNumber: string;
-    docs: [{
+    medicalLicenseNumber: string;
+    medicalLicenseExpiry: Date;
+    commercialRegNumber: string;
+    commercialRegExpiry: Date;
+    TIN: string;
+    medicalLicenseDoc: {
         secure_url: string;
         public_id: string;
-    }];
+    };
+    commercialRegDoc: {
+        secure_url: string;
+        public_id: string;
+    };
+    TINdoc: {
+        secure_url: string;
+        public_id: string;
+    };
     logo: {
         secure_url: string;
         public_id: string;
@@ -22,5 +35,5 @@ export declare const HospitalSchema: import("mongoose").Schema<Hospital, import(
 } & {
     __v: number;
 }>;
-export declare const HospitalModule: import("@nestjs/common").DynamicModule;
+export declare const hospitalModule: import("@nestjs/common").DynamicModule;
 export type HospitalDocument = HydratedDocument<Hospital>;

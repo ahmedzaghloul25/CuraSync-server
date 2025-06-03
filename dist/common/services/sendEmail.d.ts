@@ -1,8 +1,10 @@
-import { OnModuleInit } from "@nestjs/common";
+import { OnModuleInit, Logger, OnModuleDestroy } from "@nestjs/common";
 import { EventEmitter2 } from "@nestjs/event-emitter";
-export declare class SendEmail implements OnModuleInit {
+export declare class SendEmail implements OnModuleInit, OnModuleDestroy {
     private eventEmitter;
+    private logger;
     private transporter;
     onModuleInit(): void;
-    constructor(eventEmitter: EventEmitter2);
+    onModuleDestroy(): void;
+    constructor(eventEmitter: EventEmitter2, logger: Logger);
 }

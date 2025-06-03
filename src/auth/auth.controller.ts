@@ -40,7 +40,7 @@ export class AuthController {
   }
   //================= forgotPassword ======================
   @Put("password-forgot")
-  @Throttle({ default: { ttl: minutes(1), limit: 10 } })
+  @Throttle({ default: { ttl: minutes(1), limit: 1 } })
   forgotPAssword(@Body() body: ForgotPasswordDto) {
     return this.authService.forgotPassword(body);
   }

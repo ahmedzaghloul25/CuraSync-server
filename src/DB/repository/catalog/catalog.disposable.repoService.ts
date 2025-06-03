@@ -6,14 +6,14 @@ import {
   DisposableCatalog,
   DisposableCatalogDocument,
 } from "src/DB/schemas/catalog/catalog.disposable.schema";
-import { _Types } from "common";
+import { TYPES } from "common/types";
 
 @Injectable()
 export default class DisposableCatalogRepoService extends DbRepoService<DisposableCatalogDocument> {
   constructor(
     @InjectModel(
       DisposableCatalog.name,
-      _Types.TYPES.connectionNameString.CATALOG
+      TYPES.connectionNameString.CATALOG
     )
     private readonly disposableCatalogModel: Model<DisposableCatalogDocument>
   ) {

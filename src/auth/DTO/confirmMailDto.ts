@@ -5,13 +5,13 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
-import { CONSTANTS } from "common";
+import { MIN_MAX_LENGTH } from "common/constants";
 
 export class ConfirmEmailDto {
   @IsNotEmpty()
   @IsNumberString()
-  @MaxLength(CONSTANTS.MIN_MAX_LENGTH.otpLength)
-  @MinLength(CONSTANTS.MIN_MAX_LENGTH.otpLength)
+  @MaxLength(MIN_MAX_LENGTH.otpLength)
+  @MinLength(MIN_MAX_LENGTH.otpLength)
   otp: string;
 
   @IsNotEmpty()

@@ -1,6 +1,6 @@
-import { COMMON_PROPS } from "common";
+import { CoreProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class Employee extends COMMON_PROPS.CoreProps {
+export declare class Employee extends CoreProps {
     firstName: string;
     lastName: string;
     email: string;

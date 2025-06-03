@@ -17,7 +17,7 @@ const db_repo_service_1 = require("../db.repo.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const catalog_disposable_schema_1 = require("../../schemas/catalog/catalog.disposable.schema");
-const common_2 = require("../../../../common");
+const types_1 = require("../../../../common/types");
 let DisposableCatalogRepoService = class DisposableCatalogRepoService extends db_repo_service_1.DbRepoService {
     disposableCatalogModel;
     constructor(disposableCatalogModel) {
@@ -27,7 +27,7 @@ let DisposableCatalogRepoService = class DisposableCatalogRepoService extends db
 };
 DisposableCatalogRepoService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(catalog_disposable_schema_1.DisposableCatalog.name, common_2._Types.TYPES.connectionNameString.CATALOG)),
+    __param(0, (0, mongoose_1.InjectModel)(catalog_disposable_schema_1.DisposableCatalog.name, types_1.TYPES.connectionNameString.CATALOG)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], DisposableCatalogRepoService);
 exports.default = DisposableCatalogRepoService;

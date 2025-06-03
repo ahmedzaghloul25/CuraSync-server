@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PatientLabOrderModule = exports.PatientLabOrderSchema = exports.PatientLabOrder = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientLabOrder = class PatientLabOrder extends common_1.COMMON_PROPS.CoreProps {
+let PatientLabOrder = class PatientLabOrder extends props_1.CoreProps {
     durationInDays;
     frequentPerDay;
     startDate;
@@ -59,8 +60,8 @@ __decorate([
 ], PatientLabOrder.prototype, "completedDate", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.RecordPriorityTypes,
-        default: common_1._Types.TYPES.RecordPriorityTypes.MEDIUM,
+        enum: types_1.TYPES.RecordPriorityTypes,
+        default: types_1.TYPES.RecordPriorityTypes.MEDIUM,
     }),
     __metadata("design:type", String)
 ], PatientLabOrder.prototype, "priority", void 0);
@@ -88,8 +89,8 @@ __decorate([
 ], PatientLabOrder.prototype, "log", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: Object.values(common_1._Types.TYPES.RecordStatusTypes),
-        default: common_1._Types.TYPES.RecordStatusTypes.PENDING,
+        enum: Object.values(types_1.TYPES.RecordStatusTypes),
+        default: types_1.TYPES.RecordStatusTypes.PENDING,
     }),
     __metadata("design:type", String)
 ], PatientLabOrder.prototype, "status", void 0);
@@ -115,5 +116,5 @@ exports.PatientLabOrder = PatientLabOrder = __decorate([
     (0, mongoose_1.Schema)()
 ], PatientLabOrder);
 exports.PatientLabOrderSchema = mongoose_1.SchemaFactory.createForClass(PatientLabOrder);
-exports.PatientLabOrderModule = mongoose_1.MongooseModule.forFeature([{ name: PatientLabOrder.name, schema: exports.PatientLabOrderSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.PatientLabOrderModule = mongoose_1.MongooseModule.forFeature([{ name: PatientLabOrder.name, schema: exports.PatientLabOrderSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.lab.record.schema.js.map

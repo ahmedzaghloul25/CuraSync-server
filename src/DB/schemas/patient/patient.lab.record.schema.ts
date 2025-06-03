@@ -1,9 +1,10 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { CoreProps } from "common/props";
+import { TYPES } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema()
-export class PatientLabOrder extends COMMON_PROPS.CoreProps {
+export class PatientLabOrder extends CoreProps {
   @Prop({
     min: 1,
     max: 10,
@@ -25,8 +26,8 @@ export class PatientLabOrder extends COMMON_PROPS.CoreProps {
   @Prop()
   completedDate: Date;
   @Prop({
-    enum: _Types.TYPES.RecordPriorityTypes,
-    default: _Types.TYPES.RecordPriorityTypes.MEDIUM,
+    enum: TYPES.RecordPriorityTypes,
+    default: TYPES.RecordPriorityTypes.MEDIUM,
   })
   priority: string;
   @Prop({
@@ -60,8 +61,8 @@ export class PatientLabOrder extends COMMON_PROPS.CoreProps {
     result: number | string;
   }>;
   @Prop({
-    enum: Object.values(_Types.TYPES.RecordStatusTypes),
-    default: _Types.TYPES.RecordStatusTypes.PENDING,
+    enum: Object.values(TYPES.RecordStatusTypes),
+    default: TYPES.RecordStatusTypes.PENDING,
   })
   status: string;
   @Prop()
@@ -81,7 +82,7 @@ export const PatientLabOrderSchema =
   SchemaFactory.createForClass(PatientLabOrder);
 export const PatientLabOrderModule = MongooseModule.forFeature(
   [{ name: PatientLabOrder.name, schema: PatientLabOrderSchema }],
-  _Types.TYPES.connectionNameString.HOSPITAL
+  TYPES.connectionNameString.HOSPITAL
 );
 export type PatientLabOrderDocument =
   HydratedDocument<PatientLabOrder>;

@@ -13,7 +13,7 @@ exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const hospital_emp_repoService_1 = require("../DB/repository/hospital/hospital.emp.repoService");
 const services_1 = require("../../common/services");
-const common_2 = require("../../common");
+const types_1 = require("../../common/types");
 const event_emitter_1 = require("@nestjs/event-emitter");
 const fakeDelay_1 = require("../../common/utils/fakeDelay");
 const jwtToken_1 = require("../../common/services/jwtToken");
@@ -23,12 +23,14 @@ let AuthService = class AuthService {
     otp;
     event;
     jwtToken;
-    constructor(employeeRepoService, hashing, otp, event, jwtToken) {
+    logger;
+    constructor(employeeRepoService, hashing, otp, event, jwtToken, logger) {
         this.employeeRepoService = employeeRepoService;
         this.hashing = hashing;
         this.otp = otp;
         this.event = event;
         this.jwtToken = jwtToken;
+        this.logger = logger;
     }
     async signup(body) {
         try {
@@ -40,7 +42,7 @@ let AuthService = class AuthService {
             await this.employeeRepoService.updateOne({ _id: employee._id }, {
                 otp: this.hashing.createHash(otp),
                 otpExpireAt: otpExpire,
-                otpFor: common_2._Types.TYPES.OtpType.CONFIRM_MAIL,
+                otpFor: types_1.TYPES.OtpType.CONFIRM_MAIL,
             });
             const options = {
                 to: employee.email,
@@ -60,7 +62,7 @@ let AuthService = class AuthService {
     async confirmEmail(body) {
         const employee = await this.employeeRepoService.findOne({
             email: body.email,
-            otpFor: common_2._Types.TYPES.OtpType.CONFIRM_MAIL,
+            otpFor: types_1.TYPES.OtpType.CONFIRM_MAIL,
         });
         if (!employee || employee.isEmailConfirmed) {
             await (0, fakeDelay_1.fakeDelay)(200);
@@ -89,7 +91,7 @@ let AuthService = class AuthService {
             return { message: "Check your Inbox in case of valid Email" };
         }
         if (employee.isEmailConfirmed &&
-            body.otpFor === common_2._Types.TYPES.OtpType.CONFIRM_MAIL) {
+            body.otpFor === types_1.TYPES.OtpType.CONFIRM_MAIL) {
             await (0, fakeDelay_1.fakeDelay)(170);
             return { message: "Check your Inbox in case of valid Email" };
         }
@@ -136,6 +138,7 @@ let AuthService = class AuthService {
             isDeleted: { $exists: false },
         });
         if (!employee || employee.otpExpireAt > new Date()) {
+            this.logger.warn(`[AuthService] failed attempt to forgotPassword, input: ${email}`, "AuthService");
             await (0, fakeDelay_1.fakeDelay)(200);
             return { message: "OTP sent to your email" };
         }
@@ -143,12 +146,12 @@ let AuthService = class AuthService {
         await this.employeeRepoService.updateOne({ _id: employee._id }, {
             otp: this.hashing.createHash(otp),
             otpExpireAt: otpExpire,
-            otpFor: common_2._Types.TYPES.OtpType.PASS_RESET,
+            otpFor: types_1.TYPES.OtpType.PASS_RESET,
         });
         const options = {
             to: employee.email,
-            subject: common_2._Types.TYPES.OtpType.PASS_RESET,
-            html: `<p>Please use OTP <b>${otp}</b> to ${common_2._Types.TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
+            subject: types_1.TYPES.OtpType.PASS_RESET,
+            html: `<p>Please use OTP <b>${otp}</b> to ${types_1.TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
         };
         this.event.emit("sendOtp", options);
         return { message: "OTP sent to your email" };
@@ -157,7 +160,7 @@ let AuthService = class AuthService {
         const employee = await this.employeeRepoService.findOne({
             email,
             isEmailConfirmed: true,
-            otpFor: common_2._Types.TYPES.OtpType.PASS_RESET,
+            otpFor: types_1.TYPES.OtpType.PASS_RESET,
             otpExpireAt: { $gt: new Date() },
         });
         if (!employee || !(await this.otp.verify(employee, otp))) {
@@ -171,6 +174,7 @@ let AuthService = class AuthService {
             passwordChangedAt: new Date(),
             $unset: { otp: "", otpFor: "", otpExpireAt: "" },
         });
+        this.logger.warn(`[AuthService] password reset for employee: ${employee._id}`, "AuthService");
         return { message: "success" };
     }
 };
@@ -181,6 +185,7 @@ exports.AuthService = AuthService = __decorate([
         services_1.Hashing,
         services_1.Otp,
         event_emitter_1.EventEmitter2,
-        jwtToken_1.JwtToken])
+        jwtToken_1.JwtToken,
+        common_1.Logger])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

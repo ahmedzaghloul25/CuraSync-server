@@ -21,7 +21,7 @@ class CoreProps {
 exports.CoreProps = CoreProps;
 __decorate([
     (0, mongoose_1.Prop)({
-        ref: "Employee",
+        type: mongoose_2.Types.ObjectId,
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], CoreProps.prototype, "createdBy", void 0);

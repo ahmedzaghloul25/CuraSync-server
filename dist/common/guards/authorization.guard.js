@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Authorization = void 0;
+exports.AuthorizationGuard = void 0;
 const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
 const Roles_decorator_1 = require("../decorators/Roles.decorator");
-let Authorization = class Authorization {
+let AuthorizationGuard = class AuthorizationGuard {
     reflector;
     constructor(reflector) {
         this.reflector = reflector;
@@ -27,9 +27,9 @@ let Authorization = class Authorization {
         return requiredRoles.some((role) => employee.occupation?.includes(role));
     }
 };
-exports.Authorization = Authorization;
-exports.Authorization = Authorization = __decorate([
+exports.AuthorizationGuard = AuthorizationGuard;
+exports.AuthorizationGuard = AuthorizationGuard = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [core_1.Reflector])
-], Authorization);
+], AuthorizationGuard);
 //# sourceMappingURL=authorization.guard.js.map

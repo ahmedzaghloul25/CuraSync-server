@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const inventory_transaction_schema_1 = require("../../schemas/inventory/inventory.transaction.schema");
 const db_repo_service_1 = require("../db.repo.service");
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
 let InventoryRepoService = class InventoryRepoService extends db_repo_service_1.DbRepoService {
     inventoryModel;
@@ -25,7 +25,7 @@ let InventoryRepoService = class InventoryRepoService extends db_repo_service_1.
     }
 };
 InventoryRepoService = __decorate([
-    __param(0, (0, mongoose_1.InjectModel)(inventory_transaction_schema_1.InventoryTransaction.name, common_1._Types.TYPES.connectionNameString.HOSPITAL)),
+    __param(0, (0, mongoose_1.InjectModel)(inventory_transaction_schema_1.InventoryTransaction.name, types_1.TYPES.connectionNameString.HOSPITAL)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], InventoryRepoService);
 exports.default = InventoryRepoService;

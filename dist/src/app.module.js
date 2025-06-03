@@ -14,9 +14,10 @@ const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
 const auth_module_1 = require("./auth/auth.module");
 const catalog_module_1 = require("./catalog/catalog.module");
-const common_2 = require("../common");
+const types_1 = require("../common/types");
 const throttler_1 = require("@nestjs/throttler");
 const core_1 = require("@nestjs/core");
+const hospital_module_1 = require("./hospital/hospital.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -38,7 +39,7 @@ exports.AppModule = AppModule = __decorate([
                     uri: configService.get("DB_HOSPITAL"),
                 }),
                 inject: [config_1.ConfigService],
-                connectionName: common_2._Types.TYPES.connectionNameString.HOSPITAL,
+                connectionName: types_1.TYPES.connectionNameString.HOSPITAL,
             }),
             mongoose_1.MongooseModule.forRootAsync({
                 imports: [config_1.ConfigModule],
@@ -46,7 +47,7 @@ exports.AppModule = AppModule = __decorate([
                     uri: configService.get("DB_CATALOG"),
                 }),
                 inject: [config_1.ConfigService],
-                connectionName: common_2._Types.TYPES.connectionNameString.CATALOG,
+                connectionName: types_1.TYPES.connectionNameString.CATALOG,
             }),
             mongoose_1.MongooseModule.forRootAsync({
                 imports: [config_1.ConfigModule],
@@ -54,7 +55,7 @@ exports.AppModule = AppModule = __decorate([
                     uri: configService.get("DB_SUPER"),
                 }),
                 inject: [config_1.ConfigService],
-                connectionName: common_2._Types.TYPES.connectionNameString.SUPER,
+                connectionName: types_1.TYPES.connectionNameString.SUPER,
             }),
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
@@ -62,6 +63,7 @@ exports.AppModule = AppModule = __decorate([
             }),
             auth_module_1.AuthModule,
             catalog_module_1.CatalogModule,
+            hospital_module_1.HospitalModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, { provide: core_1.APP_GUARD, useClass: throttler_1.ThrottlerGuard }],

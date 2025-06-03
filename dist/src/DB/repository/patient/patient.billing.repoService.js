@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const patient_billing_schema_1 = require("../../schemas/patient/patient.billing.schema");
 const db_repo_service_1 = require("../db.repo.service");
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
 let PatientBillingRepoService = class PatientBillingRepoService extends db_repo_service_1.DbRepoService {
     billingModel;
@@ -25,7 +25,7 @@ let PatientBillingRepoService = class PatientBillingRepoService extends db_repo_
     }
 };
 PatientBillingRepoService = __decorate([
-    __param(0, (0, mongoose_1.InjectModel)(patient_billing_schema_1.Billing.name, common_1._Types.TYPES.connectionNameString.HOSPITAL)),
+    __param(0, (0, mongoose_1.InjectModel)(patient_billing_schema_1.Billing.name, types_1.TYPES.connectionNameString.HOSPITAL)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], PatientBillingRepoService);
 exports.default = PatientBillingRepoService;

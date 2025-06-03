@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PatientFileModule = exports.PatientFileSchema = exports.PatientFile = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientFile = class PatientFile extends common_1.COMMON_PROPS.CoreProps {
+let PatientFile = class PatientFile extends props_1.CoreProps {
     patient;
     hospital;
     status;
@@ -37,8 +38,8 @@ __decorate([
 ], PatientFile.prototype, "hospital", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.FileStatus,
-        default: common_1._Types.TYPES.FileStatus.ACTIVE,
+        enum: types_1.TYPES.FileStatus,
+        default: types_1.TYPES.FileStatus.ACTIVE,
     }),
     __metadata("design:type", String)
 ], PatientFile.prototype, "status", void 0);
@@ -76,5 +77,5 @@ exports.PatientFile = PatientFile = __decorate([
     })
 ], PatientFile);
 exports.PatientFileSchema = mongoose_1.SchemaFactory.createForClass(PatientFile);
-exports.PatientFileModule = mongoose_1.MongooseModule.forFeature([{ name: PatientFile.name, schema: exports.PatientFileSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.PatientFileModule = mongoose_1.MongooseModule.forFeature([{ name: PatientFile.name, schema: exports.PatientFileSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.file.schema.js.map

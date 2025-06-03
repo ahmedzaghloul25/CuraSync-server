@@ -11,8 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MedicineCatalogModule = exports.MedicineCatalogSchema = exports.MedicineCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
-let MedicineCatalog = class MedicineCatalog extends common_1.COMMON_PROPS.CatalogProps {
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
+let MedicineCatalog = class MedicineCatalog extends props_1.CatalogProps {
     genericName;
     brandName;
     form;
@@ -37,14 +38,14 @@ __decorate([
 ], MedicineCatalog.prototype, "brandName", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.MedicationForm,
+        enum: types_1.TYPES.MedicationForm,
         required: true,
     }),
     __metadata("design:type", String)
 ], MedicineCatalog.prototype, "form", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.MedicineUnits,
+        enum: types_1.TYPES.MedicineUnits,
         required: true,
     }),
     __metadata("design:type", String)
@@ -64,5 +65,5 @@ exports.MedicineCatalog = MedicineCatalog = __decorate([
     })
 ], MedicineCatalog);
 exports.MedicineCatalogSchema = mongoose_1.SchemaFactory.createForClass(MedicineCatalog);
-exports.MedicineCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: MedicineCatalog.name, schema: exports.MedicineCatalogSchema }], common_1._Types.TYPES.connectionNameString.CATALOG);
+exports.MedicineCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: MedicineCatalog.name, schema: exports.MedicineCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.medicine.schema.js.map

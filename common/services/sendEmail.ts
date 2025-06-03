@@ -2,15 +2,18 @@ import {
   Injectable,
   InternalServerErrorException,
   OnModuleInit,
+  Logger,
+  OnModuleDestroy,
 } from "@nestjs/common";
 import { EventEmitter2 } from "@nestjs/event-emitter";
+import { log } from "console";
 import { createTransport, SendMailOptions, Transporter } from "nodemailer";
 
 @Injectable()
-export class SendEmail implements OnModuleInit {
+export class SendEmail implements OnModuleInit ,OnModuleDestroy {
   private transporter: Transporter;
   onModuleInit() {
-    this.eventEmitter.on("sendOtp", async (data: SendMailOptions) => {
+    this.eventEmitter.once("sendOtp", async (data: SendMailOptions) => {
       try {
         const info = await this.transporter.sendMail({
           from: '"CuraSync" <zaghloul85@gmail.com>', // sender address
@@ -19,13 +22,32 @@ export class SendEmail implements OnModuleInit {
           //text: data.text, // plain text body
           html: data.html, // html body
         });
-        console.log("Email sent to ", info.messageId);
+        this.logger.log(
+          `Email for ${data.subject} sent successfully to Employee: ${data.to}`,
+          "SendEmail"
+        );
       } catch (error) {
-        console.log("Error sending email ", error.message);
+        this.logger.error(
+          `[SendEmail] Failed to send email for "${data.subject}" to employee: ${data.to} - ${error.message}`,
+          error.stack || error.toString()
+        );
+        throw new InternalServerErrorException(
+          "Error sending OTP email ",
+          error.message
+        );
       }
     });
   }
-  constructor(private eventEmitter: EventEmitter2) {
+  onModuleDestroy() {
+    this.eventEmitter.removeAllListeners('sendOtp')
+    if(this.transporter.close){
+      this.transporter.close()
+    }
+  }
+  constructor(
+    private eventEmitter: EventEmitter2,
+    private logger: Logger
+  ) {
     this.transporter = createTransport({
       host: "smtp.gmail.com",
       port: 465,

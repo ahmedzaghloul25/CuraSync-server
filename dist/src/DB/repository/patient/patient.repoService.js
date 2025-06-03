@@ -32,7 +32,6 @@ let PatientRepoService = class PatientRepoService extends db_repo_service_1.DbRe
                 if (!doc.file) {
                     const newFile = await this.fileRepoService.create({
                         patient: doc._id,
-                        createdBy: doc.createdBy,
                     });
                     await this.patientModel.updateOne({ _id: doc._id }, { file: newFile[0]._id });
                 }

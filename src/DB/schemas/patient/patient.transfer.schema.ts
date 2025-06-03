@@ -1,5 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { ConfirmableProps } from "common/props";
+import { TYPES } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -7,7 +8,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class PatientTransfer extends COMMON_PROPS.ConfirmableProps {
+export class PatientTransfer extends ConfirmableProps {
   @Prop({
     ref: "Unit",
     required: true,
@@ -19,8 +20,8 @@ export class PatientTransfer extends COMMON_PROPS.ConfirmableProps {
   })
   transferTo: Types.ObjectId;
   @Prop({
-    enum: _Types.TYPES.TransferStatusType,
-    default: _Types.TYPES.TransferStatusType.PENDING,
+    enum: TYPES.TransferStatusType,
+    default: TYPES.TransferStatusType.PENDING,
   })
   status: string;
   @Prop({
@@ -33,6 +34,6 @@ export class PatientTransfer extends COMMON_PROPS.ConfirmableProps {
 export const TransferSchema = SchemaFactory.createForClass(PatientTransfer);
 export const TransferModule = MongooseModule.forFeature(
   [{ name: PatientTransfer.name, schema: TransferSchema }],
-  _Types.TYPES.connectionNameString.HOSPITAL
+  TYPES.connectionNameString.HOSPITAL
 );
 export type TransferDocument = HydratedDocument<PatientTransfer>;

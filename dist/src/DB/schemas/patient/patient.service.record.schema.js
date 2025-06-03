@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceModule = exports.PatientServiceOrderSchema = exports.PatientServiceOrder = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientServiceOrder = class PatientServiceOrder extends common_1.COMMON_PROPS.CoreProps {
+let PatientServiceOrder = class PatientServiceOrder extends props_1.CoreProps {
     service;
     durationInDays;
     frequentPerDay;
@@ -67,7 +68,7 @@ __decorate([
 ], PatientServiceOrder.prototype, "completedDate", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.RecordPriorityTypes,
+        enum: types_1.TYPES.RecordPriorityTypes,
         required: true,
     }),
     __metadata("design:type", String)
@@ -95,8 +96,8 @@ __decorate([
 ], PatientServiceOrder.prototype, "log", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: Object.values(common_1._Types.TYPES.RecordStatusTypes),
-        default: common_1._Types.TYPES.RecordStatusTypes.PENDING,
+        enum: Object.values(types_1.TYPES.RecordStatusTypes),
+        default: types_1.TYPES.RecordStatusTypes.PENDING,
     }),
     __metadata("design:type", String)
 ], PatientServiceOrder.prototype, "status", void 0);
@@ -126,5 +127,5 @@ exports.PatientServiceOrder = PatientServiceOrder = __decorate([
     })
 ], PatientServiceOrder);
 exports.PatientServiceOrderSchema = mongoose_1.SchemaFactory.createForClass(PatientServiceOrder);
-exports.ServiceModule = mongoose_1.MongooseModule.forFeature([{ name: PatientServiceOrder.name, schema: exports.PatientServiceOrderSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.ServiceModule = mongoose_1.MongooseModule.forFeature([{ name: PatientServiceOrder.name, schema: exports.PatientServiceOrderSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.service.record.schema.js.map

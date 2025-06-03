@@ -9,14 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HospitalModule = exports.HospitalSchema = exports.Hospital = void 0;
+exports.hospitalModule = exports.HospitalSchema = exports.Hospital = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
-let Hospital = class Hospital extends common_1.COMMON_PROPS.ConfirmableProps {
+const constants_1 = require("../../../../common/constants");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
+let Hospital = class Hospital extends props_1.ConfirmableProps {
     name;
+    slug;
     address;
-    licenseNumber;
-    docs;
+    medicalLicenseNumber;
+    medicalLicenseExpiry;
+    commercialRegNumber;
+    commercialRegExpiry;
+    TIN;
+    medicalLicenseDoc;
+    commercialRegDoc;
+    TINdoc;
     logo;
 };
 exports.Hospital = Hospital;
@@ -25,15 +34,22 @@ __decorate([
         unique: true,
         required: true,
         trim: true,
-        minlength: 2,
-        maxlength: 100,
+        minlength: constants_1.MIN_MAX_LENGTH.nameMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.nameMaxInput,
     }),
     __metadata("design:type", String)
 ], Hospital.prototype, "name", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        minlength: 2,
-        maxlength: 400,
+        unique: true,
+        required: true,
+    }),
+    __metadata("design:type", String)
+], Hospital.prototype, "slug", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        minlength: constants_1.MIN_MAX_LENGTH.descMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.descMaxInput,
     }),
     __metadata("design:type", String)
 ], Hospital.prototype, "address", void 0);
@@ -43,15 +59,58 @@ __decorate([
         unique: true,
     }),
     __metadata("design:type", String)
-], Hospital.prototype, "licenseNumber", void 0);
+], Hospital.prototype, "medicalLicenseNumber", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
+        required: true,
+    }),
+    __metadata("design:type", Date)
+], Hospital.prototype, "medicalLicenseExpiry", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        required: true,
+        unique: true,
+    }),
+    __metadata("design:type", String)
+], Hospital.prototype, "commercialRegNumber", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        required: true,
+    }),
+    __metadata("design:type", Date)
+], Hospital.prototype, "commercialRegExpiry", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        required: true,
+        unique: true,
+    }),
+    __metadata("design:type", String)
+], Hospital.prototype, "TIN", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: { secure_url: String, Public_id: String },
         required: true
     }),
-    __metadata("design:type", Array)
-], Hospital.prototype, "docs", void 0);
+    __metadata("design:type", Object)
+], Hospital.prototype, "medicalLicenseDoc", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({
+        type: { secure_url: String, Public_id: String },
+        required: true
+    }),
+    __metadata("design:type", Object)
+], Hospital.prototype, "commercialRegDoc", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: { secure_url: String, Public_id: String },
+        required: true
+    }),
+    __metadata("design:type", Object)
+], Hospital.prototype, "TINdoc", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: { secure_url: String, Public_id: String },
+    }),
     __metadata("design:type", Object)
 ], Hospital.prototype, "logo", void 0);
 exports.Hospital = Hospital = __decorate([
@@ -62,5 +121,5 @@ exports.Hospital = Hospital = __decorate([
     })
 ], Hospital);
 exports.HospitalSchema = mongoose_1.SchemaFactory.createForClass(Hospital);
-exports.HospitalModule = mongoose_1.MongooseModule.forFeature([{ name: Hospital.name, schema: exports.HospitalSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.hospitalModule = mongoose_1.MongooseModule.forFeature([{ name: Hospital.name, schema: exports.HospitalSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.schema.js.map

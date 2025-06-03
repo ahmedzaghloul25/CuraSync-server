@@ -1,6 +1,6 @@
-import { COMMON_PROPS } from "common";
+import { CoreProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class PatientServiceOrder extends COMMON_PROPS.CoreProps {
+export declare class PatientServiceOrder extends CoreProps {
     service: Types.ObjectId;
     durationInDays: number;
     frequentPerDay: number;

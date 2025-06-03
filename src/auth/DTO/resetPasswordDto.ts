@@ -5,7 +5,7 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
-import { CONSTANTS } from "common";
+import { MIN_MAX_LENGTH} from "common/constants";
 
 export class ResetPasswordDto {
   @IsNotEmpty()
@@ -13,12 +13,12 @@ export class ResetPasswordDto {
   email: string;
 
   @IsNotEmpty()
-  @MinLength(CONSTANTS.MIN_MAX_LENGTH.otpLength)
-  @MaxLength(CONSTANTS.MIN_MAX_LENGTH.otpLength)
+  @MinLength(MIN_MAX_LENGTH.otpLength)
+  @MaxLength(MIN_MAX_LENGTH.otpLength)
   otp : string
 
   @IsNotEmpty()
   @IsStrongPassword()
-  @MinLength(CONSTANTS.MIN_MAX_LENGTH.passMinLength)
+  @MinLength(MIN_MAX_LENGTH.passMinLength)
   newPassword: string;
 }

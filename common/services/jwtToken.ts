@@ -1,21 +1,20 @@
 import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { JwtService } from "@nestjs/jwt";
-import { _Types } from "common";
+import { TYPES } from "common/types";
 import {JwtPayload } from "jsonwebtoken";
-import { Types } from "mongoose";
 
 @Injectable()
 export class JwtToken {
   constructor(private jwtService: JwtService) {}
 
-  async createToken(payload: _Types.TYPES.TokenPayload) {
+  async createToken(payload: TYPES.TokenPayload) {
     const token = await this.jwtService.signAsync(payload, {
       secret: process.env.JWT_SECRET_ACCESS,
     });
     return token;
   }
 
-  async verifyToken(token: string): Promise<_Types.TYPES.TokenPayload & JwtPayload> {
+  async verifyToken(token: string): Promise<TYPES.TokenPayload & JwtPayload> {
     try {
       const payload = await this.jwtService.verifyAsync(token, {
         secret: process.env.JWT_SECRET_ACCESS,

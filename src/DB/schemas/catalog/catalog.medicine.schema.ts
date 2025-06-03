@@ -1,6 +1,7 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
-import { Decimal128, HydratedDocument, Types } from "mongoose";
+import { CatalogProps } from "common/props";
+import { TYPES } from "common/types";
+import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
   timestamps: true,
@@ -8,7 +9,7 @@ import { Decimal128, HydratedDocument, Types } from "mongoose";
   toObject: { virtuals: true },
 })
 // Shared Medicine schema across all Hospitals 
-export class MedicineCatalog extends COMMON_PROPS.CatalogProps {
+export class MedicineCatalog extends CatalogProps {
   @Prop({
     minlength: 2,
     maxlength: 100,
@@ -20,12 +21,12 @@ export class MedicineCatalog extends COMMON_PROPS.CatalogProps {
   @Prop()
   brandName: string[];
   @Prop({
-    enum: _Types.TYPES.MedicationForm,
+    enum: TYPES.MedicationForm,
     required: true,
   })
   form: string;
   @Prop({
-    enum: _Types.TYPES.MedicineUnits,
+    enum: TYPES.MedicineUnits,
     required: true,
   })
   unit: string;
@@ -41,6 +42,6 @@ export const MedicineCatalogSchema =
   SchemaFactory.createForClass(MedicineCatalog);
 export const MedicineCatalogModule = MongooseModule.forFeature(
   [{ name: MedicineCatalog.name, schema: MedicineCatalogSchema }],
-  _Types.TYPES.connectionNameString.CATALOG
+  TYPES.connectionNameString.CATALOG
 );
 export type MedicineCatalogDocument = HydratedDocument<MedicineCatalog>;

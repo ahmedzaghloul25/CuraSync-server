@@ -1,5 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { CatalogProps } from "common/props";
+import { TYPES } from "common/types";
 import { _slugify } from "common/utils";
 import { Decimal128, HydratedDocument, Types } from "mongoose";
 
@@ -8,7 +9,7 @@ import { Decimal128, HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class DisposableCatalog extends COMMON_PROPS.CatalogProps {
+export class DisposableCatalog extends CatalogProps {
   @Prop({
     minlength: 2,
     maxlength: 100,
@@ -30,6 +31,6 @@ DisposableCatalogSchema.pre("save", function (next) {
 });
 export const DisposableCatalogModule = MongooseModule.forFeature(
   [{ name: DisposableCatalog.name, schema: DisposableCatalogSchema }],
-  _Types.TYPES.connectionNameString.CATALOG
+  TYPES.connectionNameString.CATALOG
 );
 export type DisposableCatalogDocument = HydratedDocument<DisposableCatalog>;

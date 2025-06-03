@@ -14,7 +14,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_repo_service_1 = require("../db.repo.service");
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
 const patient_transfer_schema_1 = require("../../schemas/patient/patient.transfer.schema");
 let PatientTransferRepoService = class PatientTransferRepoService extends db_repo_service_1.DbRepoService {
@@ -25,7 +25,7 @@ let PatientTransferRepoService = class PatientTransferRepoService extends db_rep
     }
 };
 PatientTransferRepoService = __decorate([
-    __param(0, (0, mongoose_1.InjectModel)(patient_transfer_schema_1.PatientTransfer.name, common_1._Types.TYPES.connectionNameString.HOSPITAL)),
+    __param(0, (0, mongoose_1.InjectModel)(patient_transfer_schema_1.PatientTransfer.name, types_1.TYPES.connectionNameString.HOSPITAL)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], PatientTransferRepoService);
 exports.default = PatientTransferRepoService;

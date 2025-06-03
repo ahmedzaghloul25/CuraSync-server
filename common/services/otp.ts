@@ -7,8 +7,8 @@ import {
 } from "@nestjs/common";
 import { EmployeeDocument } from "src/DB/schemas/hospital/hospital.employee.schema";
 import { Hashing } from "./hashing";
-import { CONSTANTS } from "common";
 import { EmployeeRepoService } from "src/DB/repository/hospital/hospital.emp.repoService";
+import { MIN_MAX_LENGTH } from "common/constants";
 
 @Injectable()
 export class Otp {
@@ -20,7 +20,7 @@ export class Otp {
   create(): { otp: string; otpExpire: Date } {
     const createOtp = customAlphabet(
       "0123456789",
-      CONSTANTS.MIN_MAX_LENGTH.otpLength
+      MIN_MAX_LENGTH.otpLength
     );
     const otp = createOtp();
     const otpExpire = new Date(Date.now() + 15 * 60 * 1000); // 15 min

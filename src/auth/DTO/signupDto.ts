@@ -11,20 +11,22 @@ import {
   MaxLength,
   MinLength,
 } from "class-validator";
-import { _Types, DECORATORS, CONSTANTS } from "common";
+import { MIN_MAX_LENGTH } from "common/constants";
+import { IsPasswordMatch } from "common/decorators";
+import { AllRoles } from "common/types";
 
 export class SignupDto {
   @IsNotEmpty()
   @IsString()
   @IsAlpha()
-  @MinLength(CONSTANTS.MIN_MAX_LENGTH.nameMinInput)
-  @MaxLength(CONSTANTS.MIN_MAX_LENGTH.nameMaxInput)
+  @MinLength(MIN_MAX_LENGTH.nameMinInput)
+  @MaxLength(MIN_MAX_LENGTH.nameMaxInput)
   firstName: string;
   @IsNotEmpty()
   @IsString()
   @IsAlpha()
-  @MinLength(CONSTANTS.MIN_MAX_LENGTH.nameMinInput)
-  @MaxLength(CONSTANTS.MIN_MAX_LENGTH.nameMaxInput)
+  @MinLength(MIN_MAX_LENGTH.nameMinInput)
+  @MaxLength(MIN_MAX_LENGTH.nameMaxInput)
   lastName: string;
 
   @IsNotEmpty()
@@ -36,11 +38,11 @@ export class SignupDto {
   password: string;
 
   @IsNotEmpty()
-  @DECORATORS.IsPasswordMatch()
+  @IsPasswordMatch()
   confirmPassword: string;
 
   @IsNotEmpty()
-  @IsEnum(_Types.AllRoles)
+  @IsEnum(AllRoles)
   occupation: string;
 
   @IsNotEmpty()

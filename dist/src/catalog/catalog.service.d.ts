@@ -1,6 +1,6 @@
 import { DepartmentCatalogRepoService, DisposableCatalogRepoService, ImagingCatalogRepoService, LabCatalogRepoService, MedicineCatalogRepoService, ServiceCatalogRepoService, UnitCatalogRepoService, VendorCatalogRepoService } from "src/DB/repository/catalog/";
-import { AddDepartmentCatArrayDto, AddDisposableCatalogArrayDto, AddLabCatalogArrayDto, AddMedicineCatalogArrayDto, AddServiceCatArrayDto, AddUnitCatArrayDto, AddVendorCatalogArrayDto } from "./Dto";
-import { AddImagingCatalogArrayDto } from "./Dto/addImagingCatDto";
+import { AddDepartmentCatArrayDto, AddDisposableCatalogArrayDto, AddLabCatalogArrayDto, AddMedicineCatalogArrayDto, AddServiceCatArrayDto, AddUnitCatArrayDto, AddVendorCatalogArrayDto } from "./DTO";
+import { AddImagingCatalogArrayDto } from "./DTO/addImagingCatDto";
 export declare class CatalogService {
     private readonly departmentCatRepoService;
     private readonly disposableCatRepoService;

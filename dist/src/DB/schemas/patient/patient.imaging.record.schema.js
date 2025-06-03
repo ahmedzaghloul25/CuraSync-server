@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PatientImagingOrderModule = exports.PatientImagingOrderSchema = exports.PatientImagingOrder = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientImagingOrder = class PatientImagingOrder extends common_1.COMMON_PROPS.CoreProps {
+let PatientImagingOrder = class PatientImagingOrder extends props_1.CoreProps {
     imaging;
     priority;
     status;
@@ -33,15 +34,15 @@ __decorate([
 ], PatientImagingOrder.prototype, "imaging", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.RecordPriorityTypes,
-        default: common_1._Types.TYPES.RecordPriorityTypes.MEDIUM,
+        enum: types_1.TYPES.RecordPriorityTypes,
+        default: types_1.TYPES.RecordPriorityTypes.MEDIUM,
     }),
     __metadata("design:type", String)
 ], PatientImagingOrder.prototype, "priority", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: Object.values(common_1._Types.TYPES.RecordStatusTypes),
-        default: common_1._Types.TYPES.RecordStatusTypes.PENDING,
+        enum: Object.values(types_1.TYPES.RecordStatusTypes),
+        default: types_1.TYPES.RecordStatusTypes.PENDING,
     }),
     __metadata("design:type", String)
 ], PatientImagingOrder.prototype, "status", void 0);
@@ -79,5 +80,5 @@ exports.PatientImagingOrder = PatientImagingOrder = __decorate([
     (0, mongoose_1.Schema)()
 ], PatientImagingOrder);
 exports.PatientImagingOrderSchema = mongoose_1.SchemaFactory.createForClass(PatientImagingOrder);
-exports.PatientImagingOrderModule = mongoose_1.MongooseModule.forFeature([{ name: PatientImagingOrder.name, schema: exports.PatientImagingOrderSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.PatientImagingOrderModule = mongoose_1.MongooseModule.forFeature([{ name: PatientImagingOrder.name, schema: exports.PatientImagingOrderSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.imaging.record.schema.js.map

@@ -5,11 +5,12 @@ import {
   SchemaFactory,
   Virtual,
 } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { ConfirmableProps } from "common/props";
+import { TYPES } from "common/types";
 import { Decimal128, HydratedDocument, Types } from "mongoose";
 
 @Schema()
-export class Billing extends COMMON_PROPS.ConfirmableProps {
+export class Billing extends ConfirmableProps {
   @Prop({
     ref: "File",
     required: true,
@@ -48,8 +49,8 @@ export class Billing extends COMMON_PROPS.ConfirmableProps {
   amountPaid: Decimal128;
 
   @Prop({
-    enum: _Types.TYPES.BillingStatusType,
-    default: _Types.TYPES.BillingStatusType.PENDING,
+    enum: TYPES.BillingStatusType,
+    default: TYPES.BillingStatusType.PENDING,
   })
   status: string;
 }
@@ -70,6 +71,6 @@ BillingSchema.pre("save", function (next) {
 });
 export const BillingModule = MongooseModule.forFeature(
   [{ name: Billing.name, schema: BillingSchema }],
-  _Types.TYPES.connectionNameString.HOSPITAL
+  TYPES.connectionNameString.HOSPITAL
 );
 export type BillingDocument = HydratedDocument<Billing>;

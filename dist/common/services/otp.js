@@ -16,8 +16,8 @@ exports.Otp = void 0;
 const nanoid_1 = require("nanoid");
 const common_1 = require("@nestjs/common");
 const hashing_1 = require("./hashing");
-const common_2 = require("..");
 const hospital_emp_repoService_1 = require("../../src/DB/repository/hospital/hospital.emp.repoService");
+const constants_1 = require("../constants");
 let Otp = class Otp {
     employeeRepoService;
     hashing;
@@ -26,7 +26,7 @@ let Otp = class Otp {
         this.hashing = hashing;
     }
     create() {
-        const createOtp = (0, nanoid_1.customAlphabet)("0123456789", common_2.CONSTANTS.MIN_MAX_LENGTH.otpLength);
+        const createOtp = (0, nanoid_1.customAlphabet)("0123456789", constants_1.MIN_MAX_LENGTH.otpLength);
         const otp = createOtp();
         const otpExpire = new Date(Date.now() + 15 * 60 * 1000);
         return { otp, otpExpire };

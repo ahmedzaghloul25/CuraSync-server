@@ -1,6 +1,6 @@
-import { COMMON_PROPS } from "common";
+import { ConfirmableProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class InventoryTransaction extends COMMON_PROPS.ConfirmableProps {
+export declare class InventoryTransaction extends ConfirmableProps {
     medicine: Types.ObjectId;
     labItem: Types.ObjectId;
     disposableItem: Types.ObjectId;

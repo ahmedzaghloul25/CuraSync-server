@@ -17,7 +17,7 @@ const common_1 = require("@nestjs/common");
 const db_repo_service_1 = require("../db.repo.service");
 const hospital_employee_schema_1 = require("../../schemas/hospital/hospital.employee.schema");
 const mongoose_1 = require("@nestjs/mongoose");
-const common_2 = require("../../../../common");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
 let EmployeeRepoService = class EmployeeRepoService extends db_repo_service_1.DbRepoService {
     employeeModel;
@@ -29,7 +29,7 @@ let EmployeeRepoService = class EmployeeRepoService extends db_repo_service_1.Db
 exports.EmployeeRepoService = EmployeeRepoService;
 exports.EmployeeRepoService = EmployeeRepoService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(hospital_employee_schema_1.Employee.name, common_2._Types.TYPES.connectionNameString.HOSPITAL)),
+    __param(0, (0, mongoose_1.InjectModel)(hospital_employee_schema_1.Employee.name, types_1.TYPES.connectionNameString.HOSPITAL)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], EmployeeRepoService);
 //# sourceMappingURL=hospital.emp.repoService.js.map

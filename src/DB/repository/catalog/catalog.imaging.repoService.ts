@@ -6,12 +6,12 @@ import {
   ImagingCatalog,
   ImagingCatalogDocument,
 } from "src/DB/schemas/catalog/catalog.imaging.schema";
-import { _Types } from "common";
+import { TYPES } from "common/types";
 
 @Injectable()
 export default class ImagingCatalogRepoService extends DbRepoService<ImagingCatalogDocument> {
   constructor(
-    @InjectModel(ImagingCatalog.name, _Types.TYPES.connectionNameString.CATALOG)
+    @InjectModel(ImagingCatalog.name, TYPES.connectionNameString.CATALOG)
     private readonly imagingCatalogModel: Model<ImagingCatalogDocument>
   ) {
     super(imagingCatalogModel);

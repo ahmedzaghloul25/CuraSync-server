@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RequestNewOtpDto = void 0;
 const class_validator_1 = require("class-validator");
-const common_1 = require("../../../common");
+const types_1 = require("../../../common/types");
 class RequestNewOtpDto {
     email;
     otpFor;
@@ -24,7 +24,7 @@ __decorate([
 ], RequestNewOtpDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEnum)(common_1._Types.TYPES.OtpType),
+    (0, class_validator_1.IsEnum)(types_1.TYPES.OtpType),
     __metadata("design:type", String)
 ], RequestNewOtpDto.prototype, "otpFor", void 0);
 //# sourceMappingURL=requestNewOtp.js.map

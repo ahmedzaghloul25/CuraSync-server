@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DepartmentCatalogModule = exports.DepartmentCatalogSchema = exports.DepartmentCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const constants_1 = require("../../../../common/constants");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let DepartmentCatalog = class DepartmentCatalog extends common_1.COMMON_PROPS.CatalogProps {
+let DepartmentCatalog = class DepartmentCatalog extends props_1.CatalogProps {
     name;
     slug;
     description;
@@ -34,8 +36,8 @@ __decorate([
 ], DepartmentCatalog.prototype, "slug", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        minlength: common_1.CONSTANTS.MIN_MAX_LENGTH.descMinInput,
-        maxlength: common_1.CONSTANTS.MIN_MAX_LENGTH.descMaxInput,
+        minlength: constants_1.MIN_MAX_LENGTH.descMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.descMaxInput,
     }),
     __metadata("design:type", String)
 ], DepartmentCatalog.prototype, "description", void 0);
@@ -47,5 +49,5 @@ exports.DepartmentCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.DepartmentCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: DepartmentCatalog.name, schema: exports.DepartmentCatalogSchema }], common_1._Types.TYPES.connectionNameString.CATALOG);
+exports.DepartmentCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: DepartmentCatalog.name, schema: exports.DepartmentCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.department.schema.js.map

@@ -6,12 +6,12 @@ import {
   LabCatalog,
   LabCatalogDocument,
 } from "src/DB/schemas/catalog/catalog.lab.schema";
-import { _Types } from "common";
+import { TYPES } from "common/types";
 
 @Injectable()
 export default class LabCatalogRepoService extends DbRepoService<LabCatalogDocument> {
   constructor(
-    @InjectModel(LabCatalog.name, _Types.TYPES.connectionNameString.CATALOG)
+    @InjectModel(LabCatalog.name, TYPES.connectionNameString.CATALOG)
     private readonly labCatalogModel: Model<LabCatalogDocument>
   ) {
     super(labCatalogModel);

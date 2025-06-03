@@ -10,10 +10,6 @@ import {
   PatientDocument,
 } from "../../schemas/hospital/hospital.patient.schema";
 import { Model } from "mongoose";
-import {
-  PatientFile,
-  PatientFileDocument,
-} from "../../schemas/patient/patient.file.schema";
 import PatientFileRepoService from "./patient.file.repoService";
 
 @Injectable()
@@ -35,7 +31,7 @@ export default class PatientRepoService
         if (!doc.file) {
           const newFile = await this.fileRepoService.create({
             patient: doc._id,
-            createdBy: doc.createdBy,
+            // createdBy: doc.createdBy,
           });
           await this.patientModel.updateOne(
             { _id: doc._id },

@@ -15,8 +15,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CatalogController = void 0;
 const common_1 = require("@nestjs/common");
 const catalog_service_1 = require("./catalog.service");
-const Dto_1 = require("./Dto");
-const addImagingCatDto_1 = require("./Dto/addImagingCatDto");
+const DTO_1 = require("./DTO");
+const addImagingCatDto_1 = require("./DTO/addImagingCatDto");
 let CatalogController = class CatalogController {
     catalogService;
     constructor(catalogService) {
@@ -53,7 +53,7 @@ __decorate([
     (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Dto_1.AddDepartmentCatArrayDto]),
+    __metadata("design:paramtypes", [DTO_1.AddDepartmentCatArrayDto]),
     __metadata("design:returntype", void 0)
 ], CatalogController.prototype, "addDepartmentCatalog", null);
 __decorate([
@@ -61,7 +61,7 @@ __decorate([
     (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Dto_1.AddUnitCatArrayDto]),
+    __metadata("design:paramtypes", [DTO_1.AddUnitCatArrayDto]),
     __metadata("design:returntype", void 0)
 ], CatalogController.prototype, "addUnitsCatalog", null);
 __decorate([
@@ -69,7 +69,7 @@ __decorate([
     (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Dto_1.AddServiceCatArrayDto]),
+    __metadata("design:paramtypes", [DTO_1.AddServiceCatArrayDto]),
     __metadata("design:returntype", void 0)
 ], CatalogController.prototype, "addServicesCatalog", null);
 __decorate([
@@ -77,7 +77,7 @@ __decorate([
     (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Dto_1.AddLabCatalogArrayDto]),
+    __metadata("design:paramtypes", [DTO_1.AddLabCatalogArrayDto]),
     __metadata("design:returntype", void 0)
 ], CatalogController.prototype, "addLabCatalog", null);
 __decorate([
@@ -93,7 +93,7 @@ __decorate([
     (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Dto_1.AddMedicineCatalogArrayDto]),
+    __metadata("design:paramtypes", [DTO_1.AddMedicineCatalogArrayDto]),
     __metadata("design:returntype", void 0)
 ], CatalogController.prototype, "addMedicineCatalog", null);
 __decorate([
@@ -101,7 +101,7 @@ __decorate([
     (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Dto_1.AddDisposableCatalogArrayDto]),
+    __metadata("design:paramtypes", [DTO_1.AddDisposableCatalogArrayDto]),
     __metadata("design:returntype", void 0)
 ], CatalogController.prototype, "addDisposableCatalog", null);
 __decorate([
@@ -109,7 +109,7 @@ __decorate([
     (0, common_1.HttpCode)(201),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Dto_1.AddVendorCatalogArrayDto]),
+    __metadata("design:paramtypes", [DTO_1.AddVendorCatalogArrayDto]),
     __metadata("design:returntype", void 0)
 ], CatalogController.prototype, "addVendorCatalog", null);
 exports.CatalogController = CatalogController = __decorate([

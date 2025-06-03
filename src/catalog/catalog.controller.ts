@@ -9,8 +9,8 @@ import {
   AddServiceCatArrayDto,
   AddUnitCatArrayDto,
   AddVendorCatalogArrayDto,
-} from "./Dto";
-import { AddImagingCatalogArrayDto } from "./Dto/addImagingCatDto";
+} from "./DTO";
+import { AddImagingCatalogArrayDto } from "./DTO/addImagingCatDto";
 
 @Controller({ version: "1", path: "catalog" })
 export class CatalogController {

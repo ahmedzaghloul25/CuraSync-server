@@ -78,7 +78,7 @@ __decorate([
 ], AuthController.prototype, "login", null);
 __decorate([
     (0, common_1.Put)("password-forgot"),
-    (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(1), limit: 10 } }),
+    (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(1), limit: 1 } }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [forgotPasswordDto_1.ForgotPasswordDto]),

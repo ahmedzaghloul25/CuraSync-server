@@ -15,9 +15,10 @@ const event_emitter_1 = require("@nestjs/event-emitter");
 const nodemailer_1 = require("nodemailer");
 let SendEmail = class SendEmail {
     eventEmitter;
+    logger;
     transporter;
     onModuleInit() {
-        this.eventEmitter.on("sendOtp", async (data) => {
+        this.eventEmitter.once("sendOtp", async (data) => {
             try {
                 const info = await this.transporter.sendMail({
                     from: '"CuraSync" <zaghloul85@gmail.com>',
@@ -25,15 +26,23 @@ let SendEmail = class SendEmail {
                     subject: data.subject,
                     html: data.html,
                 });
-                console.log("Email sent to ", info.messageId);
+                this.logger.log(`Email for ${data.subject} sent successfully to Employee: ${data.to}`, "SendEmail");
             }
             catch (error) {
-                console.log("Error sending email ", error.message);
+                this.logger.error(`[SendEmail] Failed to send email for "${data.subject}" to employee: ${data.to} - ${error.message}`, error.stack || error.toString());
+                throw new common_1.InternalServerErrorException("Error sending OTP email ", error.message);
             }
         });
     }
-    constructor(eventEmitter) {
+    onModuleDestroy() {
+        this.eventEmitter.removeAllListeners('sendOtp');
+        if (this.transporter.close) {
+            this.transporter.close();
+        }
+    }
+    constructor(eventEmitter, logger) {
         this.eventEmitter = eventEmitter;
+        this.logger = logger;
         this.transporter = (0, nodemailer_1.createTransport)({
             host: "smtp.gmail.com",
             port: 465,
@@ -48,6 +57,7 @@ let SendEmail = class SendEmail {
 exports.SendEmail = SendEmail;
 exports.SendEmail = SendEmail = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [event_emitter_1.EventEmitter2])
+    __metadata("design:paramtypes", [event_emitter_1.EventEmitter2,
+        common_1.Logger])
 ], SendEmail);
 //# sourceMappingURL=sendEmail.js.map

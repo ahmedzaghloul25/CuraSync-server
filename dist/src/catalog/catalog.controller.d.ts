@@ -1,6 +1,6 @@
 import { CatalogService } from "./catalog.service";
-import { AddDepartmentCatArrayDto, AddDisposableCatalogArrayDto, AddLabCatalogArrayDto, AddMedicineCatalogArrayDto, AddServiceCatArrayDto, AddUnitCatArrayDto, AddVendorCatalogArrayDto } from "./Dto";
-import { AddImagingCatalogArrayDto } from "./Dto/addImagingCatDto";
+import { AddDepartmentCatArrayDto, AddDisposableCatalogArrayDto, AddLabCatalogArrayDto, AddMedicineCatalogArrayDto, AddServiceCatArrayDto, AddUnitCatArrayDto, AddVendorCatalogArrayDto } from "./DTO";
+import { AddImagingCatalogArrayDto } from "./DTO/addImagingCatDto";
 export declare class CatalogController {
     private readonly catalogService;
     constructor(catalogService: CatalogService);

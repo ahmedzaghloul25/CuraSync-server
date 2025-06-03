@@ -1,10 +1,11 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { CatalogProps } from "common/props";
+import { TYPES } from "common/types";
 import { _slugify } from "common/utils";
 import { HydratedDocument } from "mongoose";
 
 @Schema()
-export class UnitCatalog extends COMMON_PROPS.CatalogProps {
+export class UnitCatalog extends CatalogProps {
   @Prop({
     required: true,
     trim: true,
@@ -33,5 +34,5 @@ UnitCatalogSchema.pre("save", function (next) {
 });
 export const UnitCatalogModule = MongooseModule.forFeature(
   [{ name: UnitCatalog.name, schema: UnitCatalogSchema }],
-_Types.TYPES.connectionNameString.CATALOG);
+TYPES.connectionNameString.CATALOG);
 export type UnitCatalogDocument = HydratedDocument<UnitCatalog>;

@@ -17,7 +17,7 @@ const db_repo_service_1 = require("../db.repo.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const catalog_vendor_schema_1 = require("../../schemas/catalog/catalog.vendor.schema");
-const common_2 = require("../../../../common");
+const types_1 = require("../../../../common/types");
 let VendorCatalogRepoService = class VendorCatalogRepoService extends db_repo_service_1.DbRepoService {
     vendorCatalogModel;
     constructor(vendorCatalogModel) {
@@ -27,7 +27,7 @@ let VendorCatalogRepoService = class VendorCatalogRepoService extends db_repo_se
 };
 VendorCatalogRepoService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(catalog_vendor_schema_1.VendorCatalog.name, common_2._Types.TYPES.connectionNameString.CATALOG)),
+    __param(0, (0, mongoose_1.InjectModel)(catalog_vendor_schema_1.VendorCatalog.name, types_1.TYPES.connectionNameString.CATALOG)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], VendorCatalogRepoService);
 exports.default = VendorCatalogRepoService;

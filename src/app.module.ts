@@ -5,9 +5,10 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { AuthModule } from "./auth/auth.module";
 import { CatalogModule } from "./catalog/catalog.module";
-import { _Types } from "common";
+import { TYPES } from "common/types";
 import { minutes, ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import { APP_GUARD } from "@nestjs/core";
+import { HospitalModule } from './hospital/hospital.module';
 
 @Module({
   imports: [
@@ -26,7 +27,7 @@ import { APP_GUARD } from "@nestjs/core";
         uri: configService.get<string>("DB_HOSPITAL"),
       }),
       inject: [ConfigService],
-      connectionName: _Types.TYPES.connectionNameString.HOSPITAL,
+      connectionName: TYPES.connectionNameString.HOSPITAL,
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -34,7 +35,7 @@ import { APP_GUARD } from "@nestjs/core";
         uri: configService.get<string>("DB_CATALOG"),
       }),
       inject: [ConfigService],
-      connectionName: _Types.TYPES.connectionNameString.CATALOG,
+      connectionName: TYPES.connectionNameString.CATALOG,
     }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
@@ -42,7 +43,7 @@ import { APP_GUARD } from "@nestjs/core";
         uri: configService.get<string>("DB_SUPER"),
       }),
       inject: [ConfigService],
-      connectionName: _Types.TYPES.connectionNameString.SUPER,
+      connectionName: TYPES.connectionNameString.SUPER,
     }),
     ConfigModule.forRoot({
       isGlobal: true,
@@ -50,6 +51,7 @@ import { APP_GUARD } from "@nestjs/core";
     }),
     AuthModule,
     CatalogModule,
+    HospitalModule,
   ],
   controllers: [AppController],
   providers: [AppService, {provide : APP_GUARD, useClass : ThrottlerGuard}],

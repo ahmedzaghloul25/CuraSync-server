@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginDto = void 0;
 const class_validator_1 = require("class-validator");
-const common_1 = require("../../../common");
+const constants_1 = require("../../../common/constants");
 class LoginDto {
     email;
     password;
@@ -25,7 +25,7 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(common_1.CONSTANTS.MIN_MAX_LENGTH.passMinLength),
+    (0, class_validator_1.MinLength)(constants_1.MIN_MAX_LENGTH.passMinLength),
     __metadata("design:type", String)
 ], LoginDto.prototype, "password", void 0);
 //# sourceMappingURL=loginDto.js.map

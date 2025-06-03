@@ -1,5 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { ConfirmableProps } from "common/props";
+import { TYPES } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -7,7 +8,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class HospitalDisposable extends COMMON_PROPS.ConfirmableProps {
+export class HospitalDisposable extends ConfirmableProps {
   @Prop({
     ref: "DisposableCatalog",
     required: true,
@@ -35,6 +36,6 @@ export const HospitalDisposableSchema =
 HospitalDisposableSchema.index({ catalogId: 1, hospital: 1 }, { unique: true });
 export const HospitalDisposableModule = MongooseModule.forFeature(
   [{ name: HospitalDisposable.name, schema: HospitalDisposableSchema }],
-  _Types.TYPES.connectionNameString.HOSPITAL
+  TYPES.connectionNameString.HOSPITAL
 );
 export type HospitalDisposableDocument = HydratedDocument<HospitalDisposable>;

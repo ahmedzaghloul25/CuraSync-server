@@ -31,6 +31,7 @@ exports.AuthModule = AuthModule = __decorate([
             services_1.SendEmail,
             jwtToken_1.JwtToken,
             jwt_1.JwtService,
+            common_1.Logger
         ],
     })
 ], AuthModule);

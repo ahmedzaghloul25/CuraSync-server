@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { DbRepoService } from "../db.repo.service";
 import { InjectModel } from "@nestjs/mongoose";
-import { _Types } from "common";
+import { TYPES } from "common/types";
 import { Model } from "mongoose";
 import {
   HospitalMedicine,
@@ -13,7 +13,7 @@ export default class HospitalMedicineRepoService extends DbRepoService<HospitalM
   constructor(
     @InjectModel(
       HospitalMedicine.name,
-      _Types.TYPES.connectionNameString.HOSPITAL
+      TYPES.connectionNameString.HOSPITAL
     )
     private readonly medicineModel: Model<HospitalMedicineDocument>
   ) {

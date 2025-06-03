@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HospitalLabModule = exports.HospitalLabSchema = exports.HospitalLab = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let HospitalLab = class HospitalLab extends common_1.COMMON_PROPS.ConfirmableProps {
+let HospitalLab = class HospitalLab extends props_1.ConfirmableProps {
     catalogId;
     price;
     isActive;
@@ -54,5 +55,5 @@ exports.HospitalLab = HospitalLab = __decorate([
 ], HospitalLab);
 exports.HospitalLabSchema = mongoose_1.SchemaFactory.createForClass(HospitalLab);
 exports.HospitalLabSchema.index({ catalogId: 1, hospital: 1 }, { unique: true });
-exports.HospitalLabModule = mongoose_1.MongooseModule.forFeature([{ name: HospitalLab.name, schema: exports.HospitalLabSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.HospitalLabModule = mongoose_1.MongooseModule.forFeature([{ name: HospitalLab.name, schema: exports.HospitalLabSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.lab.schema.js.map

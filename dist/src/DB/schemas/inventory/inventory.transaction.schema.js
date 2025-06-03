@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InventoryTransactionModule = exports.InventoryTransactionSchema = exports.InventoryTransaction = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let InventoryTransaction = class InventoryTransaction extends common_1.COMMON_PROPS.ConfirmableProps {
+let InventoryTransaction = class InventoryTransaction extends props_1.ConfirmableProps {
     medicine;
     labItem;
     disposableItem;
@@ -70,7 +71,7 @@ __decorate([
 ], InventoryTransaction.prototype, "hospital", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.InventoryItemTypes,
+        enum: types_1.TYPES.InventoryItemTypes,
         required: true,
     }),
     __metadata("design:type", String)
@@ -78,7 +79,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         required: true,
-        enum: common_1._Types.TYPES.TransactionTypes,
+        enum: types_1.TYPES.TransactionTypes,
     }),
     __metadata("design:type", String)
 ], InventoryTransaction.prototype, "transactionType", void 0);
@@ -159,5 +160,5 @@ exports.InventoryTransaction = InventoryTransaction = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], InventoryTransaction);
 exports.InventoryTransactionSchema = mongoose_1.SchemaFactory.createForClass(InventoryTransaction);
-exports.InventoryTransactionModule = mongoose_1.MongooseModule.forFeature([{ name: InventoryTransaction.name, schema: exports.InventoryTransactionSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.InventoryTransactionModule = mongoose_1.MongooseModule.forFeature([{ name: InventoryTransaction.name, schema: exports.InventoryTransactionSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=inventory.transaction.schema.js.map

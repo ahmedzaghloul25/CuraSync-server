@@ -1,6 +1,6 @@
-import { COMMON_PROPS } from "common";
+import { CatalogProps } from "common/props";
 import { HydratedDocument } from "mongoose";
-export declare class DepartmentCatalog extends COMMON_PROPS.CatalogProps {
+export declare class DepartmentCatalog extends CatalogProps {
     name: string;
     slug: string;
     description: string;

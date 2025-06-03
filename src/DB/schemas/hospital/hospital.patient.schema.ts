@@ -5,7 +5,8 @@ import {
   SchemaFactory,
   Virtual,
 } from "@nestjs/mongoose";
-import { _Types, COMMON_PROPS } from "common";
+import { CoreProps } from "common/props";
+import { TYPES } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -13,7 +14,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class Patient extends COMMON_PROPS.CoreProps {
+export class Patient extends CoreProps {
   @Prop({
     trim: true,
     minlength: 2,
@@ -77,5 +78,5 @@ export class Patient extends COMMON_PROPS.CoreProps {
 export const PatientSchema = SchemaFactory.createForClass(Patient);
 export const PatientModule = MongooseModule.forFeature(
   [{ name: Patient.name, schema: PatientSchema }],
-_Types.TYPES.connectionNameString.HOSPITAL);
+TYPES.connectionNameString.HOSPITAL);
 export type PatientDocument = HydratedDocument<Patient>;

@@ -1,3 +1,3 @@
-import { _Types } from 'common';
+import { AllRoles } from 'common/types';
 export declare const ROLES_KEY = "roles";
-export declare const Roles: (...roles: _Types.AllRoles[]) => import("@nestjs/common").CustomDecorator<string>;
+export declare const Roles: (...roles: AllRoles[]) => import("@nestjs/common").CustomDecorator<string>;

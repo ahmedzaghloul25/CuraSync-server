@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
 const db_repo_service_1 = require("../db.repo.service");
 const mongoose_1 = require("@nestjs/mongoose");
-const common_2 = require("../../../../common");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
 const hospital_unit_schema_1 = require("../../schemas/hospital/hospital.unit.schema");
 let HospitalUnitRepoService = class HospitalUnitRepoService extends db_repo_service_1.DbRepoService {
@@ -27,7 +27,7 @@ let HospitalUnitRepoService = class HospitalUnitRepoService extends db_repo_serv
 };
 HospitalUnitRepoService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(hospital_unit_schema_1.HospitalUnit.name, common_2._Types.TYPES.connectionNameString.HOSPITAL)),
+    __param(0, (0, mongoose_1.InjectModel)(hospital_unit_schema_1.HospitalUnit.name, types_1.TYPES.connectionNameString.HOSPITAL)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], HospitalUnitRepoService);
 exports.default = HospitalUnitRepoService;

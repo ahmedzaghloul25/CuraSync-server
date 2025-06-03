@@ -11,9 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmployeeModule = exports.EmployeeSchema = exports.Employee = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const constants_1 = require("../../../../common/constants");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let Employee = class Employee extends common_1.COMMON_PROPS.CoreProps {
+let Employee = class Employee extends props_1.CoreProps {
     firstName;
     lastName;
     email;
@@ -34,8 +36,8 @@ __decorate([
     (0, mongoose_1.Prop)({
         trim: true,
         required: true,
-        minlength: common_1.CONSTANTS.MIN_MAX_LENGTH.nameMinInput,
-        maxlength: common_1.CONSTANTS.MIN_MAX_LENGTH.nameMaxInput,
+        minlength: constants_1.MIN_MAX_LENGTH.nameMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.nameMaxInput,
     }),
     __metadata("design:type", String)
 ], Employee.prototype, "firstName", void 0);
@@ -43,8 +45,8 @@ __decorate([
     (0, mongoose_1.Prop)({
         trim: true,
         required: true,
-        minlength: common_1.CONSTANTS.MIN_MAX_LENGTH.nameMinInput,
-        maxlength: common_1.CONSTANTS.MIN_MAX_LENGTH.nameMaxInput,
+        minlength: constants_1.MIN_MAX_LENGTH.nameMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.nameMaxInput,
     }),
     __metadata("design:type", String)
 ], Employee.prototype, "lastName", void 0);
@@ -63,7 +65,7 @@ __decorate([
 ], Employee.prototype, "password", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.AllRoles,
+        enum: types_1.AllRoles,
         required: true,
     }),
     __metadata("design:type", String)
@@ -93,7 +95,7 @@ __decorate([
 ], Employee.prototype, "otp", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.OtpType,
+        enum: types_1.TYPES.OtpType,
     }),
     __metadata("design:type", String)
 ], Employee.prototype, "otpFor", void 0);
@@ -127,5 +129,5 @@ exports.Employee = Employee = __decorate([
     })
 ], Employee);
 exports.EmployeeSchema = mongoose_1.SchemaFactory.createForClass(Employee);
-exports.EmployeeModule = mongoose_1.MongooseModule.forFeature([{ name: Employee.name, schema: exports.EmployeeSchema }], common_1._Types.TYPES.connectionNameString.HOSPITAL);
+exports.EmployeeModule = mongoose_1.MongooseModule.forFeature([{ name: Employee.name, schema: exports.EmployeeSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.employee.schema.js.map

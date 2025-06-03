@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LabCatalogModule = exports.LabCatalogSchema = exports.LabCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const common_1 = require("../../../../common");
+const props_1 = require("../../../../common/props");
+const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let LabCatalog = class LabCatalog extends common_1.COMMON_PROPS.CatalogProps {
+let LabCatalog = class LabCatalog extends props_1.CatalogProps {
     name;
     slug;
     code;
@@ -48,7 +49,7 @@ __decorate([
 ], LabCatalog.prototype, "loincCode", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.LAbTestCategory,
+        enum: types_1.TYPES.LAbTestCategory,
         required: true,
     }),
     __metadata("design:type", String)
@@ -59,7 +60,7 @@ __decorate([
 ], LabCatalog.prototype, "description", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: common_1._Types.TYPES.SpecimenType,
+        enum: types_1.TYPES.SpecimenType,
         required: true,
     }),
     __metadata("design:type", String)
@@ -96,5 +97,5 @@ exports.LabCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.LabCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: LabCatalog.name, schema: exports.LabCatalogSchema }], common_1._Types.TYPES.connectionNameString.CATALOG);
+exports.LabCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: LabCatalog.name, schema: exports.LabCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.lab.schema.js.map

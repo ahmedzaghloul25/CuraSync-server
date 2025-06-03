@@ -1,4 +1,5 @@
-import { cloudinaryConfig } from './cloudinaryConfig';
-import { multerCloudConfig } from './multerCloud';
-import { _slugify } from './slugify';
-export { cloudinaryConfig, multerCloudConfig, _slugify };
+import { cloudinaryConfig } from "./cloudinaryConfig";
+import { multerCloudConfig } from "./multerCloudConfig";
+import { _slugify } from "./slugify";
+import { fakeDelay } from "./fakeDelay";
+export { cloudinaryConfig, multerCloudConfig, _slugify, fakeDelay };
