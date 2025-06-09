@@ -6,10 +6,9 @@ import {
   UnauthorizedException,
 } from "@nestjs/common";
 import HospitalRepoService from "src/DB/repository/hospital/hospital.repoService";
-import { createNewHospitalDto, UpdateDocumentsDto } from "./DTO";
+import { CreateNewHospitalDto, UpdateDocumentsDto } from "./DTO";
 import { EmployeeDocument } from "src/DB/schemas/hospital/hospital.employee.schema";
 import { FileUploader } from "common/services";
-import { FILE_CATEGORIES } from "common/constants";
 import { HospitalDocument } from "src/DB/schemas/hospital/hospital.schema";
 import { _slugify } from "common/utils";
 import { Types } from "mongoose";
@@ -22,8 +21,17 @@ export class HospitalService {
     private logger: Logger
   ) {}
   //========================= createNewHospital ============================
+  /**
+   * Create a new Hospital
+   * @param body - containing hospital data to be added
+   * @param employee - employee adding the hospital data
+   * @param files - official documents and optional logo of the hospital
+   * @returns - object containing a success message and added hospital
+   * @throws - unauthorized error if no files attached
+   * @throws - conflict error if hospital name already found in the database
+   */
   async createNewHospital(
-    body: createNewHospitalDto,
+    body: CreateNewHospitalDto,
     employee: EmployeeDocument,
     files: {
       medicalLicense?: Express.Multer.File;
@@ -100,9 +108,20 @@ export class HospitalService {
     hospitalData = null;
     return { message: "success", hospital };
   }
-  //=========================== deleteHospital ===========================
-  //========================== updateDocuments ===========================
-  async updateDocuments(
+  //========================== updateHospital ===========================
+  /**
+   * update document expiration dates for a hospital and upload new documents
+   * @param hospital - hospital to be updated
+   * @param employee - employee updating the hospital
+   * @param body - object containing updated dates of documents
+   * @param newCommRegDoc - new commercial reg file
+   * @param newMedLicenseDoc - new medical license file
+   * @param newLogo - new logo
+   * @returns - object containing success message and updated hospital
+   * @throws - bad request error if new date for commercial reg provided but no document attached
+   * @throws - bad request if new date for medical license provided but no document attached
+   */
+  async updateHospital(
     hospital: HospitalDocument,
     employee: EmployeeDocument,
     body: UpdateDocumentsDto,
@@ -175,4 +194,5 @@ export class HospitalService {
     );
     return { message: "success", hospital: result };
   }
+    //=========================== deleteHospital ===========================
 }

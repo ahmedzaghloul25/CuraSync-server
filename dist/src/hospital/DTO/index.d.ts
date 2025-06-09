@@ -1,3 +1,2 @@
-import { createNewHospitalDto } from "./createNewDto";
-import { UpdateDocumentsDto } from "./updateDocumentsDto";
-export { createNewHospitalDto, UpdateDocumentsDto };
+export { CreateNewHospitalDto } from "./createNewDto";
+export { UpdateDocumentsDto } from "./updateDocumentsDto";

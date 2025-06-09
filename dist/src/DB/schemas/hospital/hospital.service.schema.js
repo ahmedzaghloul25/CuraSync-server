@@ -15,7 +15,7 @@ const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
 let HospitalService = class HospitalService extends props_1.ConfirmableProps {
-    catalogId;
+    serviceCatalogId;
     price;
     hospital;
 };
@@ -25,7 +25,7 @@ __decorate([
         required: true,
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
-], HospitalService.prototype, "catalogId", void 0);
+], HospitalService.prototype, "serviceCatalogId", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         required: true,

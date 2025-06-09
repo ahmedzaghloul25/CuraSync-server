@@ -3249,3 +3249,385 @@ info: HospitalController {/hospital} (version: 1): {"context":"RoutesResolver","
 info: Mapped {/hospital/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-03T11:22:34.233Z"}
 info: Mapped {/hospital/update/:hospitalId, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-03T11:22:34.234Z"}
 info: Nest application successfully started {"context":"NestApplication","timestamp":"2025-06-03T11:22:34.242Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:55:28.433Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.531Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.533Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.534Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.537Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.539Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.563Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.566Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.567Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.572Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:28.573Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:29.802Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:55:46.252Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.405Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.407Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.409Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.412Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.416Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.456Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.459Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.462Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.468Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:46.469Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:47.708Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:55:52.169Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.256Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.257Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.259Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.261Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.263Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.290Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.292Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.294Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.299Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:52.300Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:53.212Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:53.215Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:53.246Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:53.247Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:53.247Z"}
+info: AuthModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:53.253Z"}
+info: HospitalModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:53.255Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:55:53.279Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:56:35.911Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.020Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.023Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.024Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.026Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.029Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.068Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.072Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.075Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.081Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:36.082Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:37.219Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:37.222Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:37.251Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:37.252Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:37.253Z"}
+info: AuthModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:37.259Z"}
+info: HospitalModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:37.260Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:37.333Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:56:45.547Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.651Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.653Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.654Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.656Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.659Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.690Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.692Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.694Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.699Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:45.700Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:56:46.620Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:57:03.658Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.762Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.764Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.765Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.768Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.771Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.809Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.813Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.815Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.821Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:03.822Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:04.859Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:57:21.451Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.578Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.581Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.582Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.585Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.589Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.619Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.623Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.626Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.631Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:21.632Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.809Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.846Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.847Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.847Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.848Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.848Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.848Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.849Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.849Z"}
+info: DbResolverModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.852Z"}
+info: CatalogModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.853Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:22.943Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:57:37.584Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.695Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.697Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.698Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.700Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.703Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.741Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.744Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.747Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.753Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:37.754Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:57:39.080Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:58:27.753Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.875Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.877Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.878Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.881Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.885Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.922Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.924Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.927Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.932Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:27.934Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:58:44.480Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.617Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.619Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.621Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.623Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.626Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.658Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.661Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.663Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.668Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:44.669Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:44.778Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:44.787Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:44.789Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:58:48.714Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.802Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.804Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.805Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.807Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.810Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.836Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.840Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.842Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.846Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:48.847Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:48.931Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:48.938Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:48.939Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:51.958Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:51.960Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:51.964Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T11:58:59.055Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.165Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.168Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.170Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.172Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.174Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.205Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.208Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.210Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.216Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T11:58:59.217Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:59.299Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:59.305Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:58:59.307Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:02.323Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:02.325Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:02.328Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:05.341Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:05.343Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:05.347Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:08.348Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:08.357Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T11:59:08.358Z"}
+error: Unable to connect to the database. Retrying (5)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:38.100Z"}
+error: Unable to connect to the database. Retrying (5)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:38.102Z"}
+error: Unable to connect to the database. Retrying (5)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:38.104Z"}
+error: Unable to connect to the database. Retrying (6)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:41.111Z"}
+error: Unable to connect to the database. Retrying (6)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:41.116Z"}
+error: Unable to connect to the database. Retrying (6)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:41.118Z"}
+error: Unable to connect to the database. Retrying (7)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:44.122Z"}
+error: Unable to connect to the database. Retrying (7)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:44.129Z"}
+error: Unable to connect to the database. Retrying (7)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:44.131Z"}
+error: Unable to connect to the database. Retrying (8)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:47.137Z"}
+error: Unable to connect to the database. Retrying (8)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:47.144Z"}
+error: Unable to connect to the database. Retrying (8)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:47.146Z"}
+error: Unable to connect to the database. Retrying (9)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:49:50.149Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T17:50:42.898Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:42.987Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:42.988Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:42.989Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:42.991Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:42.993Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:43.015Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:43.017Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:43.019Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:43.023Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T17:50:43.023Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:43.095Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:43.100Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:43.101Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:46.113Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:46.122Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:46.124Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:49.127Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:49.137Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:49.144Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:52.143Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:52.149Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T17:50:52.154Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T18:54:25.970Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.050Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.051Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.052Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.054Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.057Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.081Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.084Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.086Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.090Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:54:26.091Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:55:17.253Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:55:18.251Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:55:19.253Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:56:10.348Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:56:10.350Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:56:16.364Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:57:00.441Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:57:07.457Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:57:07.459Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T18:57:40.720Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.818Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.820Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.821Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.823Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.826Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.856Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.860Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.863Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.869Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T18:57:40.871Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:58:24.005Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:58:26.006Z"}
+error: Unable to connect to the database. Retrying (1)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:58:35.015Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:06.854Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:06.856Z"}
+error: Unable to connect to the database. Retrying (2)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:06.860Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:18.085Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:18.091Z"}
+error: Unable to connect to the database. Retrying (3)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:18.094Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:21.097Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:21.108Z"}
+error: Unable to connect to the database. Retrying (4)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:21.110Z"}
+error: Unable to connect to the database. Retrying (5)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:24.105Z"}
+error: Unable to connect to the database. Retrying (5)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:24.117Z"}
+error: Unable to connect to the database. Retrying (5)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T18:59:24.119Z"}
+error: Unable to connect to the database. Retrying (6)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:00:14.164Z"}
+error: Unable to connect to the database. Retrying (6)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:00:17.170Z"}
+error: Unable to connect to the database. Retrying (6)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:00:21.171Z"}
+error: Unable to connect to the database. Retrying (7)... {"context":"MongooseModule","stack":["Error: querySrv ETIMEOUT _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:01:01.229Z"}
+error: Unable to connect to the database. Retrying (7)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:01:03.639Z"}
+error: Unable to connect to the database. Retrying (7)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:01:03.641Z"}
+error: Unable to connect to the database. Retrying (8)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:01:35.495Z"}
+error: Unable to connect to the database. Retrying (8)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:01:35.498Z"}
+error: Unable to connect to the database. Retrying (8)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:01:35.500Z"}
+error: Unable to connect to the database. Retrying (9)... {"context":"MongooseModule","stack":["Error: querySrv EREFUSED _mongodb._tcp.cluster0.jd27t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:293:17)"],"timestamp":"2025-06-09T19:02:25.225Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T19:03:54.357Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.388Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.388Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.389Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.390Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.390Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.400Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.401Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.401Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.403Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:54.403Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:03:55.351Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T19:04:59.547Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.582Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.582Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.583Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.584Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.584Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.595Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.596Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.596Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.598Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:04:59.599Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:05:00.606Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T19:06:18.354Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.398Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.399Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.399Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.401Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.402Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.415Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.416Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.417Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.419Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:18.419Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.474Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.487Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.487Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.487Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.487Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.487Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.487Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.488Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.488Z"}
+info: DbResolverModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.489Z"}
+info: CatalogModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.489Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:06:19.497Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-09T19:07:54.483Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.522Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.523Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.523Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.524Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.525Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.534Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.535Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.536Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.539Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:54.539Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.416Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.418Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.430Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.431Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.431Z"}
+info: AuthModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.434Z"}
+info: HospitalModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.435Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.493Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.504Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.504Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.504Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.504Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.504Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.505Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.505Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.505Z"}
+info: DbResolverModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.506Z"}
+info: CatalogModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.507Z"}
+info: DepartmentModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-09T19:07:55.508Z"}
+info: AppController {/}: {"context":"RoutesResolver","timestamp":"2025-06-09T19:07:55.522Z"}
+info: Mapped {/, GET} route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.527Z"}
+info: AuthController {/auth} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-09T19:07:55.528Z"}
+info: Mapped {/auth/signup, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.530Z"}
+info: Mapped {/auth/confirm-email, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.531Z"}
+info: Mapped {/auth/otp-new, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.533Z"}
+info: Mapped {/auth/login, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.534Z"}
+info: Mapped {/auth/password-forgot, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.535Z"}
+info: Mapped {/auth/password-reset, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.535Z"}
+info: CatalogController {/catalog} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-09T19:07:55.536Z"}
+info: Mapped {/catalog/departments/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.537Z"}
+info: Mapped {/catalog/units/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.538Z"}
+info: Mapped {/catalog/services/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.539Z"}
+info: Mapped {/catalog/laboratories/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.540Z"}
+info: Mapped {/catalog/imagings/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.540Z"}
+info: Mapped {/catalog/medicines/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.541Z"}
+info: Mapped {/catalog/disposables/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.541Z"}
+info: Mapped {/catalog/vendors/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.542Z"}
+info: HospitalController {/hospitals} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-09T19:07:55.542Z"}
+info: Mapped {/hospitals, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.544Z"}
+info: Mapped {/hospitals/:hospitalId, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.546Z"}
+info: DepartmentController {/hospitals/:hospitalId/departments} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-09T19:07:55.547Z"}
+info: Mapped {/hospitals/:hospitalId/departments, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.548Z"}
+info: Mapped {/hospitals/:hospitalId/departments/:departmentId, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.550Z"}
+info: Mapped {/hospitals/:hospitalId/departments/:departmentId, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.551Z"}
+info: Mapped {/hospitals/:hospitalId/departments, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-09T19:07:55.551Z"}
+info: Nest application successfully started {"context":"NestApplication","timestamp":"2025-06-09T19:07:55.570Z"}

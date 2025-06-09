@@ -13,7 +13,7 @@ export class HospitalMedicine extends ConfirmableProps {
   @Prop({
     required: true,
   })
-    catalogId: Types.ObjectId;
+    medicineCatalogId: Types.ObjectId;
   @Prop({
     min: 1,
     required: true,

@@ -1,7 +1,7 @@
 import { ConfirmableProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
 export declare class HospitalMedicine extends ConfirmableProps {
-    catalogId: Types.ObjectId;
+    medicineCatalogId: Types.ObjectId;
     price: number;
     hospital: Types.ObjectId;
     inventory: number;

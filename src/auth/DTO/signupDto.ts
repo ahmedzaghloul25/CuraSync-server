@@ -13,8 +13,7 @@ import {
 } from "class-validator";
 import { MIN_MAX_LENGTH } from "common/constants";
 import { IsPasswordMatch } from "common/decorators";
-import { AllRoles } from "common/types";
-
+import { AdminRoles } from "common/types/roles";
 export class SignupDto {
   @IsNotEmpty()
   @IsString()
@@ -41,9 +40,6 @@ export class SignupDto {
   @IsPasswordMatch()
   confirmPassword: string;
 
-  @IsNotEmpty()
-  @IsEnum(AllRoles)
-  occupation: string;
 
   @IsNotEmpty()
   @IsMobilePhone("ar-EG")

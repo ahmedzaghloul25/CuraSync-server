@@ -22,7 +22,8 @@ import { EventEmitter2 } from "@nestjs/event-emitter";
 import { SendMailOptions } from "nodemailer";
 import { fakeDelay } from "common/utils/fakeDelay";
 import { JwtToken } from "common/services/jwtToken";
-import { Request, Response } from "express";
+import { Response } from "express";
+import { AdminRoles } from "common/types/roles";
 
 @Injectable()
 export class AuthService {
@@ -34,12 +35,20 @@ export class AuthService {
     private readonly jwtToken: JwtToken,
     private readonly logger: Logger
   ) {}
-  //============================== signup =================================
-  async signup(body: SignupDto) {
+  //====================== systemAdminSignup ===========================
+  /**
+   * Register a new system administrator
+   * @param body - Registration data containing email, password, and other required fields
+   * @throws {UnauthorizedException} If email is already registered
+   * @throws {InternalServerErrorException} If registration fails
+   * @returns Object containing success message and created employee data
+   */
+  async systemAdminSignup(body: SignupDto) {
     try {
       body.password = this.hashing.createHash(body.password);
       const employee = (await this.employeeRepoService.create({
         ...body,
+        occupation: AdminRoles.HOSPITAL_ADMINISTRATOR,
       })) as EmployeeDocument;
       const { otp, otpExpire } = this.otp.create();
       await this.employeeRepoService.updateOne(
@@ -65,6 +74,12 @@ export class AuthService {
     }
   }
   //============================= confirmEmail =============================
+  /**
+   * Confirm employee email using OTP
+   * @param body - Contains email and OTP for verification
+   * @throws {BadRequestException} If OTP is invalid or email already confirmed
+   * @returns Object containing success message
+   */
   async confirmEmail(body: ConfirmEmailDto) {
     const employee = await this.employeeRepoService.findOne({
       email: body.email,
@@ -89,6 +104,11 @@ export class AuthService {
     return { message: "success" };
   }
   //============================= requestNewOtp ============================
+  /**
+   * Request a new OTP for email confirmation or password reset
+   * @param body - Contains email and OTP type (confirm email or reset password)
+   * @returns Generic success message for security (doesn't confirm if email exists)
+   */
   async requestNewOtp(body: RequestNewOtpDto) {
     const employee = await this.employeeRepoService.findOne({
       email: body.email,
@@ -125,6 +145,13 @@ export class AuthService {
     return { message: "Check your Inbox in case of valid Email" };
   }
   //================================= login ================================
+  /**
+   * Authenticate employee and create session
+   * @param body - Login credentials (email and password)
+   * @param res - Express response object for setting cookie
+   * @throws {NotFoundException} If credentials invalid or email not confirmed
+   * @returns Object containing success message
+   */
   async login(body: LoginDto, res: Response) {
     const employee = await this.employeeRepoService.findOne({
       email: body.email,
@@ -152,6 +179,11 @@ export class AuthService {
     return { message: "success" };
   }
   //============================= forgotPassword ===========================
+  /**
+   * Initiate password reset process
+   * @param param0 - Object containing email address
+   * @returns Generic success message for security (doesn't confirm if email exists)
+   */
   async forgotPassword({ email }: ForgotPasswordDto) {
     const employee = await this.employeeRepoService.findOne({
       email,
@@ -184,6 +216,12 @@ export class AuthService {
     return { message: "OTP sent to your email" };
   }
   //============================= resetPassword ============================
+  /**
+   * Reset password using OTP
+   * @param param0 - Object containing email, OTP, and new password
+   * @throws {BadRequestException} If OTP invalid or new password same as old
+   * @returns Object containing success message
+   */
   async resetPassword({ email, otp, newPassword }: ResetPasswordDto) {
     const employee = await this.employeeRepoService.findOne({
       email,

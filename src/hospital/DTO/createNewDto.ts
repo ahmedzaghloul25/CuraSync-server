@@ -12,7 +12,7 @@ import {
 } from "class-validator";
 import { MIN_MAX_LENGTH } from "common/constants";
 
-export class createNewHospitalDto {
+export class CreateNewHospitalDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(MIN_MAX_LENGTH.nameMinInput)

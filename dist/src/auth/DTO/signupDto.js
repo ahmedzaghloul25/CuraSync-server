@@ -14,14 +14,12 @@ const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const constants_1 = require("../../../common/constants");
 const decorators_1 = require("../../../common/decorators");
-const types_1 = require("../../../common/types");
 class SignupDto {
     firstName;
     lastName;
     email;
     password;
     confirmPassword;
-    occupation;
     phone;
     DOB;
 }
@@ -57,11 +55,6 @@ __decorate([
     (0, decorators_1.IsPasswordMatch)(),
     __metadata("design:type", String)
 ], SignupDto.prototype, "confirmPassword", void 0);
-__decorate([
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEnum)(types_1.AllRoles),
-    __metadata("design:type", String)
-], SignupDto.prototype, "occupation", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsMobilePhone)("ar-EG"),

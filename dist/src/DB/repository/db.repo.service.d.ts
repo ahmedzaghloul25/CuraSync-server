@@ -1,10 +1,11 @@
-import { DeleteResult, FilterQuery, Model, Types, UpdateQuery, UpdateResult } from "mongoose";
+import { DeleteResult, FilterQuery, Model, ProjectionType, Types, UpdateQuery, UpdateResult } from "mongoose";
 export declare abstract class DbRepoService<T> {
     protected readonly model: Model<T>;
     constructor(model: Model<T>);
     create(data: Partial<T | T[]>): Promise<T | T[]>;
     findOne(query: FilterQuery<T>): Promise<T | null>;
-    findAll(query: FilterQuery<T>): Promise<T[] | never[]>;
+    findAll(query: FilterQuery<T>, options: ProjectionType<T>): Promise<T[] | never[]>;
+    count(query: FilterQuery<T>): Promise<number>;
     findById(id: Types.ObjectId): Promise<T | null>;
     deleteOne(query: FilterQuery<T>): Promise<DeleteResult>;
     deleteMany(query: FilterQuery<T>): Promise<DeleteResult>;

@@ -22,7 +22,7 @@ let HospitalModule = class HospitalModule {
 exports.HospitalModule = HospitalModule;
 exports.HospitalModule = HospitalModule = __decorate([
     (0, common_1.Module)({
-        imports: [hospital_employee_schema_1.EmployeeModule, hospital_schema_1.hospitalModule],
+        imports: [hospital_employee_schema_1.employeeModule, hospital_schema_1.hospitalModule],
         controllers: [hospital_controller_1.HospitalController],
         providers: [
             jwtToken_1.JwtToken,

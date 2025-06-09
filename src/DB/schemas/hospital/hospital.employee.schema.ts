@@ -7,7 +7,8 @@ import {
 } from "@nestjs/mongoose";
 import { MIN_MAX_LENGTH } from "common/constants";
 import { CoreProps } from "common/props";
-import { AllRoles, TYPES } from "common/types";
+import { TYPES } from "common/types";
+import { AllRoles } from "common/types/roles";
 
 import { HydratedDocument, Types } from "mongoose";
 
@@ -41,10 +42,9 @@ export class Employee extends CoreProps {
   })
   password: string;
   @Prop({
-    enum: AllRoles,
     required: true,
   })
-  occupation: string;
+  occupation: AllRoles;
   @Prop({
     required: true,
     match: /^(\+201|01|00201)[0-2,5]{1}[0-9]{8}/g,
@@ -80,7 +80,7 @@ export class Employee extends CoreProps {
   hospital: Types.ObjectId;
 }
 export const EmployeeSchema = SchemaFactory.createForClass(Employee);
-export const EmployeeModule = MongooseModule.forFeature(
+export const employeeModule = MongooseModule.forFeature(
   [{ name: Employee.name, schema: EmployeeSchema }],
   TYPES.connectionNameString.HOSPITAL
 );

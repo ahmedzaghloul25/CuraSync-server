@@ -9,7 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.EmployeeModule = exports.EmployeeSchema = exports.Employee = void 0;
+exports.employeeModule = exports.EmployeeSchema = exports.Employee = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const constants_1 = require("../../../../common/constants");
 const props_1 = require("../../../../common/props");
@@ -65,7 +65,6 @@ __decorate([
 ], Employee.prototype, "password", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.AllRoles,
         required: true,
     }),
     __metadata("design:type", String)
@@ -129,5 +128,5 @@ exports.Employee = Employee = __decorate([
     })
 ], Employee);
 exports.EmployeeSchema = mongoose_1.SchemaFactory.createForClass(Employee);
-exports.EmployeeModule = mongoose_1.MongooseModule.forFeature([{ name: Employee.name, schema: exports.EmployeeSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.employeeModule = mongoose_1.MongooseModule.forFeature([{ name: Employee.name, schema: exports.EmployeeSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.employee.schema.js.map

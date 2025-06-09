@@ -11,30 +11,33 @@ import {
   UseInterceptors,
 } from "@nestjs/common";
 import { HospitalService } from "./hospital.service";
-import {
-  FileFieldsInterceptor,
-  FileInterceptor,
-  FilesInterceptor,
-} from "@nestjs/platform-express";
+import { FileFieldsInterceptor } from "@nestjs/platform-express";
 import { multerCloudConfig } from "common/utils";
 import { FILE_CATEGORIES } from "common/constants";
-import { createNewHospitalDto, UpdateDocumentsDto } from "./DTO";
+import { CreateNewHospitalDto, UpdateDocumentsDto } from "./DTO";
 import { AuthenticationGuard, AuthorizationGuard } from "common/guards";
 import { Employee, Roles } from "common/decorators";
-import { AllRoles } from "common/types";
 import { EmployeeDocument } from "src/DB/schemas/hospital/hospital.employee.schema";
 import { HospitalValidation } from "common/pipes";
 import { HospitalDocument } from "src/DB/schemas/hospital/hospital.schema";
+import { AdminRoles } from "common/types/roles";
+import { ApiOperation, ApiParam, ApiResponse, ApiTags } from "@nestjs/swagger";
 
-@Controller({ version: "1", path: "hospital" })
+@ApiTags('Hospitals')
+@Controller({ version: "1", path: "hospitals" })
 export class HospitalController {
   constructor(private hospitalService: HospitalService) {}
 
   //=================== createNewHospital ======================
-  @Post("new")
+  @Post()
   @HttpCode(201)
   @UseGuards(AuthenticationGuard, AuthorizationGuard)
-  @Roles(AllRoles.SYSTEMS_ADMINISTRATOR)
+  @Roles(AdminRoles.HOSPITAL_ADMINISTRATOR)
+  @ApiOperation({summary : 'Add new Hospital'})
+  @ApiResponse({
+    status:  201,
+    description : 'Hospital added successfully'
+  })
   @UseInterceptors(
     FileFieldsInterceptor([
       {
@@ -69,25 +72,28 @@ export class HospitalController {
     ])
   )
   createNewHospital(
-    @Body() body: createNewHospitalDto,
+    @Body() body: CreateNewHospitalDto,
     @Employee() employee: EmployeeDocument,
-    @UploadedFiles() files: {
-    medicalLicense: Express.Multer.File;
-    commercialReg: Express.Multer.File;
-    TIN: Express.Multer.File;
-    logo: Express.Multer.File;
-  }
+    @UploadedFiles()
+    files: {
+      medicalLicense: Express.Multer.File;
+      commercialReg: Express.Multer.File;
+      TIN: Express.Multer.File;
+      logo: Express.Multer.File;
+    }
   ) {
-    return this.hospitalService.createNewHospital(
-      body,
-      employee,
-      files
-    );
+    return this.hospitalService.createNewHospital(body, employee, files);
   }
   //================= updateHospital ======================
-  @Put("update/:hospitalId")
+  @Put(":hospitalId")
   @UseGuards(AuthenticationGuard, AuthorizationGuard)
-  @Roles(AllRoles.SYSTEMS_ADMINISTRATOR)
+  @Roles(AdminRoles.HOSPITAL_ADMINISTRATOR)
+  @ApiParam({name : 'hospitalId', description : 'Hospital ID'})
+  @ApiOperation({summary : 'update expiration dates for hospital documents and logo'})
+  @ApiResponse({
+    status : 200,
+    description : 'Hospital updated successfully'
+  })
   @UseInterceptors(
     FileFieldsInterceptor([
       {
@@ -122,7 +128,7 @@ export class HospitalController {
     @UploadedFile() newMedLicenseDoc: Express.Multer.File,
     @UploadedFile() newLogo: Express.Multer.File
   ) {
-    return this.hospitalService.updateDocuments(
+    return this.hospitalService.updateHospital(
       hospital,
       employee,
       body,

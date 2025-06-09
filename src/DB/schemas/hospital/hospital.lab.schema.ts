@@ -10,10 +10,9 @@ import { HydratedDocument, Types } from "mongoose";
 })
 export class HospitalLab extends ConfirmableProps {
   @Prop({
-    ref: "LabCatalog",
     required: true,
   })
-  catalogId: Types.ObjectId;
+  labCatalogId: Types.ObjectId;
   @Prop({
     min: 1,
   })

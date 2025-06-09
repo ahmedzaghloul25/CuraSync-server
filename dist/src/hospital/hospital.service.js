@@ -84,7 +84,7 @@ let HospitalService = class HospitalService {
         hospitalData = null;
         return { message: "success", hospital };
     }
-    async updateDocuments(hospital, employee, body, newCommRegDoc, newMedLicenseDoc, newLogo) {
+    async updateHospital(hospital, employee, body, newCommRegDoc, newMedLicenseDoc, newLogo) {
         let updatedData = {};
         if (body.commercialRegExpiry) {
             if (!newCommRegDoc) {

@@ -1,11 +1,11 @@
 import { HospitalService } from "./hospital.service";
-import { createNewHospitalDto, UpdateDocumentsDto } from "./DTO";
+import { CreateNewHospitalDto, UpdateDocumentsDto } from "./DTO";
 import { EmployeeDocument } from "src/DB/schemas/hospital/hospital.employee.schema";
 import { HospitalDocument } from "src/DB/schemas/hospital/hospital.schema";
 export declare class HospitalController {
     private hospitalService;
     constructor(hospitalService: HospitalService);
-    createNewHospital(body: createNewHospitalDto, employee: EmployeeDocument, files: {
+    createNewHospital(body: CreateNewHospitalDto, employee: EmployeeDocument, files: {
         medicalLicense: Express.Multer.File;
         commercialReg: Express.Multer.File;
         TIN: Express.Multer.File;

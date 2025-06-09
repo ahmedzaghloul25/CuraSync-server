@@ -18,6 +18,7 @@ const types_1 = require("../common/types");
 const throttler_1 = require("@nestjs/throttler");
 const core_1 = require("@nestjs/core");
 const hospital_module_1 = require("./hospital/hospital.module");
+const department_module_1 = require("./department/department.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -64,6 +65,7 @@ exports.AppModule = AppModule = __decorate([
             auth_module_1.AuthModule,
             catalog_module_1.CatalogModule,
             hospital_module_1.HospitalModule,
+            department_module_1.DepartmentModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, { provide: core_1.APP_GUARD, useClass: throttler_1.ThrottlerGuard }],

@@ -21,8 +21,9 @@ const constants_1 = require("../../common/constants");
 const DTO_1 = require("./DTO");
 const guards_1 = require("../../common/guards");
 const decorators_1 = require("../../common/decorators");
-const types_1 = require("../../common/types");
 const pipes_1 = require("../../common/pipes");
+const roles_1 = require("../../common/types/roles");
+const swagger_1 = require("@nestjs/swagger");
 let HospitalController = class HospitalController {
     hospitalService;
     constructor(hospitalService) {
@@ -32,15 +33,20 @@ let HospitalController = class HospitalController {
         return this.hospitalService.createNewHospital(body, employee, files);
     }
     updateHospital(hospital, employee, body, newCommRegDoc, newMedLicenseDoc, newLogo) {
-        return this.hospitalService.updateDocuments(hospital, employee, body, newCommRegDoc, newMedLicenseDoc, newLogo);
+        return this.hospitalService.updateHospital(hospital, employee, body, newCommRegDoc, newMedLicenseDoc, newLogo);
     }
 };
 exports.HospitalController = HospitalController;
 __decorate([
-    (0, common_1.Post)("new"),
+    (0, common_1.Post)(),
     (0, common_1.HttpCode)(201),
     (0, common_1.UseGuards)(guards_1.AuthenticationGuard, guards_1.AuthorizationGuard),
-    (0, decorators_1.Roles)(types_1.AllRoles.SYSTEMS_ADMINISTRATOR),
+    (0, decorators_1.Roles)(roles_1.AdminRoles.HOSPITAL_ADMINISTRATOR),
+    (0, swagger_1.ApiOperation)({ summary: 'Add new Hospital' }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: 'Hospital added successfully'
+    }),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileFieldsInterceptor)([
         {
             name: "medicalLicense",
@@ -76,13 +82,19 @@ __decorate([
     __param(1, (0, decorators_1.Employee)()),
     __param(2, (0, common_1.UploadedFiles)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [DTO_1.createNewHospitalDto, Object, Object]),
+    __metadata("design:paramtypes", [DTO_1.CreateNewHospitalDto, Object, Object]),
     __metadata("design:returntype", void 0)
 ], HospitalController.prototype, "createNewHospital", null);
 __decorate([
-    (0, common_1.Put)("update/:hospitalId"),
+    (0, common_1.Put)(":hospitalId"),
     (0, common_1.UseGuards)(guards_1.AuthenticationGuard, guards_1.AuthorizationGuard),
-    (0, decorators_1.Roles)(types_1.AllRoles.SYSTEMS_ADMINISTRATOR),
+    (0, decorators_1.Roles)(roles_1.AdminRoles.HOSPITAL_ADMINISTRATOR),
+    (0, swagger_1.ApiParam)({ name: 'hospitalId', description: 'Hospital ID' }),
+    (0, swagger_1.ApiOperation)({ summary: 'update expiration dates for hospital documents and logo' }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Hospital updated successfully'
+    }),
     (0, common_1.UseInterceptors)((0, platform_express_1.FileFieldsInterceptor)([
         {
             name: "newCommRegDoc",
@@ -118,7 +130,8 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], HospitalController.prototype, "updateHospital", null);
 exports.HospitalController = HospitalController = __decorate([
-    (0, common_1.Controller)({ version: "1", path: "hospital" }),
+    (0, swagger_1.ApiTags)('Hospitals'),
+    (0, common_1.Controller)({ version: "1", path: "hospitals" }),
     __metadata("design:paramtypes", [hospital_service_1.HospitalService])
 ], HospitalController);
 //# sourceMappingURL=hospital.controller.js.map

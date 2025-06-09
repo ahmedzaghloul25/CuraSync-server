@@ -1,11 +1,12 @@
 import { CoreProps } from "common/props";
+import { AllRoles } from "common/types/roles";
 import { HydratedDocument, Types } from "mongoose";
 export declare class Employee extends CoreProps {
     firstName: string;
     lastName: string;
     email: string;
     password: string;
-    occupation: string;
+    occupation: AllRoles;
     phone: string;
     DOB: Date;
     isEmailConfirmed: boolean;
@@ -25,5 +26,5 @@ export declare const EmployeeSchema: import("mongoose").Schema<Employee, import(
 } & {
     __v: number;
 }>;
-export declare const EmployeeModule: import("@nestjs/common").DynamicModule;
+export declare const employeeModule: import("@nestjs/common").DynamicModule;
 export type EmployeeDocument = HydratedDocument<Employee>;

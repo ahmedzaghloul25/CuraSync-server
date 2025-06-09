@@ -17,6 +17,7 @@ const types_1 = require("../../common/types");
 const event_emitter_1 = require("@nestjs/event-emitter");
 const fakeDelay_1 = require("../../common/utils/fakeDelay");
 const jwtToken_1 = require("../../common/services/jwtToken");
+const roles_1 = require("../../common/types/roles");
 let AuthService = class AuthService {
     employeeRepoService;
     hashing;
@@ -37,6 +38,7 @@ let AuthService = class AuthService {
             body.password = this.hashing.createHash(body.password);
             const employee = (await this.employeeRepoService.create({
                 ...body,
+                occupation: roles_1.AdminRoles.HOSPITAL_ADMINISTRATOR
             }));
             const { otp, otpExpire } = this.otp.create();
             await this.employeeRepoService.updateOne({ _id: employee._id }, {

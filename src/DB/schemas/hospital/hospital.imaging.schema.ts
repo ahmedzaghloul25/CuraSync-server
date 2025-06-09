@@ -8,7 +8,7 @@ export class HospitalImaging extends ConfirmableProps {
   @Prop({
     required: true,
   })
-  catalogId: Types.ObjectId;
+  imagingCatalogId: Types.ObjectId;
   @Prop({
     required: true,
     min: 0,

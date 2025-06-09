@@ -21,7 +21,7 @@ let AuthModule = class AuthModule {
 exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [hospital_employee_schema_1.EmployeeModule, event_emitter_1.EventEmitterModule.forRoot()],
+        imports: [hospital_employee_schema_1.employeeModule, event_emitter_1.EventEmitterModule.forRoot()],
         controllers: [auth_controller_1.AuthController],
         providers: [
             hospital_emp_repoService_1.EmployeeRepoService,

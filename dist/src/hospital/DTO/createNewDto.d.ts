@@ -1,4 +1,4 @@
-export declare class createNewHospitalDto {
+export declare class CreateNewHospitalDto {
     name: string;
     address: string;
     medicalLicenseNumber: string;

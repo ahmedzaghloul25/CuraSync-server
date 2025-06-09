@@ -12,7 +12,7 @@ export class HospitalDepartment extends ConfirmableProps {
   @Prop({
     required: true,
   })
-  catalogId: Types.ObjectId;
+  departmentCatalogId: Types.ObjectId;
   @Prop({
     ref: "Employee",
     required: true,

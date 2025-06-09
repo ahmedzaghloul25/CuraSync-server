@@ -12,8 +12,11 @@ class DbRepoService {
     async findOne(query) {
         return await this.model.findOne(query);
     }
-    async findAll(query) {
-        return await this.model.find(query);
+    async findAll(query, options) {
+        return await this.model.find(query, options);
+    }
+    async count(query) {
+        return await this.model.countDocuments(query);
     }
     async findById(id) {
         return await this.model.findById(id);

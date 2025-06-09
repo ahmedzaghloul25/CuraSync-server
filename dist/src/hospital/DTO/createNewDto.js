@@ -9,11 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createNewHospitalDto = void 0;
+exports.CreateNewHospitalDto = void 0;
 const class_transformer_1 = require("class-transformer");
 const class_validator_1 = require("class-validator");
 const constants_1 = require("../../../common/constants");
-class createNewHospitalDto {
+class CreateNewHospitalDto {
     name;
     address;
     medicalLicenseNumber;
@@ -26,25 +26,25 @@ class createNewHospitalDto {
     TIN;
     logo;
 }
-exports.createNewHospitalDto = createNewHospitalDto;
+exports.CreateNewHospitalDto = CreateNewHospitalDto;
 __decorate([
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.MinLength)(constants_1.MIN_MAX_LENGTH.nameMinInput),
     (0, class_validator_1.MaxLength)(constants_1.MIN_MAX_LENGTH.nameMaxInput),
     __metadata("design:type", String)
-], createNewHospitalDto.prototype, "name", void 0);
+], CreateNewHospitalDto.prototype, "name", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.MinLength)(constants_1.MIN_MAX_LENGTH.descMinInput),
     (0, class_validator_1.MaxLength)(constants_1.MIN_MAX_LENGTH.descMaxInput),
     __metadata("design:type", String)
-], createNewHospitalDto.prototype, "address", void 0);
+], CreateNewHospitalDto.prototype, "address", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], createNewHospitalDto.prototype, "medicalLicenseNumber", void 0);
+], CreateNewHospitalDto.prototype, "medicalLicenseNumber", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_transformer_1.Transform)(({ value }) => new Date(value)),
@@ -52,12 +52,12 @@ __decorate([
     (0, class_validator_1.IsDate)(),
     (0, class_validator_1.MinDate)(new Date()),
     __metadata("design:type", Date)
-], createNewHospitalDto.prototype, "medicalLicenseExpiry", void 0);
+], CreateNewHospitalDto.prototype, "medicalLicenseExpiry", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], createNewHospitalDto.prototype, "commercialRegNumber", void 0);
+], CreateNewHospitalDto.prototype, "commercialRegNumber", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_transformer_1.Transform)(({ value }) => new Date(value)),
@@ -65,26 +65,26 @@ __decorate([
     (0, class_validator_1.IsDate)(),
     (0, class_validator_1.MinDate)(new Date()),
     __metadata("design:type", Date)
-], createNewHospitalDto.prototype, "commercialRegExpiry", void 0);
+], CreateNewHospitalDto.prototype, "commercialRegExpiry", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], createNewHospitalDto.prototype, "TIN_Number", void 0);
+], CreateNewHospitalDto.prototype, "TIN_Number", void 0);
 __decorate([
     (0, class_validator_1.Allow)(),
     __metadata("design:type", Object)
-], createNewHospitalDto.prototype, "medicalLicense", void 0);
+], CreateNewHospitalDto.prototype, "medicalLicense", void 0);
 __decorate([
     (0, class_validator_1.Allow)(),
     __metadata("design:type", Object)
-], createNewHospitalDto.prototype, "commercialReg", void 0);
+], CreateNewHospitalDto.prototype, "commercialReg", void 0);
 __decorate([
     (0, class_validator_1.Allow)(),
     __metadata("design:type", Object)
-], createNewHospitalDto.prototype, "TIN", void 0);
+], CreateNewHospitalDto.prototype, "TIN", void 0);
 __decorate([
     (0, class_validator_1.Allow)(),
     __metadata("design:type", Object)
-], createNewHospitalDto.prototype, "logo", void 0);
+], CreateNewHospitalDto.prototype, "logo", void 0);
 //# sourceMappingURL=createNewDto.js.map
