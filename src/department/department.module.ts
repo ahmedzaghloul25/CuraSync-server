@@ -6,7 +6,7 @@ import HospitalDepartmentRepoService from "src/DB/repository/hospital/hospital.d
 import { EmployeeRepoService } from "src/DB/repository/hospital/hospital.emp.repoService";
 import { employeeModule } from "src/DB/schemas/hospital/hospital.employee.schema";
 import { DbResolverModule } from "common/modules";
-import { JwtToken } from "common/services";
+import { Hashing, JwtToken } from "common/services";
 import { JwtService } from "@nestjs/jwt";
 import HospitalRepoService from "src/DB/repository/hospital/hospital.repoService";
 import { hospitalModule } from "src/DB/schemas/hospital/hospital.schema";
@@ -21,7 +21,8 @@ import { hospitalModule } from "src/DB/schemas/hospital/hospital.schema";
     Logger,
     JwtToken,
     JwtService,
-    HospitalRepoService
+    HospitalRepoService,
+    Hashing
   ],
 })
 export class DepartmentModule {}

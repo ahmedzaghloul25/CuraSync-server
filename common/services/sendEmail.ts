@@ -6,14 +6,13 @@ import {
   OnModuleDestroy,
 } from "@nestjs/common";
 import { EventEmitter2 } from "@nestjs/event-emitter";
-import { log } from "console";
 import { createTransport, SendMailOptions, Transporter } from "nodemailer";
 
 @Injectable()
 export class SendEmail implements OnModuleInit ,OnModuleDestroy {
   private transporter: Transporter;
   onModuleInit() {
-    this.eventEmitter.once("sendOtp", async (data: SendMailOptions) => {
+    this.eventEmitter.once("sendEmail", async (data: SendMailOptions) => {
       try {
         const info = await this.transporter.sendMail({
           from: '"CuraSync" <zaghloul85@gmail.com>', // sender address
@@ -32,14 +31,14 @@ export class SendEmail implements OnModuleInit ,OnModuleDestroy {
           error.stack || error.toString()
         );
         throw new InternalServerErrorException(
-          "Error sending OTP email ",
+          "Error sending email ",
           error.message
         );
       }
     });
   }
   onModuleDestroy() {
-    this.eventEmitter.removeAllListeners('sendOtp')
+    this.eventEmitter.removeAllListeners('sendEmail')
     if(this.transporter.close){
       this.transporter.close()
     }

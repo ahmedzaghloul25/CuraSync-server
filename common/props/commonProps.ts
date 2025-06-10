@@ -5,14 +5,15 @@ import { Types } from "mongoose";
 export abstract class CoreProps {
   @Prop({
     type : Types.ObjectId,
+    ref: "Employee",
   })
   createdBy: Types.ObjectId;
   @Prop()
-  isDeleted: boolean;
+  isFreezed: boolean;
   @Prop({
     ref: "Employee",
   })
-  deletedBy: Types.ObjectId;
+  freezedBy: Types.ObjectId;
   @Prop({
     ref: "Employee",
   })

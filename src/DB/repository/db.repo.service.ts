@@ -11,21 +11,26 @@ import {
 export abstract class DbRepoService<T> {
   constructor(protected readonly model: Model<T>) {}
 
-  async create(data: Partial<T | T[]>): Promise<T | T[]> {
+  async create(data: Partial<T> | Partial<T>[]): Promise<T | T[]> {
     return await this.model.create(data);
   }
 
-  async findOne(query: FilterQuery<T>): Promise<T | null> {
-    return await this.model.findOne(query);
+  async findOne(
+    query: FilterQuery<T>,
+    options?: ProjectionType<T>
+  ): Promise<T | null> {
+    return await this.model.findOne(query, options);
   }
 
   async findAll(
     query: FilterQuery<T>,
-    options: ProjectionType<T>
+    options: ProjectionType<T>,
+    skip: number = 0,
+    limit: number = 100
   ): Promise<T[] | never[]> {
-    return await this.model.find(query, options);
+    return await this.model.find(query, options).skip(skip).limit(limit);
   }
-  async count(query : FilterQuery<T>): Promise<number> {
+  async count(query: FilterQuery<T>): Promise<number> {
     return await this.model.countDocuments(query);
   }
 

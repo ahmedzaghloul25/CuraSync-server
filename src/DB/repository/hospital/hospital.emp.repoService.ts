@@ -4,13 +4,21 @@ import { Employee, EmployeeDocument } from "src/DB/schemas/hospital/hospital.emp
 import { InjectModel } from "@nestjs/mongoose";
 import { TYPES } from "common/types";
 import { Model } from "mongoose";
+import { Hashing } from "common/services";
 
 @Injectable()
 export class EmployeeRepoService extends DbRepoService<EmployeeDocument> {
   constructor(
     @InjectModel(Employee.name, TYPES.connectionNameString.HOSPITAL)
-    private readonly employeeModel: Model<EmployeeDocument>
+    private readonly employeeModel: Model<EmployeeDocument>,
+    private readonly hashing: Hashing
   ) {
     super(employeeModel);
+    const that = this;
+    employeeModel.schema.pre("save", function (next) {
+      this.password = that.hashing.createHash(this.password);
+      next();
+    });
   }
+
 }

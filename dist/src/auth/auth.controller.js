@@ -19,13 +19,14 @@ const DTO_1 = require("./DTO");
 const throttler_1 = require("@nestjs/throttler");
 const loginDto_1 = require("./DTO/loginDto");
 const forgotPasswordDto_1 = require("./DTO/forgotPasswordDto");
+const swagger_1 = require("@nestjs/swagger");
 let AuthController = class AuthController {
     authService;
     constructor(authService) {
         this.authService = authService;
     }
     signup(body) {
-        return this.authService.signup(body);
+        return this.authService.systemAdminSignup(body);
     }
     confirmEmail(Body) {
         return this.authService.confirmEmail(Body);
@@ -47,6 +48,11 @@ exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)("signup"),
     (0, common_1.HttpCode)(201),
+    (0, swagger_1.ApiOperation)({ summary: "system admin registration" }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: "system admin registered successfully",
+    }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [DTO_1.SignupDto]),
@@ -55,6 +61,9 @@ __decorate([
 __decorate([
     (0, common_1.Post)("confirm-email"),
     (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(15), limit: 5 } }),
+    (0, swagger_1.ApiOperation)({ summary: "Confirm employee email with OTP" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Email confirmed successfully" }),
+    (0, swagger_1.ApiResponse)({ status: 400, description: "Invalid OTP or already confirmed" }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [DTO_1.ConfirmEmailDto]),
@@ -63,6 +72,10 @@ __decorate([
 __decorate([
     (0, common_1.Put)("otp-new"),
     (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(1), limit: 1 } }),
+    (0, swagger_1.ApiOperation)({
+        summary: "Request new OTP for email confirmation or password reset",
+    }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "OTP sent if email exists" }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [DTO_1.RequestNewOtpDto]),
@@ -70,6 +83,9 @@ __decorate([
 ], AuthController.prototype, "requestNewOtp", null);
 __decorate([
     (0, common_1.Post)("login"),
+    (0, swagger_1.ApiOperation)({ summary: "Employee authentication" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Login successful" }),
+    (0, swagger_1.ApiResponse)({ status: 404, description: "Invalid credentials or unconfirmed email" }),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Res)({ passthrough: true })),
     __metadata("design:type", Function),
@@ -79,6 +95,8 @@ __decorate([
 __decorate([
     (0, common_1.Put)("password-forgot"),
     (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(1), limit: 1 } }),
+    (0, swagger_1.ApiOperation)({ summary: "Initiate password reset process" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Reset OTP sent if email exists" }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [forgotPasswordDto_1.ForgotPasswordDto]),
@@ -87,12 +105,16 @@ __decorate([
 __decorate([
     (0, common_1.Post)("password-reset"),
     (0, throttler_1.Throttle)({ default: { ttl: (0, throttler_1.minutes)(15), limit: 5 } }),
+    (0, swagger_1.ApiOperation)({ summary: "Reset password using OTP" }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: "Password reset successful" }),
+    (0, swagger_1.ApiResponse)({ status: 400, description: "Invalid OTP or password" }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [DTO_1.ResetPasswordDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "resetPassword", null);
 exports.AuthController = AuthController = __decorate([
+    (0, swagger_1.ApiTags)("Auth"),
     (0, common_1.Controller)({ version: "1", path: "auth" }),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);

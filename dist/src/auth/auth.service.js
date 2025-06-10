@@ -33,12 +33,11 @@ let AuthService = class AuthService {
         this.jwtToken = jwtToken;
         this.logger = logger;
     }
-    async signup(body) {
+    async systemAdminSignup(body) {
         try {
-            body.password = this.hashing.createHash(body.password);
             const employee = (await this.employeeRepoService.create({
                 ...body,
-                occupation: roles_1.AdminRoles.HOSPITAL_ADMINISTRATOR
+                occupation: roles_1.AdminRoles.HOSPITAL_ADMINISTRATOR,
             }));
             const { otp, otpExpire } = this.otp.create();
             await this.employeeRepoService.updateOne({ _id: employee._id }, {
@@ -51,7 +50,7 @@ let AuthService = class AuthService {
                 subject: "Verify your email",
                 html: `<p>Please use OTP <b>${otp}</b> to verify your email within 15 minutes</p>`,
             };
-            this.event.emit("sendOtp", options);
+            this.event.emit("sendEmail", options);
             return { message: "success", employee };
         }
         catch (error) {
@@ -108,7 +107,7 @@ let AuthService = class AuthService {
             subject: `${body.otpFor}`,
             html: `<p>Please use OTP <b>${otp}</b> to ${body.otpFor} within 15 minutes</p>`,
         };
-        this.event.emit("sendOtp", options);
+        this.event.emit("sendEmail", options);
         return { message: "Check your Inbox in case of valid Email" };
     }
     async login(body, res) {
@@ -155,7 +154,7 @@ let AuthService = class AuthService {
             subject: types_1.TYPES.OtpType.PASS_RESET,
             html: `<p>Please use OTP <b>${otp}</b> to ${types_1.TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
         };
-        this.event.emit("sendOtp", options);
+        this.event.emit("sendEmail", options);
         return { message: "OTP sent to your email" };
     }
     async resetPassword({ email, otp, newPassword }) {

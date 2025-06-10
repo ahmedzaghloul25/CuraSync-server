@@ -10,6 +10,7 @@ import { minutes, ThrottlerGuard, ThrottlerModule } from "@nestjs/throttler";
 import { APP_GUARD } from "@nestjs/core";
 import { HospitalModule } from './hospital/hospital.module';
 import { DepartmentModule } from './department/department.module';
+import { EmployeeModule } from './employee/employee.module';
 
 @Module({
   imports: [
@@ -54,6 +55,7 @@ import { DepartmentModule } from './department/department.module';
     CatalogModule,
     HospitalModule,
     DepartmentModule,
+    EmployeeModule,
   ],
   controllers: [AppController],
   providers: [AppService, {provide : APP_GUARD, useClass : ThrottlerGuard}],

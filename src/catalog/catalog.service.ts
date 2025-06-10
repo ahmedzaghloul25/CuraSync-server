@@ -44,56 +44,56 @@ export class CatalogService {
 
   async addDepartmentCatalogArray(body: AddDepartmentCatArrayDto) {
     const department = await this.departmentCatRepoService.create(
-      body.departments as Partial<DepartmentCatalogDocument[]>
+      body.departments
     );
     return { message: "success", department };
   }
 
   async addUnitCatalogArray(body: AddUnitCatArrayDto) {
     const units = await this.unitCatRepoService.create(
-      body.units as Partial<UnitCatalogDocument[]>
+      body.units
     );
     return { message: "success", units };
   }
 
   async addServiceCatalogArray(body: AddServiceCatArrayDto) {
     const services = await this.serviceCatRepoService.create(
-      body.services as Partial<ServiceCatalogDocument[]>
+      body.services
     );
     return { message: "success", services };
   }
 
   async addLabCatalogArray(body: AddLabCatalogArrayDto) {
     const laboratories = await this.labCatRepoService.create(
-      body.laboratories as Partial<LabCatalogDocument[]>
+      body.laboratories
     );
     return { message: "success", laboratories };
   }
 
   async addImagingCatalogArray(body: AddImagingCatalogArrayDto) {
     const imagings = await this.imagingCatRepoService.create(
-      body.imagings as Partial<ImagingCatalogDocument[]>
+      body.imagings
     );
     return { message: "success", imagings };
   }
 
   async addMedicineCatalogArray(body: AddMedicineCatalogArrayDto) {
     const medicines = await this.medicineCatRepoService.create(
-      body.medicines as Partial<MedicineCatalogDocument[]>
+      body.medicines
     );
     return { message: "success", medicines };
   }
 
   async addDisposableCatalogArray(body: AddDisposableCatalogArrayDto) {
     const disposables = await this.disposableCatRepoService.create(
-      body.disposables as Partial<DisposableCatalogDocument[]>
+      body.disposables
     );
     return { message: "success", disposables };
   }
 
   async addVendorCatalogArray(body: AddVendorCatalogArrayDto) {
     const vendors = await this.vendorCatRepoService.create(
-      body.vendors as Partial<VendorCatalogDocument[]>
+      body.vendors
     );
     return { message: "success", vendors };
   }

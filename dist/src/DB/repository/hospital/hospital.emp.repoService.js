@@ -19,17 +19,26 @@ const hospital_employee_schema_1 = require("../../schemas/hospital/hospital.empl
 const mongoose_1 = require("@nestjs/mongoose");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
+const services_1 = require("../../../../common/services");
 let EmployeeRepoService = class EmployeeRepoService extends db_repo_service_1.DbRepoService {
     employeeModel;
-    constructor(employeeModel) {
+    hashing;
+    constructor(employeeModel, hashing) {
         super(employeeModel);
         this.employeeModel = employeeModel;
+        this.hashing = hashing;
+        const that = this;
+        employeeModel.schema.pre("save", function (next) {
+            this.password = that.hashing.createHash(this.password);
+            next();
+        });
     }
 };
 exports.EmployeeRepoService = EmployeeRepoService;
 exports.EmployeeRepoService = EmployeeRepoService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(hospital_employee_schema_1.Employee.name, types_1.TYPES.connectionNameString.HOSPITAL)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        services_1.Hashing])
 ], EmployeeRepoService);
 //# sourceMappingURL=hospital.emp.repoService.js.map

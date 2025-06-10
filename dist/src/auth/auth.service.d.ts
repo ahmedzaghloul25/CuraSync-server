@@ -13,7 +13,7 @@ export declare class AuthService {
     private readonly jwtToken;
     private readonly logger;
     constructor(employeeRepoService: EmployeeRepoService, hashing: Hashing, otp: Otp, event: EventEmitter2, jwtToken: JwtToken, logger: Logger);
-    signup(body: SignupDto): Promise<{
+    systemAdminSignup(body: SignupDto): Promise<{
         message: string;
         employee: import("mongoose").Document<unknown, {}, import("src/DB/schemas/hospital/hospital.employee.schema").Employee, {}> & import("src/DB/schemas/hospital/hospital.employee.schema").Employee & {
             _id: import("mongoose").Types.ObjectId;

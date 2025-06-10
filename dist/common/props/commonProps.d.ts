@@ -1,8 +1,8 @@
 import { Types } from "mongoose";
 export declare abstract class CoreProps {
     createdBy: Types.ObjectId;
-    isDeleted: boolean;
-    deletedBy: Types.ObjectId;
+    isFreezed: boolean;
+    freezedBy: Types.ObjectId;
     modifiedBy: Types.ObjectId;
 }
 export declare abstract class CatalogProps {

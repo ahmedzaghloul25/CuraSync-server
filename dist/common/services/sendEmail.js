@@ -18,7 +18,7 @@ let SendEmail = class SendEmail {
     logger;
     transporter;
     onModuleInit() {
-        this.eventEmitter.once("sendOtp", async (data) => {
+        this.eventEmitter.once("sendEmail", async (data) => {
             try {
                 const info = await this.transporter.sendMail({
                     from: '"CuraSync" <zaghloul85@gmail.com>',
@@ -30,12 +30,12 @@ let SendEmail = class SendEmail {
             }
             catch (error) {
                 this.logger.error(`[SendEmail] Failed to send email for "${data.subject}" to employee: ${data.to} - ${error.message}`, error.stack || error.toString());
-                throw new common_1.InternalServerErrorException("Error sending OTP email ", error.message);
+                throw new common_1.InternalServerErrorException("Error sending email ", error.message);
             }
         });
     }
     onModuleDestroy() {
-        this.eventEmitter.removeAllListeners('sendOtp');
+        this.eventEmitter.removeAllListeners('sendEmail');
         if (this.transporter.close) {
             this.transporter.close();
         }

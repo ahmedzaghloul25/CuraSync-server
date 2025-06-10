@@ -14,6 +14,7 @@ import {
 
 export * from "./medical.roles";
 export * from "./admin.roles";
+export * from "./allRoles"
 
 export type AllRoles =
   | PhysicianRoles

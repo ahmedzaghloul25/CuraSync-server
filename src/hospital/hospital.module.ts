@@ -2,7 +2,7 @@ import { Logger, Module } from "@nestjs/common";
 import { HospitalController } from "./hospital.controller";
 import { HospitalService } from "./hospital.service";
 import HospitalRepoService from "src/DB/repository/hospital/hospital.repoService";
-import { FileUploader } from "common/services";
+import { FileUploader, Hashing } from "common/services";
 import { hospitalModule } from "src/DB/schemas/hospital/hospital.schema";
 import { JwtToken } from "common/services/jwtToken";
 import { JwtService } from "@nestjs/jwt";
@@ -19,7 +19,8 @@ import { employeeModule } from "src/DB/schemas/hospital/hospital.employee.schema
     HospitalService,
     HospitalRepoService,
     FileUploader,
-    Logger
+    Logger,
+    Hashing
   ],
 })
 export class HospitalModule {}

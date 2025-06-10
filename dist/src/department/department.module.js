@@ -33,7 +33,8 @@ exports.DepartmentModule = DepartmentModule = __decorate([
             common_1.Logger,
             services_1.JwtToken,
             jwt_1.JwtService,
-            hospital_repoService_1.default
+            hospital_repoService_1.default,
+            services_1.Hashing
         ],
     })
 ], DepartmentModule);

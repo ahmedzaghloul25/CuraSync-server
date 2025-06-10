@@ -31,7 +31,8 @@ exports.HospitalModule = HospitalModule = __decorate([
             hospital_service_1.HospitalService,
             hospital_repoService_1.default,
             services_1.FileUploader,
-            common_1.Logger
+            common_1.Logger,
+            services_1.Hashing
         ],
     })
 ], HospitalModule);

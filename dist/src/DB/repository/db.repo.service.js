@@ -9,11 +9,11 @@ class DbRepoService {
     async create(data) {
         return await this.model.create(data);
     }
-    async findOne(query) {
-        return await this.model.findOne(query);
+    async findOne(query, options) {
+        return await this.model.findOne(query, options);
     }
-    async findAll(query, options) {
-        return await this.model.find(query, options);
+    async findAll(query, options, skip = 0, limit = 100) {
+        return await this.model.find(query, options).skip(skip).limit(limit);
     }
     async count(query) {
         return await this.model.countDocuments(query);

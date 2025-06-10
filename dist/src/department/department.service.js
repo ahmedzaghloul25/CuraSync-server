@@ -87,7 +87,7 @@ let DepartmentService = class DepartmentService {
             const department = await this.hospitalDepartmentRepoService.findOne({
                 _id: body.departmentId,
                 hospital: hospital._id,
-                isDeleted: false,
+                isFreezed: { $exists: false },
             });
             if (!department) {
                 throw new common_1.NotFoundException(`Department not found`);
@@ -135,7 +135,7 @@ let DepartmentService = class DepartmentService {
             const department = await this.hospitalDepartmentRepoService.findOne({
                 _id: departmentId,
                 hospital: hospital._id,
-                isDeleted: false,
+                isFreezed: { $exists: false },
                 isConfirmed: true
             });
             if (!department) {
@@ -164,7 +164,6 @@ let DepartmentService = class DepartmentService {
             const skip = (page - 1) * limit;
             const departments = await this.hospitalDepartmentRepoService.findAll({
                 hospital: hospital._id,
-                isDeleted: false,
                 isConfirmed: true
             }, { skip, limit });
             if (!departments || departments.length === 0) {

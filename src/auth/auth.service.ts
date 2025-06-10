@@ -45,7 +45,6 @@ export class AuthService {
    */
   async systemAdminSignup(body: SignupDto) {
     try {
-      body.password = this.hashing.createHash(body.password);
       const employee = (await this.employeeRepoService.create({
         ...body,
         occupation: AdminRoles.HOSPITAL_ADMINISTRATOR,
@@ -64,7 +63,7 @@ export class AuthService {
         subject: "Verify your email",
         html: `<p>Please use OTP <b>${otp}</b> to verify your email within 15 minutes</p>`,
       };
-      this.event.emit("sendOtp", options);
+      this.event.emit("sendEmail", options);
       return { message: "success", employee };
     } catch (error) {
       if (error.errorResponse.code === 11000) {
@@ -141,7 +140,7 @@ export class AuthService {
       subject: `${body.otpFor}`,
       html: `<p>Please use OTP <b>${otp}</b> to ${body.otpFor} within 15 minutes</p>`,
     };
-    this.event.emit("sendOtp", options);
+    this.event.emit("sendEmail", options);
     return { message: "Check your Inbox in case of valid Email" };
   }
   //================================= login ================================
@@ -212,7 +211,7 @@ export class AuthService {
       subject: TYPES.OtpType.PASS_RESET,
       html: `<p>Please use OTP <b>${otp}</b> to ${TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
     };
-    this.event.emit("sendOtp", options);
+    this.event.emit("sendEmail", options);
     return { message: "OTP sent to your email" };
   }
   //============================= resetPassword ============================
@@ -249,4 +248,6 @@ export class AuthService {
     );
     return { message: "success" };
   }
+  //============================= updatePassword ============================
+  //================================= logout ================================
 }

@@ -22,7 +22,7 @@ export class HospitalValidation implements PipeTransform {
    * @param metadata - Metadata about the parameter being validated
    * @returns Promise<HospitalDocument> - The found hospital document
    * @throws BadRequestException if no hospital ID is provided
-   * @throws NotFoundException if no hospital is found with the given ID
+   * @throws NotFoundException if no hospital is found with the given ID or if the hospital is not confirmed
    */
   async transform(
     value: string,
@@ -31,9 +31,13 @@ export class HospitalValidation implements PipeTransform {
     if (!value) {
       throw new BadRequestException("Hospital Id not provided");
     }
-    const hospital = await this.hospitalRepoService.findOne({ _id: value });
+    const hospital = await this.hospitalRepoService.findOne({
+      _id: value,
+      isConfirmed: true,
+      isFreezed: { $exists: false },
+    });
     if (!hospital) {
-      throw new NotFoundException("Hospital not found");
+      throw new NotFoundException("Hospital not found or freezed");
     }
     return hospital;
   }

@@ -14,27 +14,28 @@ const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 class CoreProps {
     createdBy;
-    isDeleted;
-    deletedBy;
+    isFreezed;
+    freezedBy;
     modifiedBy;
 }
 exports.CoreProps = CoreProps;
 __decorate([
     (0, mongoose_1.Prop)({
         type: mongoose_2.Types.ObjectId,
+        ref: "Employee",
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], CoreProps.prototype, "createdBy", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Boolean)
-], CoreProps.prototype, "isDeleted", void 0);
+], CoreProps.prototype, "isFreezed", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         ref: "Employee",
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
-], CoreProps.prototype, "deletedBy", void 0);
+], CoreProps.prototype, "freezedBy", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         ref: "Employee",

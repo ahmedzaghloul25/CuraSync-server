@@ -21,9 +21,13 @@ let HospitalValidation = class HospitalValidation {
         if (!value) {
             throw new common_1.BadRequestException("Hospital Id not provided");
         }
-        const hospital = await this.hospitalRepoService.findOne({ _id: value });
+        const hospital = await this.hospitalRepoService.findOne({
+            _id: value,
+            isConfirmed: true,
+            isFreezed: { $exists: false },
+        });
         if (!hospital) {
-            throw new common_1.NotFoundException("Hospital not found");
+            throw new common_1.NotFoundException("Hospital not found or freezed");
         }
         return hospital;
     }
