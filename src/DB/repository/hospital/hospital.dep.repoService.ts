@@ -6,14 +6,14 @@ import {
   HospitalDepartment,
   HospitalDepartmentDocument,
 } from "src/DB/schemas/hospital/hospital.department.schema";
-import { TYPES } from "common/types";
+import { connectionNameString } from "common/types";
 
 @Injectable()
 export default class HospitalDepartmentRepoService extends DbRepoService<HospitalDepartmentDocument> {
   constructor(
     @InjectModel(
       HospitalDepartment.name,
-      TYPES.connectionNameString.HOSPITAL
+      connectionNameString.HOSPITAL
     )
     private readonly departmentModel: Model<HospitalDepartmentDocument>
   ) {

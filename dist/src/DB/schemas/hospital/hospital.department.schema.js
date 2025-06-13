@@ -49,5 +49,5 @@ exports.HospitalDepartment = HospitalDepartment = __decorate([
 ], HospitalDepartment);
 exports.HospitalDepartmentSchema = mongoose_1.SchemaFactory.createForClass(HospitalDepartment);
 exports.HospitalDepartmentSchema.index({ catalogId: 1, hospital: 1 }, { unique: true });
-exports.HospitalDepartmentModule = mongoose_1.MongooseModule.forFeature([{ name: HospitalDepartment.name, schema: exports.HospitalDepartmentSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.HospitalDepartmentModule = mongoose_1.MongooseModule.forFeature([{ name: HospitalDepartment.name, schema: exports.HospitalDepartmentSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.department.schema.js.map

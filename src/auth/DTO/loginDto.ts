@@ -1,5 +1,4 @@
 import { IsEmail, IsNotEmpty, IsString, MinLength } from "class-validator";
-import { TYPES } from "common/types";
 import { MIN_MAX_LENGTH } from "common/constants";
 
 

@@ -1,4 +1,18 @@
 import { Types } from "mongoose";
+import { DepartmentCatalogDocument } from "src/DB/schemas/catalog/catalog.department.schema";
+import { DisposableCatalogDocument } from "src/DB/schemas/catalog/catalog.disposable.schema";
+import { ImagingCatalogDocument } from "src/DB/schemas/catalog/catalog.imaging.schema";
+import { LabCatalogDocument } from "src/DB/schemas/catalog/catalog.lab.schema";
+import { MedicineCatalogDocument } from "src/DB/schemas/catalog/catalog.medicine.schema";
+import { ServiceCatalogDocument } from "src/DB/schemas/catalog/catalog.service.schema";
+import { UnitCatalogDocument } from "src/DB/schemas/catalog/catalog.unit.schema";
+import { HospitalDepartmentDocument } from "src/DB/schemas/hospital/hospital.department.schema";
+import { HospitalDisposableDocument } from "src/DB/schemas/hospital/hospital.disposable.schema";
+import { HospitalImagingDocument } from "src/DB/schemas/hospital/hospital.imaging.schema";
+import { HospitalLabDocument } from "src/DB/schemas/hospital/hospital.lab.schema";
+import { HospitalMedicineDocument } from "src/DB/schemas/hospital/hospital.medicines.schema";
+import { HospitalServiceDocument } from "src/DB/schemas/hospital/hospital.service.schema";
+import { HospitalUnitDocument } from "src/DB/schemas/hospital/hospital.unit.schema";
 export declare enum OtpType {
     CONFIRM_MAIL = "Confirm Email",
     PASS_RESET = "Reset Password"
@@ -7,6 +21,27 @@ export type TokenPayload = {
     _id: Types.ObjectId;
     occupation: string;
 };
+export interface EnrichedDepartmentDoc extends HospitalDepartmentDocument {
+    department: DepartmentCatalogDocument;
+}
+export interface EnrichedUnitDoc extends HospitalUnitDocument {
+    unit: UnitCatalogDocument;
+}
+export interface EnrichedDisposableDoc extends HospitalDisposableDocument {
+    disposable: DisposableCatalogDocument;
+}
+export interface EnrichedImagingDoc extends HospitalImagingDocument {
+    disposable: ImagingCatalogDocument;
+}
+export interface EnrichedLabDoc extends HospitalLabDocument {
+    lab: LabCatalogDocument;
+}
+export interface EnrichedMedicineDoc extends HospitalMedicineDocument {
+    medicine: MedicineCatalogDocument;
+}
+export interface EnrichedServiceDoc extends HospitalServiceDocument {
+    service: ServiceCatalogDocument;
+}
 export declare enum connectionNameString {
     CATALOG = "catalog",
     HOSPITAL = "hospital",

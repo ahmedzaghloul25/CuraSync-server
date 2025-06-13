@@ -10,7 +10,7 @@ import {
   IsNotEmpty,
   ValidateNested,
 } from "class-validator";
-import { TYPES } from "common/types";
+import { LAbTestCategory, SpecimenType } from "common/types";
 
 export class AddLabCatalogDto {
   @IsString()
@@ -30,18 +30,18 @@ export class AddLabCatalogDto {
   @MaxLength(20)
   loincCode?: string;
 
-  @IsEnum(TYPES.LAbTestCategory)
+  @IsEnum(LAbTestCategory)
   @IsNotEmpty()
-  category: TYPES.LAbTestCategory;
+  category: LAbTestCategory;
 
   @IsString()
   @IsOptional()
   @MaxLength(500)
   description?: string;
 
-  @IsEnum(TYPES.SpecimenType)
+  @IsEnum(SpecimenType)
   @IsNotEmpty()
-  specimenType: TYPES.SpecimenType;
+  specimenType: SpecimenType;
 
   @IsString()
   @IsOptional()

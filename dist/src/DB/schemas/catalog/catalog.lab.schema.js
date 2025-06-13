@@ -49,7 +49,7 @@ __decorate([
 ], LabCatalog.prototype, "loincCode", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.LAbTestCategory,
+        enum: types_1.LAbTestCategory,
         required: true,
     }),
     __metadata("design:type", String)
@@ -60,7 +60,7 @@ __decorate([
 ], LabCatalog.prototype, "description", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.SpecimenType,
+        enum: types_1.SpecimenType,
         required: true,
     }),
     __metadata("design:type", String)
@@ -97,5 +97,5 @@ exports.LabCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.LabCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: LabCatalog.name, schema: exports.LabCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
+exports.LabCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: LabCatalog.name, schema: exports.LabCatalogSchema }], types_1.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.lab.schema.js.map

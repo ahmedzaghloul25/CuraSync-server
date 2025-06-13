@@ -116,5 +116,5 @@ exports.Patient = Patient = __decorate([
     })
 ], Patient);
 exports.PatientSchema = mongoose_1.SchemaFactory.createForClass(Patient);
-exports.PatientModule = mongoose_1.MongooseModule.forFeature([{ name: Patient.name, schema: exports.PatientSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.PatientModule = mongoose_1.MongooseModule.forFeature([{ name: Patient.name, schema: exports.PatientSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.patient.schema.js.map

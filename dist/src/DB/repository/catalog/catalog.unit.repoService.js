@@ -27,7 +27,7 @@ let UnitCatalogRepoService = class UnitCatalogRepoService extends db_repo_servic
 };
 UnitCatalogRepoService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(catalog_unit_schema_1.UnitCatalog.name, types_1.TYPES.connectionNameString.CATALOG)),
+    __param(0, (0, mongoose_1.InjectModel)(catalog_unit_schema_1.UnitCatalog.name, types_1.connectionNameString.CATALOG)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], UnitCatalogRepoService);
 exports.default = UnitCatalogRepoService;

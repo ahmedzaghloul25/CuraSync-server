@@ -30,7 +30,7 @@ let AuthenticationGuard = class AuthenticationGuard {
             const payload = await this.jwtToken.verifyToken(token);
             const employee = await this.employeeRepoService.findOne({
                 _id: payload._id,
-                isDeleted: { $exists: false },
+                isFreezed: { $exists: false },
             });
             if (!employee) {
                 throw new common_1.NotFoundException('Employee not found');

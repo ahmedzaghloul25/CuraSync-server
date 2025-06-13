@@ -1,6 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { ConfirmableProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString, TransferStatusType } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -20,8 +20,8 @@ export class PatientTransfer extends ConfirmableProps {
   })
   transferTo: Types.ObjectId;
   @Prop({
-    enum: TYPES.TransferStatusType,
-    default: TYPES.TransferStatusType.PENDING,
+    enum: TransferStatusType,
+    default: TransferStatusType.PENDING,
   })
   status: string;
   @Prop({
@@ -34,6 +34,6 @@ export class PatientTransfer extends ConfirmableProps {
 export const TransferSchema = SchemaFactory.createForClass(PatientTransfer);
 export const TransferModule = MongooseModule.forFeature(
   [{ name: PatientTransfer.name, schema: TransferSchema }],
-  TYPES.connectionNameString.HOSPITAL
+  connectionNameString.HOSPITAL
 );
 export type TransferDocument = HydratedDocument<PatientTransfer>;

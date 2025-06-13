@@ -105,7 +105,7 @@ let DepartmentService = class DepartmentService {
                     info: "Department head unchanged",
                 };
             }
-            await this.hospitalDepartmentRepoService.updateOne({ _id: department._id }, { head: newHead._id });
+            await this.hospitalDepartmentRepoService.updateOne({ _id: department._id }, { head: newHead._id, modifiedBy: employee._id });
             this.logger.log(`[Hospital Department] Department ${department._id} updated with new head: ${newHead._id}`);
             return {
                 message: "success",
@@ -136,7 +136,7 @@ let DepartmentService = class DepartmentService {
                 _id: departmentId,
                 hospital: hospital._id,
                 isFreezed: { $exists: false },
-                isConfirmed: true
+                isConfirmed: true,
             });
             if (!department) {
                 throw new common_1.NotFoundException(`Department not found`);
@@ -161,11 +161,14 @@ let DepartmentService = class DepartmentService {
             if (!employee.hospital.equals(hospital._id)) {
                 throw new common_1.UnauthorizedException(`Employee from hospital ${employee.hospital} not authorized to view departments in hospital ${hospital._id}`);
             }
+            if (page < 1 || limit < 1 || limit > 100) {
+                throw new common_1.BadRequestException("Invalid pagination parameters");
+            }
             const skip = (page - 1) * limit;
             const departments = await this.hospitalDepartmentRepoService.findAll({
                 hospital: hospital._id,
-                isConfirmed: true
-            }, { skip, limit });
+                isConfirmed: true,
+            }, {}, skip, limit);
             if (!departments || departments.length === 0) {
                 throw new common_1.NotFoundException(`No departments found in hospital ${hospital._id}`);
             }
@@ -180,18 +183,19 @@ let DepartmentService = class DepartmentService {
             }));
             const totalCount = await this.hospitalDepartmentRepoService.count({
                 hospital: hospital._id,
-                isDeleted: false,
-                isConfirmed: true
+                isConfirmed: true,
             });
             return {
                 message: "success",
-                departments: enrichedDepartments,
-                pagination: {
-                    total: totalCount,
-                    page,
-                    limit,
-                    pages: Math.ceil(totalCount / limit)
-                }
+                date: {
+                    departments: enrichedDepartments,
+                    pagination: {
+                        total: totalCount,
+                        page,
+                        limit,
+                        pages: Math.ceil(totalCount / limit),
+                    },
+                },
             };
         }
         catch (error) {

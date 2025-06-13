@@ -2,7 +2,7 @@ import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { CONTAINS } from "class-validator";
 import { MIN_MAX_LENGTH } from "common/constants";
 import { ConfirmableProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -88,6 +88,6 @@ export class Hospital extends ConfirmableProps {
 export const HospitalSchema = SchemaFactory.createForClass(Hospital);
 export const hospitalModule = MongooseModule.forFeature(
   [{ name: Hospital.name, schema: HospitalSchema }],
-  TYPES.connectionNameString.HOSPITAL
+  connectionNameString.HOSPITAL
 );
 export type HospitalDocument = HydratedDocument<Hospital>;

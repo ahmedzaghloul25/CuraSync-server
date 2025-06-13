@@ -94,7 +94,7 @@ __decorate([
 ], Employee.prototype, "otp", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.OtpType,
+        enum: types_1.OtpType,
     }),
     __metadata("design:type", String)
 ], Employee.prototype, "otpFor", void 0);
@@ -128,5 +128,5 @@ exports.Employee = Employee = __decorate([
     })
 ], Employee);
 exports.EmployeeSchema = mongoose_1.SchemaFactory.createForClass(Employee);
-exports.employeeModule = mongoose_1.MongooseModule.forFeature([{ name: Employee.name, schema: exports.EmployeeSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.employeeModule = mongoose_1.MongooseModule.forFeature([{ name: Employee.name, schema: exports.EmployeeSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.employee.schema.js.map

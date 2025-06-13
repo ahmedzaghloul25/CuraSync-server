@@ -4,14 +4,14 @@ import {
 } from "src/DB/schemas/inventory/inventory.transaction.schema";
 import { DbRepoService } from "../db.repo.service";
 import { InjectModel } from "@nestjs/mongoose";
-import { TYPES } from "common/types";
 import { Model } from "mongoose";
+import { connectionNameString } from "common/types";
 
 export default class InventoryRepoService extends DbRepoService<InventoryTransactionDocument> {
   constructor(
     @InjectModel(
       InventoryTransaction.name,
-      TYPES.connectionNameString.HOSPITAL
+      connectionNameString.HOSPITAL
     )
     private readonly inventoryModel: Model<InventoryTransactionDocument>
   ) {

@@ -7,7 +7,7 @@ import {
 } from "@nestjs/mongoose";
 import { MIN_MAX_LENGTH } from "common/constants";
 import { CoreProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString, OtpType } from "common/types";
 import { AllRoles } from "common/types/roles";
 
 import { HydratedDocument, Types } from "mongoose";
@@ -61,7 +61,7 @@ export class Employee extends CoreProps {
   @Prop()
   otp: string;
   @Prop({
-    enum: TYPES.OtpType,
+    enum: OtpType,
   })
   otpFor: string;
   @Prop()
@@ -82,6 +82,6 @@ export class Employee extends CoreProps {
 export const EmployeeSchema = SchemaFactory.createForClass(Employee);
 export const employeeModule = MongooseModule.forFeature(
   [{ name: Employee.name, schema: EmployeeSchema }],
-  TYPES.connectionNameString.HOSPITAL
+  connectionNameString.HOSPITAL
 );
 export type EmployeeDocument = HydratedDocument<Employee>;

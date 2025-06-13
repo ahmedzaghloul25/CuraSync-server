@@ -27,7 +27,7 @@ let VendorCatalogRepoService = class VendorCatalogRepoService extends db_repo_se
 };
 VendorCatalogRepoService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(catalog_vendor_schema_1.VendorCatalog.name, types_1.TYPES.connectionNameString.CATALOG)),
+    __param(0, (0, mongoose_1.InjectModel)(catalog_vendor_schema_1.VendorCatalog.name, types_1.connectionNameString.CATALOG)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], VendorCatalogRepoService);
 exports.default = VendorCatalogRepoService;

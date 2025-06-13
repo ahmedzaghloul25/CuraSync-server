@@ -17,25 +17,35 @@ export abstract class DbRepoService<T> {
 
   async findOne(
     query: FilterQuery<T>,
+    populate: string = "",
     options?: ProjectionType<T>
   ): Promise<T | null> {
-    return await this.model.findOne(query, options);
+    return await this.model.findOne(query, options).populate(populate);
   }
 
   async findAll(
     query: FilterQuery<T>,
-    options: ProjectionType<T>,
+    options?: ProjectionType<T>,
     skip: number = 0,
-    limit: number = 100
+    limit: number = 100,
+    populate: string = ""
   ): Promise<T[] | never[]> {
-    return await this.model.find(query, options).skip(skip).limit(limit);
+    return await this.model
+      .find(query, options)
+      .skip(skip)
+      .limit(limit)
+      .populate(populate);
   }
   async count(query: FilterQuery<T>): Promise<number> {
     return await this.model.countDocuments(query);
   }
 
-  async findById(id: Types.ObjectId): Promise<T | null> {
-    return await this.model.findById(id);
+  async findById(
+    id: Types.ObjectId,
+    populate: string = "",
+    options?: ProjectionType<T>
+  ): Promise<T | null> {
+    return await this.model.findById(id, options).populate(populate);
   }
 
   async deleteOne(query: FilterQuery<T>): Promise<DeleteResult> {

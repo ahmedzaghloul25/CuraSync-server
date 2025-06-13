@@ -26,7 +26,7 @@ export class AuthenticationGuard implements CanActivate {
       const payload = await this.jwtToken.verifyToken(token);
       const employee = await this.employeeRepoService.findOne({
         _id: payload._id,
-        isDeleted: { $exists: false },
+        isFreezed: { $exists: false },
       });
       if(!employee){
         throw new NotFoundException('Employee not found')

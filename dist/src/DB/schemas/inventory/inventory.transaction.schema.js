@@ -71,7 +71,7 @@ __decorate([
 ], InventoryTransaction.prototype, "hospital", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.InventoryItemTypes,
+        enum: types_1.InventoryItemTypes,
         required: true,
     }),
     __metadata("design:type", String)
@@ -79,7 +79,7 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         required: true,
-        enum: types_1.TYPES.TransactionTypes,
+        enum: types_1.TransactionTypes,
     }),
     __metadata("design:type", String)
 ], InventoryTransaction.prototype, "transactionType", void 0);
@@ -160,5 +160,5 @@ exports.InventoryTransaction = InventoryTransaction = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], InventoryTransaction);
 exports.InventoryTransactionSchema = mongoose_1.SchemaFactory.createForClass(InventoryTransaction);
-exports.InventoryTransactionModule = mongoose_1.MongooseModule.forFeature([{ name: InventoryTransaction.name, schema: exports.InventoryTransactionSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.InventoryTransactionModule = mongoose_1.MongooseModule.forFeature([{ name: InventoryTransaction.name, schema: exports.InventoryTransactionSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=inventory.transaction.schema.js.map

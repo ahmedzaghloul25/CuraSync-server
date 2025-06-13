@@ -16,7 +16,6 @@ import {
 } from "./DTO";
 import { EmployeeRepoService } from "src/DB/repository/hospital/hospital.emp.repoService";
 import { Hashing, Otp } from "common/services";
-import { TYPES } from "common/types";
 import { EmployeeDocument } from "src/DB/schemas/hospital/hospital.employee.schema";
 import { EventEmitter2 } from "@nestjs/event-emitter";
 import { SendMailOptions } from "nodemailer";
@@ -24,6 +23,7 @@ import { fakeDelay } from "common/utils/fakeDelay";
 import { JwtToken } from "common/services/jwtToken";
 import { Response } from "express";
 import { AdminRoles } from "common/types/roles";
+import { OtpType } from "common/types";
 
 @Injectable()
 export class AuthService {
@@ -55,7 +55,7 @@ export class AuthService {
         {
           otp: this.hashing.createHash(otp),
           otpExpireAt: otpExpire,
-          otpFor: TYPES.OtpType.CONFIRM_MAIL,
+          otpFor: OtpType.CONFIRM_MAIL,
         }
       );
       const options: SendMailOptions = {
@@ -82,7 +82,7 @@ export class AuthService {
   async confirmEmail(body: ConfirmEmailDto) {
     const employee = await this.employeeRepoService.findOne({
       email: body.email,
-      otpFor: TYPES.OtpType.CONFIRM_MAIL,
+      otpFor: OtpType.CONFIRM_MAIL,
     });
     if (!employee || employee.isEmailConfirmed) {
       await fakeDelay(200);
@@ -121,7 +121,7 @@ export class AuthService {
     }
     if (
       employee.isEmailConfirmed &&
-      body.otpFor === TYPES.OtpType.CONFIRM_MAIL
+      body.otpFor === OtpType.CONFIRM_MAIL
     ) {
       await fakeDelay(170);
       return { message: "Check your Inbox in case of valid Email" };
@@ -203,13 +203,13 @@ export class AuthService {
       {
         otp: this.hashing.createHash(otp),
         otpExpireAt: otpExpire,
-        otpFor: TYPES.OtpType.PASS_RESET,
+        otpFor: OtpType.PASS_RESET,
       }
     );
     const options: SendMailOptions = {
       to: employee.email,
-      subject: TYPES.OtpType.PASS_RESET,
-      html: `<p>Please use OTP <b>${otp}</b> to ${TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
+      subject: OtpType.PASS_RESET,
+      html: `<p>Please use OTP <b>${otp}</b> to ${OtpType.PASS_RESET} within 15 minutes</p>`,
     };
     this.event.emit("sendEmail", options);
     return { message: "OTP sent to your email" };
@@ -225,7 +225,7 @@ export class AuthService {
     const employee = await this.employeeRepoService.findOne({
       email,
       isEmailConfirmed: true,
-      otpFor: TYPES.OtpType.PASS_RESET,
+      otpFor: OtpType.PASS_RESET,
       otpExpireAt: { $gt: new Date() }, // valid otp
     });
     if (!employee || !(await this.otp.verify(employee, otp))) {

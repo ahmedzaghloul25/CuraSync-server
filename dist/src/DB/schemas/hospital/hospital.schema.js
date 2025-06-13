@@ -121,5 +121,5 @@ exports.Hospital = Hospital = __decorate([
     })
 ], Hospital);
 exports.HospitalSchema = mongoose_1.SchemaFactory.createForClass(Hospital);
-exports.hospitalModule = mongoose_1.MongooseModule.forFeature([{ name: Hospital.name, schema: exports.HospitalSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.hospitalModule = mongoose_1.MongooseModule.forFeature([{ name: Hospital.name, schema: exports.HospitalSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.schema.js.map

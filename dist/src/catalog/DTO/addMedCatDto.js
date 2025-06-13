@@ -36,12 +36,12 @@ __decorate([
     __metadata("design:type", Array)
 ], AddMedicineCatalogDto.prototype, "brandName", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(types_1.TYPES.MedicationForm),
+    (0, class_validator_1.IsEnum)(types_1.MedicationForm),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddMedicineCatalogDto.prototype, "form", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(types_1.TYPES.MedicineUnits),
+    (0, class_validator_1.IsEnum)(types_1.MedicineUnits),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddMedicineCatalogDto.prototype, "unit", void 0);

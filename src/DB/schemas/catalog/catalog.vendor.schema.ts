@@ -1,6 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { CatalogProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString } from "common/types";
 import { _slugify } from "common/utils";
 import { HydratedDocument } from "mongoose";
 
@@ -47,6 +47,6 @@ VendorCatalogSchema.pre("save", function (next) {
 });
 export const VendorCatalogModule = MongooseModule.forFeature(
   [{ name: VendorCatalog.name, schema: VendorCatalogSchema }],
-  TYPES.connectionNameString.CATALOG
+  connectionNameString.CATALOG
 );
 export type VendorCatalogDocument = HydratedDocument<VendorCatalog>;

@@ -48,5 +48,5 @@ exports.ServiceCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.ServiceCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: ServiceCatalog.name, schema: exports.ServiceCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
+exports.ServiceCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: ServiceCatalog.name, schema: exports.ServiceCatalogSchema }], types_1.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.service.schema.js.map

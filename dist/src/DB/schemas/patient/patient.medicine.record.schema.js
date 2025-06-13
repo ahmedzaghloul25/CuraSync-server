@@ -69,7 +69,7 @@ __decorate([
 ], PatientMedicineOrder.prototype, "completedDate", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.RecordPriorityTypes,
+        enum: types_1.RecordPriorityTypes,
         required: true,
     }),
     __metadata("design:type", String)
@@ -97,8 +97,8 @@ __decorate([
 ], PatientMedicineOrder.prototype, "log", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: Object.values(types_1.TYPES.RecordStatusTypes),
-        default: types_1.TYPES.RecordStatusTypes.PENDING,
+        enum: Object.values(types_1.RecordStatusTypes),
+        default: types_1.RecordStatusTypes.PENDING,
     }),
     __metadata("design:type", String)
 ], PatientMedicineOrder.prototype, "status", void 0);
@@ -135,5 +135,5 @@ exports.PatientMedicineOrder = PatientMedicineOrder = __decorate([
     })
 ], PatientMedicineOrder);
 exports.PatientMedicineOrderSchema = mongoose_1.SchemaFactory.createForClass(PatientMedicineOrder);
-exports.ServiceModule = mongoose_1.MongooseModule.forFeature([{ name: PatientMedicineOrder.name, schema: exports.PatientMedicineOrderSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.ServiceModule = mongoose_1.MongooseModule.forFeature([{ name: PatientMedicineOrder.name, schema: exports.PatientMedicineOrderSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.medicine.record.schema.js.map

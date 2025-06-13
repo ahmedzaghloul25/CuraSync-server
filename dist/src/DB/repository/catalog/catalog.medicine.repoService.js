@@ -27,7 +27,7 @@ let MedicineCatalogRepoService = class MedicineCatalogRepoService extends db_rep
 };
 MedicineCatalogRepoService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(catalog_medicine_schema_1.MedicineCatalog.name, types_1.TYPES.connectionNameString.CATALOG)),
+    __param(0, (0, mongoose_1.InjectModel)(catalog_medicine_schema_1.MedicineCatalog.name, types_1.connectionNameString.CATALOG)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], MedicineCatalogRepoService);
 exports.default = MedicineCatalogRepoService;

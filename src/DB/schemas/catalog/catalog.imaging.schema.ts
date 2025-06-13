@@ -1,7 +1,7 @@
 // src/catalog/schemas/imaging-procedure.schema.ts
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { CatalogProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString, ImagingBodyRegions, ImagingTypes } from "common/types";
 import { _slugify } from "common/utils";
 import { HydratedDocument } from "mongoose";
 
@@ -17,12 +17,12 @@ export class ImagingCatalog extends CatalogProps {
   code: string;
   @Prop({
     type: String,
-    enum: TYPES.ImagingTypes,
+    enum: ImagingTypes,
   })
   modality: string;
   @Prop({
     type: String,
-    enum: TYPES.ImagingBodyRegions,
+    enum: ImagingBodyRegions,
   })
   bodyRegion: string;
   @Prop()
@@ -49,6 +49,6 @@ ImagingCatalogSchema.pre("save", function (next) {
 });
 export const ImagingCatalogModule = MongooseModule.forFeature(
   [{ name: ImagingCatalog.name, schema: ImagingCatalogSchema }],
-  TYPES.connectionNameString.CATALOG
+  connectionNameString.CATALOG
 );
 export type ImagingCatalogDocument = HydratedDocument<ImagingCatalog>;

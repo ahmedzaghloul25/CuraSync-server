@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   ConflictException,
   Injectable,
   InternalServerErrorException,
@@ -15,6 +16,7 @@ import { Types } from "mongoose";
 import { HospitalDepartmentDocument } from "src/DB/schemas/hospital/hospital.department.schema";
 import { EmployeeRepoService } from "src/DB/repository/hospital/hospital.emp.repoService";
 import { CrossDbResolverService } from "common/services/databaseIdResolver";
+import { EnrichedDepartmentDoc } from "common/types/types";
 
 @Injectable()
 export class DepartmentService {
@@ -124,7 +126,7 @@ export class DepartmentService {
       const department = await this.hospitalDepartmentRepoService.findOne({
         _id: body.departmentId,
         hospital: hospital._id,
-        isFreezed: {$exists : false},
+        isFreezed: { $exists: false },
       });
       if (!department) {
         throw new NotFoundException(`Department not found`);
@@ -145,7 +147,7 @@ export class DepartmentService {
       }
       await this.hospitalDepartmentRepoService.updateOne(
         { _id: department._id },
-        { head: newHead._id }
+        { head: newHead._id, modifiedBy: employee._id }
       );
       this.logger.log(
         `[Hospital Department] Department ${department._id} updated with new head: ${newHead._id}`
@@ -200,13 +202,13 @@ export class DepartmentService {
       const department = await this.hospitalDepartmentRepoService.findOne({
         _id: departmentId,
         hospital: hospital._id,
-        isFreezed : {$exists : false},
-        isConfirmed : true
+        isFreezed: { $exists: false },
+        isConfirmed: true,
       });
       if (!department) {
         throw new NotFoundException(`Department not found`);
       }
-      const enrichedDepartment =
+      const enrichedDepartment: EnrichedDepartmentDoc =
         await this.crossDbResolverService.enrichReferences(department);
       return {
         message: "success",
@@ -235,34 +237,47 @@ export class DepartmentService {
    * @param page - Page number for pagination (optional)
    * @param limit - Number of items per page (optional)
    * @throws UnauthorizedException if employee not authorized
+   * @throws BadRequestException for invalid input parameters
    * @throws NotFoundException if no departments found
    * @throws InternalServerErrorException for other errors
    * @returns Object containing success message and array of enriched departments
    */
   async getAllDepartments(
-    hospital: HospitalDocument, 
+    hospital: HospitalDocument,
     employee: EmployeeDocument,
     page = 1,
     limit = 10
   ) {
     try {
-      if(!employee.hospital.equals(hospital._id)){
+      if (!employee.hospital.equals(hospital._id)) {
         throw new UnauthorizedException(
           `Employee from hospital ${employee.hospital} not authorized to view departments in hospital ${hospital._id}`
         );
       }
+      if (page < 1 || limit < 1 || limit > 100) {
+        throw new BadRequestException("Invalid pagination parameters");
+      }
       const skip = (page - 1) * limit;
-      const departments = await this.hospitalDepartmentRepoService.findAll({
-        hospital: hospital._id,
-        isConfirmed: true
-      },{ skip, limit });
-      if(!departments || departments.length === 0){
-        throw new NotFoundException(`No departments found in hospital ${hospital._id}`);
+      const departments = await this.hospitalDepartmentRepoService.findAll(
+        {
+          hospital: hospital._id,
+          isConfirmed: true,
+        },
+        {},
+        skip,
+        limit
+      );
+      if (!departments || departments.length === 0) {
+        throw new NotFoundException(
+          `No departments found in hospital ${hospital._id}`
+        );
       }
       const enrichedDepartments = await Promise.all(
-        departments.map(async (department : HospitalDepartmentDocument) => {
+        departments.map(async (department: HospitalDepartmentDocument) => {
           try {
-            return await this.crossDbResolverService.enrichReferences(department);
+            return await this.crossDbResolverService.enrichReferences(
+              department
+            );
           } catch (error) {
             this.logger.error(
               `[Hospital Department] Error enriching department ${department._id}: ${error.message}`,
@@ -275,22 +290,25 @@ export class DepartmentService {
       );
       const totalCount = await this.hospitalDepartmentRepoService.count({
         hospital: hospital._id,
-        isDeleted: false,
-        isConfirmed: true
+        isConfirmed: true,
       });
       return {
         message: "success",
-        departments: enrichedDepartments,
-        pagination: {
-          total: totalCount,
-          page,
-          limit,
-          pages: Math.ceil(totalCount / limit)
-        }
+        date: {
+          departments: enrichedDepartments,
+          pagination: {
+            total: totalCount,
+            page,
+            limit,
+            pages: Math.ceil(totalCount / limit),
+          },
+        },
       };
     } catch (error) {
-      if (error instanceof NotFoundException ||
-        error instanceof UnauthorizedException) {
+      if (
+        error instanceof NotFoundException ||
+        error instanceof UnauthorizedException
+      ) {
         throw error;
       }
       this.logger.error(
@@ -300,5 +318,4 @@ export class DepartmentService {
       throw new InternalServerErrorException("Failed to retrieve departments");
     }
   }
-  //================== deleteDepartment ====================
 }

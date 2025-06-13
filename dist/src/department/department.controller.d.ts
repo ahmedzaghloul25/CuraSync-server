@@ -31,16 +31,18 @@ export declare class DepartmentController {
     }>;
     getDepartment(departmentId: string, employee: EmployeeDocument, hospital: HospitalDocument): Promise<{
         message: string;
-        department: any;
+        department: import("../../common/types").EnrichedDepartmentDoc;
     }>;
     getAllDepartments(page: number | undefined, limit: number | undefined, employee: EmployeeDocument, hospital: HospitalDocument): Promise<{
         message: string;
-        departments: any[];
-        pagination: {
-            total: number;
-            page: number;
-            limit: number;
-            pages: number;
+        date: {
+            departments: any[];
+            pagination: {
+                total: number;
+                page: number;
+                limit: number;
+                pages: number;
+            };
         };
     }>;
 }

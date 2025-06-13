@@ -8,7 +8,7 @@ import {
   IsArray,
   ValidateNested,
 } from "class-validator";
-import { TYPES } from "common/types";
+import { ImagingBodyRegions, ImagingTypes } from "common/types";
 
 export class AddImagingCatalogDto {
   @IsString()
@@ -19,11 +19,11 @@ export class AddImagingCatalogDto {
   @IsNotEmpty()
   code: string;
 
-  @IsEnum(TYPES.ImagingTypes)
+  @IsEnum(ImagingTypes)
   @IsNotEmpty()
   modality: string;
 
-  @IsEnum(TYPES.ImagingBodyRegions)
+  @IsEnum(ImagingBodyRegions)
   @IsNotEmpty()
   bodyRegion: string;
 

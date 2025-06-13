@@ -48,7 +48,7 @@ __decorate([
     __metadata("design:type", String)
 ], AddLabCatalogDto.prototype, "loincCode", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(types_1.TYPES.LAbTestCategory),
+    (0, class_validator_1.IsEnum)(types_1.LAbTestCategory),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddLabCatalogDto.prototype, "category", void 0);
@@ -59,7 +59,7 @@ __decorate([
     __metadata("design:type", String)
 ], AddLabCatalogDto.prototype, "description", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(types_1.TYPES.SpecimenType),
+    (0, class_validator_1.IsEnum)(types_1.SpecimenType),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddLabCatalogDto.prototype, "specimenType", void 0);

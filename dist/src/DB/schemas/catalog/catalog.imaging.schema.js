@@ -46,14 +46,14 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         type: String,
-        enum: types_1.TYPES.ImagingTypes,
+        enum: types_1.ImagingTypes,
     }),
     __metadata("design:type", String)
 ], ImagingCatalog.prototype, "modality", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         type: String,
-        enum: types_1.TYPES.ImagingBodyRegions,
+        enum: types_1.ImagingBodyRegions,
     }),
     __metadata("design:type", String)
 ], ImagingCatalog.prototype, "bodyRegion", void 0);
@@ -93,5 +93,5 @@ exports.ImagingCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.ImagingCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: ImagingCatalog.name, schema: exports.ImagingCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
+exports.ImagingCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: ImagingCatalog.name, schema: exports.ImagingCatalogSchema }], types_1.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.imaging.schema.js.map

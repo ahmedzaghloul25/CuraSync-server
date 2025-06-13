@@ -57,5 +57,5 @@ exports.HospitalDisposable = HospitalDisposable = __decorate([
 ], HospitalDisposable);
 exports.HospitalDisposableSchema = mongoose_1.SchemaFactory.createForClass(HospitalDisposable);
 exports.HospitalDisposableSchema.index({ catalogId: 1, hospital: 1 }, { unique: true });
-exports.HospitalDisposableModule = mongoose_1.MongooseModule.forFeature([{ name: HospitalDisposable.name, schema: exports.HospitalDisposableSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.HospitalDisposableModule = mongoose_1.MongooseModule.forFeature([{ name: HospitalDisposable.name, schema: exports.HospitalDisposableSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.disposable.schema.js.map

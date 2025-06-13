@@ -24,7 +24,7 @@ __decorate([
 ], RequestNewOtpDto.prototype, "email", void 0);
 __decorate([
     (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.IsEnum)(types_1.TYPES.OtpType),
+    (0, class_validator_1.IsEnum)(types_1.OtpType),
     __metadata("design:type", String)
 ], RequestNewOtpDto.prototype, "otpFor", void 0);
 //# sourceMappingURL=requestNewOtp.js.map

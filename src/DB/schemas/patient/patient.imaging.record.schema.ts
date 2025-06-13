@@ -1,6 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { CoreProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString, RecordPriorityTypes, RecordStatusTypes } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema()
@@ -11,13 +11,13 @@ export class PatientImagingOrder extends CoreProps {
   })
   imaging: Types.ObjectId;
   @Prop({
-    enum: TYPES.RecordPriorityTypes,
-    default: TYPES.RecordPriorityTypes.MEDIUM,
+    enum: RecordPriorityTypes,
+    default: RecordPriorityTypes.MEDIUM,
   })
   priority: string;
   @Prop({
-    enum: Object.values(TYPES.RecordStatusTypes),
-    default: TYPES.RecordStatusTypes.PENDING,
+    enum: Object.values(RecordStatusTypes),
+    default: RecordStatusTypes.PENDING,
   })
   status: string;
   @Prop({ type: Date, required: true })
@@ -46,7 +46,7 @@ export const PatientImagingOrderSchema =
   SchemaFactory.createForClass(PatientImagingOrder);
 export const PatientImagingOrderModule = MongooseModule.forFeature(
   [{ name: PatientImagingOrder.name, schema: PatientImagingOrderSchema }],
-  TYPES.connectionNameString.HOSPITAL
+  connectionNameString.HOSPITAL
 );
 export type PatientImagingOrderDocument =
   HydratedDocument<PatientImagingOrder>;

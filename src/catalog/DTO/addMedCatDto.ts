@@ -9,7 +9,7 @@ import {
   IsOptional,
   ValidateNested,
 } from "class-validator";
-import { TYPES } from "common/types";
+import { MedicationForm, MedicineUnits } from "common/types";
 
 export class AddMedicineCatalogDto {
   @IsString()
@@ -23,11 +23,11 @@ export class AddMedicineCatalogDto {
   @IsOptional()
   brandName?: string[];
 
-  @IsEnum(TYPES.MedicationForm)
+  @IsEnum(MedicationForm)
   @IsNotEmpty()
   form: string;
 
-  @IsEnum(TYPES.MedicineUnits)
+  @IsEnum(MedicineUnits)
   @IsNotEmpty()
   unit: string;
 

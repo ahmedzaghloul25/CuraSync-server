@@ -55,5 +55,5 @@ exports.UnitCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.UnitCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: UnitCatalog.name, schema: exports.UnitCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
+exports.UnitCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: UnitCatalog.name, schema: exports.UnitCatalogSchema }], types_1.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.unit.schema.js.map

@@ -25,7 +25,7 @@ let PatientMedicineOrderRepoService = class PatientMedicineOrderRepoService exte
     }
 };
 PatientMedicineOrderRepoService = __decorate([
-    __param(0, (0, mongoose_1.InjectModel)(patient_medicine_record_schema_1.PatientMedicineOrder.name, types_1.TYPES.connectionNameString.HOSPITAL)),
+    __param(0, (0, mongoose_1.InjectModel)(patient_medicine_record_schema_1.PatientMedicineOrder.name, types_1.connectionNameString.HOSPITAL)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], PatientMedicineOrderRepoService);
 exports.default = PatientMedicineOrderRepoService;

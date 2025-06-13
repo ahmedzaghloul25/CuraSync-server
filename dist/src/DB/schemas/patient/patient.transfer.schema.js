@@ -37,8 +37,8 @@ __decorate([
 ], PatientTransfer.prototype, "transferTo", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.TransferStatusType,
-        default: types_1.TYPES.TransferStatusType.PENDING,
+        enum: types_1.TransferStatusType,
+        default: types_1.TransferStatusType.PENDING,
     }),
     __metadata("design:type", String)
 ], PatientTransfer.prototype, "status", void 0);
@@ -57,5 +57,5 @@ exports.PatientTransfer = PatientTransfer = __decorate([
     })
 ], PatientTransfer);
 exports.TransferSchema = mongoose_1.SchemaFactory.createForClass(PatientTransfer);
-exports.TransferModule = mongoose_1.MongooseModule.forFeature([{ name: PatientTransfer.name, schema: exports.TransferSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.TransferModule = mongoose_1.MongooseModule.forFeature([{ name: PatientTransfer.name, schema: exports.TransferSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.transfer.schema.js.map

@@ -166,6 +166,7 @@ export class EmployeeService {
           _id: employeeId,
           hospital: hospital._id,
         },
+        "",
         { password: 0, otp: 0, otpExpireAt: 0, otpFor: 0 }
       );
       if (!emp) {
@@ -282,53 +283,6 @@ export class EmployeeService {
       throw new InternalServerErrorException("Failed to fetch employee data");
     }
   }
-  //===================== deleteEmployee =========================
-  /**
-   * Deletes an employee by ID
-   * @param employeeId - The ID of the employee to delete
-   * @param hospital - The hospital to which the employee belongs
-   * @param employee - The employee performing the action
-   * @returns An object containing a success message and the deleted employee ID
-   * @throws UnauthorizedException if the employee does not belong to the hospital
-   * @throws NotFoundException if the employee is not found
-   * @throws InternalServerErrorException if an error occurs during the process
-   */
-  async deleteEmployee(
-    employeeId: string,
-    hospital: HospitalDocument,
-    employee: EmployeeDocument
-  ) {
-    try {
-      if (!employee.hospital.equals(hospital._id)) {
-        throw new UnauthorizedException("Unauthorized action");
-      }
-      const emp = await this.employeeRepoService.findOne({
-        _id: employeeId,
-        hospital: hospital._id,
-        isFreezed: { $exists: false },
-      });
-      if (!emp) {
-        throw new NotFoundException("Employee not found or freezed");
-      }
-      await this.employeeRepoService.deleteOne({ _id: employeeId });
-      this.logger.log(
-        `[Employee Service] Employee ${employeeId} deleted successfully by ${employee._id}`
-      );
-      return { message: "success", employeeId };
-    } catch (error) {
-      this.logger.error(
-        `[Employee Service] Error deleting employee: ${error.message}`,
-        error.stack
-      );
-      if (
-        error instanceof NotFoundException ||
-        error instanceof UnauthorizedException
-      ) {
-        throw error;
-      }
-      throw new InternalServerErrorException("Failed to delete employee");
-    }
-  }
   //===================== freezeEmployee =========================
   /**
    * Freezes an employee by ID
@@ -359,7 +313,7 @@ export class EmployeeService {
       }
       await this.employeeRepoService.updateOne(
         { _id: employeeId },
-        { isFreezed: true }
+        { isFreezed: true, freezedBy : employee._id }
       );
       this.logger.log(
         `[Employee Service] Employee ${employeeId} freezed successfully by ${employee._id}`
@@ -409,7 +363,7 @@ export class EmployeeService {
       }
       await this.employeeRepoService.updateOne(
         { _id: employeeId },
-        { $unset : {isFreezed: 1} }
+        { $unset: { isFreezed: 1 } }
       );
       this.logger.log(
         `[Employee Service] Employee ${employeeId} unfrozen successfully by ${employee._id}`

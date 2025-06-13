@@ -9,17 +9,21 @@ class DbRepoService {
     async create(data) {
         return await this.model.create(data);
     }
-    async findOne(query, options) {
-        return await this.model.findOne(query, options);
+    async findOne(query, populate = "", options) {
+        return await this.model.findOne(query, options).populate(populate);
     }
-    async findAll(query, options, skip = 0, limit = 100) {
-        return await this.model.find(query, options).skip(skip).limit(limit);
+    async findAll(query, options, skip = 0, limit = 100, populate = "") {
+        return await this.model
+            .find(query, options)
+            .skip(skip)
+            .limit(limit)
+            .populate(populate);
     }
     async count(query) {
         return await this.model.countDocuments(query);
     }
-    async findById(id) {
-        return await this.model.findById(id);
+    async findById(id, populate = "", options) {
+        return await this.model.findById(id, options).populate(populate);
     }
     async deleteOne(query) {
         return await this.model.deleteOne(query);

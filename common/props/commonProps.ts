@@ -1,5 +1,4 @@
 import { Prop } from "@nestjs/mongoose";
-import { TYPES } from "common/types";
 import { Types } from "mongoose";
 
 export abstract class CoreProps {

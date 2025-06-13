@@ -38,8 +38,8 @@ __decorate([
 ], PatientFile.prototype, "hospital", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.FileStatus,
-        default: types_1.TYPES.FileStatus.ACTIVE,
+        enum: types_1.FileStatus,
+        default: types_1.FileStatus.ACTIVE,
     }),
     __metadata("design:type", String)
 ], PatientFile.prototype, "status", void 0);
@@ -77,5 +77,5 @@ exports.PatientFile = PatientFile = __decorate([
     })
 ], PatientFile);
 exports.PatientFileSchema = mongoose_1.SchemaFactory.createForClass(PatientFile);
-exports.PatientFileModule = mongoose_1.MongooseModule.forFeature([{ name: PatientFile.name, schema: exports.PatientFileSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.PatientFileModule = mongoose_1.MongooseModule.forFeature([{ name: PatientFile.name, schema: exports.PatientFileSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.file.schema.js.map

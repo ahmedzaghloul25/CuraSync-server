@@ -49,5 +49,5 @@ exports.DepartmentCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.DepartmentCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: DepartmentCatalog.name, schema: exports.DepartmentCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
+exports.DepartmentCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: DepartmentCatalog.name, schema: exports.DepartmentCatalogSchema }], types_1.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.department.schema.js.map

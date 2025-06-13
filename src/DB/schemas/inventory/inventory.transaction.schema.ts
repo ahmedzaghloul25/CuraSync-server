@@ -1,6 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { ConfirmableProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString, InventoryItemTypes, TransactionTypes } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({ timestamps: true })
@@ -27,13 +27,13 @@ export class InventoryTransaction extends ConfirmableProps {
   })
   hospital: Types.ObjectId;
   @Prop({
-    enum: TYPES.InventoryItemTypes,
+    enum: InventoryItemTypes,
     required: true,
   })
   forItem: string;
   @Prop({
     required: true,
-    enum: TYPES.TransactionTypes,
+    enum: TransactionTypes,
   })
   transactionType: string;
 
@@ -94,7 +94,7 @@ export const InventoryTransactionSchema =
   SchemaFactory.createForClass(InventoryTransaction);
 export const InventoryTransactionModule = MongooseModule.forFeature(
   [{ name: InventoryTransaction.name, schema: InventoryTransactionSchema }],
-  TYPES.connectionNameString.HOSPITAL
+  connectionNameString.HOSPITAL
 );
 export type InventoryTransactionDocument =
   HydratedDocument<InventoryTransaction>;

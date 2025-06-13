@@ -78,5 +78,5 @@ exports.VendorCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.VendorCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: VendorCatalog.name, schema: exports.VendorCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
+exports.VendorCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: VendorCatalog.name, schema: exports.VendorCatalogSchema }], types_1.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.vendor.schema.js.map

@@ -1,11 +1,11 @@
-import { TYPES } from "common/types";
+import { LAbTestCategory, SpecimenType } from "common/types";
 export declare class AddLabCatalogDto {
     name: string;
     code: string;
     loincCode?: string;
-    category: TYPES.LAbTestCategory;
+    category: LAbTestCategory;
     description?: string;
-    specimenType: TYPES.SpecimenType;
+    specimenType: SpecimenType;
     specimenRequirements?: string;
     processingTime?: string;
     referenceValues?: string;

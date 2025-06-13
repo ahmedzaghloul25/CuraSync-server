@@ -38,14 +38,14 @@ __decorate([
 ], MedicineCatalog.prototype, "brandName", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.MedicationForm,
+        enum: types_1.MedicationForm,
         required: true,
     }),
     __metadata("design:type", String)
 ], MedicineCatalog.prototype, "form", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.MedicineUnits,
+        enum: types_1.MedicineUnits,
         required: true,
     }),
     __metadata("design:type", String)
@@ -65,5 +65,5 @@ exports.MedicineCatalog = MedicineCatalog = __decorate([
     })
 ], MedicineCatalog);
 exports.MedicineCatalogSchema = mongoose_1.SchemaFactory.createForClass(MedicineCatalog);
-exports.MedicineCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: MedicineCatalog.name, schema: exports.MedicineCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
+exports.MedicineCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: MedicineCatalog.name, schema: exports.MedicineCatalogSchema }], types_1.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.medicine.schema.js.map

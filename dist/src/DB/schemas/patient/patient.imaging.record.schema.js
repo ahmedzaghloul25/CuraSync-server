@@ -34,15 +34,15 @@ __decorate([
 ], PatientImagingOrder.prototype, "imaging", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.RecordPriorityTypes,
-        default: types_1.TYPES.RecordPriorityTypes.MEDIUM,
+        enum: types_1.RecordPriorityTypes,
+        default: types_1.RecordPriorityTypes.MEDIUM,
     }),
     __metadata("design:type", String)
 ], PatientImagingOrder.prototype, "priority", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: Object.values(types_1.TYPES.RecordStatusTypes),
-        default: types_1.TYPES.RecordStatusTypes.PENDING,
+        enum: Object.values(types_1.RecordStatusTypes),
+        default: types_1.RecordStatusTypes.PENDING,
     }),
     __metadata("design:type", String)
 ], PatientImagingOrder.prototype, "status", void 0);
@@ -80,5 +80,5 @@ exports.PatientImagingOrder = PatientImagingOrder = __decorate([
     (0, mongoose_1.Schema)()
 ], PatientImagingOrder);
 exports.PatientImagingOrderSchema = mongoose_1.SchemaFactory.createForClass(PatientImagingOrder);
-exports.PatientImagingOrderModule = mongoose_1.MongooseModule.forFeature([{ name: PatientImagingOrder.name, schema: exports.PatientImagingOrderSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.PatientImagingOrderModule = mongoose_1.MongooseModule.forFeature([{ name: PatientImagingOrder.name, schema: exports.PatientImagingOrderSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.imaging.record.schema.js.map

@@ -13,11 +13,11 @@ exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const hospital_emp_repoService_1 = require("../DB/repository/hospital/hospital.emp.repoService");
 const services_1 = require("../../common/services");
-const types_1 = require("../../common/types");
 const event_emitter_1 = require("@nestjs/event-emitter");
 const fakeDelay_1 = require("../../common/utils/fakeDelay");
 const jwtToken_1 = require("../../common/services/jwtToken");
 const roles_1 = require("../../common/types/roles");
+const types_1 = require("../../common/types");
 let AuthService = class AuthService {
     employeeRepoService;
     hashing;
@@ -43,7 +43,7 @@ let AuthService = class AuthService {
             await this.employeeRepoService.updateOne({ _id: employee._id }, {
                 otp: this.hashing.createHash(otp),
                 otpExpireAt: otpExpire,
-                otpFor: types_1.TYPES.OtpType.CONFIRM_MAIL,
+                otpFor: types_1.OtpType.CONFIRM_MAIL,
             });
             const options = {
                 to: employee.email,
@@ -63,7 +63,7 @@ let AuthService = class AuthService {
     async confirmEmail(body) {
         const employee = await this.employeeRepoService.findOne({
             email: body.email,
-            otpFor: types_1.TYPES.OtpType.CONFIRM_MAIL,
+            otpFor: types_1.OtpType.CONFIRM_MAIL,
         });
         if (!employee || employee.isEmailConfirmed) {
             await (0, fakeDelay_1.fakeDelay)(200);
@@ -92,7 +92,7 @@ let AuthService = class AuthService {
             return { message: "Check your Inbox in case of valid Email" };
         }
         if (employee.isEmailConfirmed &&
-            body.otpFor === types_1.TYPES.OtpType.CONFIRM_MAIL) {
+            body.otpFor === types_1.OtpType.CONFIRM_MAIL) {
             await (0, fakeDelay_1.fakeDelay)(170);
             return { message: "Check your Inbox in case of valid Email" };
         }
@@ -147,12 +147,12 @@ let AuthService = class AuthService {
         await this.employeeRepoService.updateOne({ _id: employee._id }, {
             otp: this.hashing.createHash(otp),
             otpExpireAt: otpExpire,
-            otpFor: types_1.TYPES.OtpType.PASS_RESET,
+            otpFor: types_1.OtpType.PASS_RESET,
         });
         const options = {
             to: employee.email,
-            subject: types_1.TYPES.OtpType.PASS_RESET,
-            html: `<p>Please use OTP <b>${otp}</b> to ${types_1.TYPES.OtpType.PASS_RESET} within 15 minutes</p>`,
+            subject: types_1.OtpType.PASS_RESET,
+            html: `<p>Please use OTP <b>${otp}</b> to ${types_1.OtpType.PASS_RESET} within 15 minutes</p>`,
         };
         this.event.emit("sendEmail", options);
         return { message: "OTP sent to your email" };
@@ -161,7 +161,7 @@ let AuthService = class AuthService {
         const employee = await this.employeeRepoService.findOne({
             email,
             isEmailConfirmed: true,
-            otpFor: types_1.TYPES.OtpType.PASS_RESET,
+            otpFor: types_1.OtpType.PASS_RESET,
             otpExpireAt: { $gt: new Date() },
         });
         if (!employee || !(await this.otp.verify(employee, otp))) {

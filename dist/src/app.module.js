@@ -14,12 +14,13 @@ const mongoose_1 = require("@nestjs/mongoose");
 const config_1 = require("@nestjs/config");
 const auth_module_1 = require("./auth/auth.module");
 const catalog_module_1 = require("./catalog/catalog.module");
-const types_1 = require("../common/types");
 const throttler_1 = require("@nestjs/throttler");
 const core_1 = require("@nestjs/core");
 const hospital_module_1 = require("./hospital/hospital.module");
 const department_module_1 = require("./department/department.module");
 const employee_module_1 = require("./employee/employee.module");
+const unit_module_1 = require("./unit/unit.module");
+const types_1 = require("../common/types");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -41,7 +42,7 @@ exports.AppModule = AppModule = __decorate([
                     uri: configService.get("DB_HOSPITAL"),
                 }),
                 inject: [config_1.ConfigService],
-                connectionName: types_1.TYPES.connectionNameString.HOSPITAL,
+                connectionName: types_1.connectionNameString.HOSPITAL,
             }),
             mongoose_1.MongooseModule.forRootAsync({
                 imports: [config_1.ConfigModule],
@@ -49,7 +50,7 @@ exports.AppModule = AppModule = __decorate([
                     uri: configService.get("DB_CATALOG"),
                 }),
                 inject: [config_1.ConfigService],
-                connectionName: types_1.TYPES.connectionNameString.CATALOG,
+                connectionName: types_1.connectionNameString.CATALOG,
             }),
             mongoose_1.MongooseModule.forRootAsync({
                 imports: [config_1.ConfigModule],
@@ -57,7 +58,7 @@ exports.AppModule = AppModule = __decorate([
                     uri: configService.get("DB_SUPER"),
                 }),
                 inject: [config_1.ConfigService],
-                connectionName: types_1.TYPES.connectionNameString.SUPER,
+                connectionName: types_1.connectionNameString.SUPER,
             }),
             config_1.ConfigModule.forRoot({
                 isGlobal: true,
@@ -68,6 +69,7 @@ exports.AppModule = AppModule = __decorate([
             hospital_module_1.HospitalModule,
             department_module_1.DepartmentModule,
             employee_module_1.EmployeeModule,
+            unit_module_1.UnitModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, { provide: core_1.APP_GUARD, useClass: throttler_1.ThrottlerGuard }],

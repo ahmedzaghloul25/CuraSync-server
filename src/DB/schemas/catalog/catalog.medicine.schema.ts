@@ -1,6 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { CatalogProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString, MedicationForm, MedicineUnits } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -21,12 +21,12 @@ export class MedicineCatalog extends CatalogProps {
   @Prop()
   brandName: string[];
   @Prop({
-    enum: TYPES.MedicationForm,
+    enum: MedicationForm,
     required: true,
   })
   form: string;
   @Prop({
-    enum: TYPES.MedicineUnits,
+    enum: MedicineUnits,
     required: true,
   })
   unit: string;
@@ -42,6 +42,6 @@ export const MedicineCatalogSchema =
   SchemaFactory.createForClass(MedicineCatalog);
 export const MedicineCatalogModule = MongooseModule.forFeature(
   [{ name: MedicineCatalog.name, schema: MedicineCatalogSchema }],
-  TYPES.connectionNameString.CATALOG
+  connectionNameString.CATALOG
 );
 export type MedicineCatalogDocument = HydratedDocument<MedicineCatalog>;

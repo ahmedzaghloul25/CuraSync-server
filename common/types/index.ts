@@ -1,3 +1,1 @@
-import * as TYPES from './types'
-
-export {TYPES}
+export * from './types'

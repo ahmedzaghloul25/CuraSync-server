@@ -82,8 +82,8 @@ __decorate([
 ], Billing.prototype, "amountPaid", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.BillingStatusType,
-        default: types_1.TYPES.BillingStatusType.PENDING,
+        enum: types_1.BillingStatusType,
+        default: types_1.BillingStatusType.PENDING,
     }),
     __metadata("design:type", String)
 ], Billing.prototype, "status", void 0);
@@ -106,5 +106,5 @@ exports.BillingSchema.pre("save", function (next) {
         next(error);
     }
 });
-exports.BillingModule = mongoose_1.MongooseModule.forFeature([{ name: Billing.name, schema: exports.BillingSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.BillingModule = mongoose_1.MongooseModule.forFeature([{ name: Billing.name, schema: exports.BillingSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.billing.schema.js.map

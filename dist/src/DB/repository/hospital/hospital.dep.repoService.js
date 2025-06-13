@@ -27,7 +27,7 @@ let HospitalDepartmentRepoService = class HospitalDepartmentRepoService extends 
 };
 HospitalDepartmentRepoService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(hospital_department_schema_1.HospitalDepartment.name, types_1.TYPES.connectionNameString.HOSPITAL)),
+    __param(0, (0, mongoose_1.InjectModel)(hospital_department_schema_1.HospitalDepartment.name, types_1.connectionNameString.HOSPITAL)),
     __metadata("design:paramtypes", [mongoose_2.Model])
 ], HospitalDepartmentRepoService);
 exports.default = HospitalDepartmentRepoService;

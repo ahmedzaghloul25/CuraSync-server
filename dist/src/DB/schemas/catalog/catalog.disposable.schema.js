@@ -46,5 +46,5 @@ exports.DisposableCatalogSchema.pre("save", function (next) {
     this.slug = (0, utils_1._slugify)(this.name);
     next();
 });
-exports.DisposableCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: DisposableCatalog.name, schema: exports.DisposableCatalogSchema }], types_1.TYPES.connectionNameString.CATALOG);
+exports.DisposableCatalogModule = mongoose_1.MongooseModule.forFeature([{ name: DisposableCatalog.name, schema: exports.DisposableCatalogSchema }], types_1.connectionNameString.CATALOG);
 //# sourceMappingURL=catalog.disposable.schema.js.map

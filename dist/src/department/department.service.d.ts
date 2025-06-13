@@ -7,6 +7,7 @@ import HospitalDepartmentRepoService from "src/DB/repository/hospital/hospital.d
 import { Types } from "mongoose";
 import { EmployeeRepoService } from "src/DB/repository/hospital/hospital.emp.repoService";
 import { CrossDbResolverService } from "common/services/databaseIdResolver";
+import { EnrichedDepartmentDoc } from "common/types/types";
 export declare class DepartmentService {
     private readonly departmentCatalog;
     private readonly hospitalDepartmentRepoService;
@@ -40,16 +41,18 @@ export declare class DepartmentService {
     }>;
     getDepartment(departmentId: string, employee: EmployeeDocument, hospital: HospitalDocument): Promise<{
         message: string;
-        department: any;
+        department: EnrichedDepartmentDoc;
     }>;
     getAllDepartments(hospital: HospitalDocument, employee: EmployeeDocument, page?: number, limit?: number): Promise<{
         message: string;
-        departments: any[];
-        pagination: {
-            total: number;
-            page: number;
-            limit: number;
-            pages: number;
+        date: {
+            departments: any[];
+            pagination: {
+                total: number;
+                page: number;
+                limit: number;
+                pages: number;
+            };
         };
     }>;
 }

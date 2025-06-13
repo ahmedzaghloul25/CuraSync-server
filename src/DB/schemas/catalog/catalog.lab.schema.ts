@@ -1,6 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { CatalogProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString, LAbTestCategory, SpecimenType } from "common/types";
 import { _slugify } from "common/utils";
 import { Decimal128, HydratedDocument, Types } from "mongoose";
 
@@ -21,14 +21,14 @@ export class LabCatalog extends CatalogProps {
   @Prop()
   loincCode: string;
   @Prop({
-    enum: TYPES.LAbTestCategory,
+    enum: LAbTestCategory,
     required: true,
   })
   category: string;
   @Prop()
   description: string;
   @Prop({
-    enum: TYPES.SpecimenType,
+    enum: SpecimenType,
     required: true,
   })
   specimenType: string;
@@ -51,6 +51,6 @@ LabCatalogSchema.pre("save", function (next) {
 });
 export const LabCatalogModule = MongooseModule.forFeature(
   [{ name: LabCatalog.name, schema: LabCatalogSchema }],
-  TYPES.connectionNameString.CATALOG
+  connectionNameString.CATALOG
 );
 export type LabCatalogDocument = HydratedDocument<LabCatalog>;

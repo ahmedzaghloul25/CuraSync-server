@@ -6,7 +6,7 @@ import {
   Virtual,
 } from "@nestjs/mongoose";
 import { CoreProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -78,5 +78,5 @@ export class Patient extends CoreProps {
 export const PatientSchema = SchemaFactory.createForClass(Patient);
 export const PatientModule = MongooseModule.forFeature(
   [{ name: Patient.name, schema: PatientSchema }],
-TYPES.connectionNameString.HOSPITAL);
+connectionNameString.HOSPITAL);
 export type PatientDocument = HydratedDocument<Patient>;

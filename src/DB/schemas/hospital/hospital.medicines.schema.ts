@@ -1,6 +1,6 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { ConfirmableProps } from "common/props";
-import { TYPES } from "common/types";
+import { connectionNameString } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -37,5 +37,5 @@ export const HospitalMedicineSchema =
   HospitalMedicineSchema.index({catalogId : 1, hospital : 1}, {unique : true})
 export const HospitalMedicineModule = MongooseModule.forFeature(
   [{ name: HospitalMedicine.name, schema: HospitalMedicineSchema }],
-TYPES.connectionNameString.HOSPITAL);
+connectionNameString.HOSPITAL);
 export type HospitalMedicineDocument = HydratedDocument<HospitalMedicine>;

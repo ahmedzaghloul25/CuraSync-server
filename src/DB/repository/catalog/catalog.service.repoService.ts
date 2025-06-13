@@ -6,12 +6,12 @@ import {
   ServiceCatalog,
   ServiceCatalogDocument,
 } from "src/DB/schemas/catalog/catalog.service.schema";
-import { TYPES } from "common/types";
+import { connectionNameString } from "common/types";
 
 @Injectable()
 export default class ServiceCatalogRepoService extends DbRepoService<ServiceCatalogDocument> {
   constructor(
-    @InjectModel(ServiceCatalog.name, TYPES.connectionNameString.CATALOG)
+    @InjectModel(ServiceCatalog.name, connectionNameString.CATALOG)
     private readonly serviceCatalogModel: Model<ServiceCatalogDocument>
   ) {
     super(serviceCatalogModel);

@@ -1,5 +1,5 @@
 import { IsEmail, IsEnum, IsNotEmpty } from "class-validator";
-import { TYPES } from "common/types";
+import { OtpType } from "common/types";
 
 export class RequestNewOtpDto{
     @IsNotEmpty()
@@ -7,6 +7,6 @@ export class RequestNewOtpDto{
     email : string
 
     @IsNotEmpty()
-    @IsEnum(TYPES.OtpType)
+    @IsEnum(OtpType)
     otpFor : string
 }

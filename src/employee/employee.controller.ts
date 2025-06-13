@@ -115,23 +115,6 @@ export class EmployeeController {
     return this.employeeService.getOwnEmployeeData(employee, hospital);
   }
 
-  @Delete(":employeeId")
-  @HttpCode(200)
-  @UseGuards(AuthenticationGuard, AuthorizationGuard)
-  @Roles(...Object.values(HRRoles))
-  @ApiOperation({ summary: "Delete an employee by ID" })
-  @ApiResponse({
-    status: 200,
-    description: "Employee deleted successfully",
-  })
-  deleteEmployee(
-    @Param("employeeId", ParseObjectIdPipe) employeeId: string,
-    @Param("hospitalId", HospitalValidation) hospital: HospitalDocument,
-    @Employee() employee: EmployeeDocument
-  ) {
-    return this.employeeService.deleteEmployee(employeeId, hospital, employee);
-  }
-
   @Put(":employeeId")
   @HttpCode(200)
   @UseGuards(AuthenticationGuard, AuthorizationGuard)

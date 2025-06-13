@@ -38,12 +38,12 @@ __decorate([
     __metadata("design:type", String)
 ], AddImagingCatalogDto.prototype, "code", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(types_1.TYPES.ImagingTypes),
+    (0, class_validator_1.IsEnum)(types_1.ImagingTypes),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddImagingCatalogDto.prototype, "modality", void 0);
 __decorate([
-    (0, class_validator_1.IsEnum)(types_1.TYPES.ImagingBodyRegions),
+    (0, class_validator_1.IsEnum)(types_1.ImagingBodyRegions),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], AddImagingCatalogDto.prototype, "bodyRegion", void 0);

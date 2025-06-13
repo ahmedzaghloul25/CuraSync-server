@@ -60,8 +60,8 @@ __decorate([
 ], PatientLabOrder.prototype, "completedDate", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: types_1.TYPES.RecordPriorityTypes,
-        default: types_1.TYPES.RecordPriorityTypes.MEDIUM,
+        enum: types_1.RecordPriorityTypes,
+        default: types_1.RecordPriorityTypes.MEDIUM,
     }),
     __metadata("design:type", String)
 ], PatientLabOrder.prototype, "priority", void 0);
@@ -89,8 +89,8 @@ __decorate([
 ], PatientLabOrder.prototype, "log", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        enum: Object.values(types_1.TYPES.RecordStatusTypes),
-        default: types_1.TYPES.RecordStatusTypes.PENDING,
+        enum: Object.values(types_1.RecordStatusTypes),
+        default: types_1.RecordStatusTypes.PENDING,
     }),
     __metadata("design:type", String)
 ], PatientLabOrder.prototype, "status", void 0);
@@ -116,5 +116,5 @@ exports.PatientLabOrder = PatientLabOrder = __decorate([
     (0, mongoose_1.Schema)()
 ], PatientLabOrder);
 exports.PatientLabOrderSchema = mongoose_1.SchemaFactory.createForClass(PatientLabOrder);
-exports.PatientLabOrderModule = mongoose_1.MongooseModule.forFeature([{ name: PatientLabOrder.name, schema: exports.PatientLabOrderSchema }], types_1.TYPES.connectionNameString.HOSPITAL);
+exports.PatientLabOrderModule = mongoose_1.MongooseModule.forFeature([{ name: PatientLabOrder.name, schema: exports.PatientLabOrderSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.lab.record.schema.js.map
