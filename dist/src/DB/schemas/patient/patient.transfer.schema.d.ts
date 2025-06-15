@@ -1,6 +1,8 @@
-import { ConfirmableProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class PatientTransfer extends ConfirmableProps {
+export declare class PatientTransfer {
+    requestedBy: Types.ObjectId;
+    isConfirmed: boolean;
+    confirmedBy: Types.ObjectId;
     transferFrom: Types.ObjectId;
     transferTo: Types.ObjectId;
     status: string;

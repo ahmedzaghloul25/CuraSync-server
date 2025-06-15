@@ -11,14 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HospitalUnitModule = exports.HospitalUnitSchema = exports.HospitalUnit = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let HospitalUnit = class HospitalUnit extends props_1.ConfirmableProps {
+let HospitalUnit = class HospitalUnit {
     unitCatalogId;
     totalBedCount;
     availableBedCount;
     department;
+    isConfirmed;
+    confirmedBy;
+    createdBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.HospitalUnit = HospitalUnit;
 __decorate([
@@ -47,6 +52,42 @@ __decorate([
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], HospitalUnit.prototype, "department", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], HospitalUnit.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalUnit.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: mongoose_2.Types.ObjectId,
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalUnit.prototype, "createdBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], HospitalUnit.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalUnit.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalUnit.prototype, "modifiedBy", void 0);
 exports.HospitalUnit = HospitalUnit = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,
@@ -55,6 +96,6 @@ exports.HospitalUnit = HospitalUnit = __decorate([
     })
 ], HospitalUnit);
 exports.HospitalUnitSchema = mongoose_1.SchemaFactory.createForClass(HospitalUnit);
-exports.HospitalUnitSchema.index({ catalogId: 1, department: 1 }, { unique: true });
+exports.HospitalUnitSchema.index({ unitCatalogId: 1, department: 1 }, { unique: true });
 exports.HospitalUnitModule = mongoose_1.MongooseModule.forFeature([{ name: HospitalUnit.name, schema: exports.HospitalUnitSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.unit.schema.js.map

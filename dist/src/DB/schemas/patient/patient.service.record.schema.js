@@ -11,10 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceModule = exports.PatientServiceOrderSchema = exports.PatientServiceOrder = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientServiceOrder = class PatientServiceOrder extends props_1.CoreProps {
+let PatientServiceOrder = class PatientServiceOrder {
+    requestedBy;
+    modifiedBy;
     service;
     durationInDays;
     frequentPerDay;
@@ -31,8 +32,21 @@ let PatientServiceOrder = class PatientServiceOrder extends props_1.CoreProps {
 exports.PatientServiceOrder = PatientServiceOrder;
 __decorate([
     (0, mongoose_1.Prop)({
+        ref: "Employee",
         required: true,
-        ref: 'HospitalService'
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientServiceOrder.prototype, "requestedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientServiceOrder.prototype, "modifiedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        required: true,
+        ref: "HospitalService",
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], PatientServiceOrder.prototype, "service", void 0);
@@ -122,8 +136,6 @@ __decorate([
 exports.PatientServiceOrder = PatientServiceOrder = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,
-        toObject: { virtuals: true },
-        toJSON: { virtuals: true },
     })
 ], PatientServiceOrder);
 exports.PatientServiceOrderSchema = mongoose_1.SchemaFactory.createForClass(PatientServiceOrder);

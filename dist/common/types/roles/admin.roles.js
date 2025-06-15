@@ -1,9 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ExecutiveRoles = exports.HRRoles = exports.FinanceRoles = exports.AdminRoles = void 0;
+exports.ExecutiveRoles = exports.HRRoles = exports.FinanceRoles = exports.AdminRoles = exports.SuperRoles = void 0;
+var SuperRoles;
+(function (SuperRoles) {
+    SuperRoles["SUPER_ADMIN"] = "Super Admin";
+})(SuperRoles || (exports.SuperRoles = SuperRoles = {}));
 var AdminRoles;
 (function (AdminRoles) {
-    AdminRoles["HOSPITAL_ADMINISTRATOR"] = "Hospital Administrator";
+    AdminRoles["SENIOR_HOSPITAL_ADMIN"] = "Senior Hospital Admin";
+    AdminRoles["HOSPITAL_ADMINISTRATOR"] = "Hospital Admin";
     AdminRoles["OFFICE_MANAGER"] = "Office Manager";
     AdminRoles["UNIT_SECRETARY"] = "Unit Secretary";
     AdminRoles["MEDICAL_SECRETARY"] = "Medical Secretary";

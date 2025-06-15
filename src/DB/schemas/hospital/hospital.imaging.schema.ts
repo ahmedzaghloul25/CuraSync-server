@@ -1,10 +1,9 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { ConfirmableProps } from "common/props";
 import { connectionNameString } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({ timestamps: true })
-export class HospitalImaging extends ConfirmableProps {
+export class HospitalImaging {
   @Prop({
     required: true,
   })
@@ -19,10 +18,32 @@ export class HospitalImaging extends ConfirmableProps {
     ref: "Hospital",
   })
   hospital: Types.ObjectId;
+
+  @Prop({
+    type: Types.ObjectId,
+    ref: "Employee",
+    required: true,
+  })
+  createdBy: Types.ObjectId;
+  @Prop()
+  isFreezed: boolean;
+  @Prop({
+    ref: "Employee",
+  })
+  freezedBy: Types.ObjectId;
+
+  @Prop({
+    default: false,
+  })
+  isConfirmed: boolean;
+  @Prop({
+    ref: "Employee",
+  })
+  confirmedBy: Types.ObjectId;
 }
 export const HospitalImagingSchema =
   SchemaFactory.createForClass(HospitalImaging);
-HospitalImagingSchema.index({ catalogId: 1, hospital: 1 }, { unique: true });
+HospitalImagingSchema.index({ imagingCatalogId: 1, hospital: 1 }, { unique: true });
 export const HospitalImagingModule = MongooseModule.forFeature(
   [{ name: HospitalImaging.name, schema: HospitalImagingSchema }],
   connectionNameString.HOSPITAL

@@ -1,5 +1,4 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { ConfirmableProps } from "common/props";
 import { connectionNameString, TransferStatusType } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
@@ -8,7 +7,22 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class PatientTransfer extends ConfirmableProps {
+export class PatientTransfer {
+  @Prop({
+    ref: "Employee",
+    required: true,
+  })
+  requestedBy: Types.ObjectId;
+
+  @Prop({
+    default: false,
+  })
+  isConfirmed: boolean;
+  @Prop({
+    ref: "Employee",
+  })
+  confirmedBy: Types.ObjectId;
+
   @Prop({
     ref: "Unit",
     required: true,

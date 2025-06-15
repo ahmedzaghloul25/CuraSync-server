@@ -11,15 +11,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PatientImagingOrderModule = exports.PatientImagingOrderSchema = exports.PatientImagingOrder = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientImagingOrder = class PatientImagingOrder extends props_1.CoreProps {
+let PatientImagingOrder = class PatientImagingOrder {
     imaging;
     priority;
     status;
+    requestedBy;
     completedAt;
     completedBy;
+    modifiedBy;
     cancellationReason;
     file;
     unit;
@@ -47,17 +48,29 @@ __decorate([
     __metadata("design:type", String)
 ], PatientImagingOrder.prototype, "status", void 0);
 __decorate([
-    (0, mongoose_1.Prop)({ type: Date, required: true }),
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientImagingOrder.prototype, "requestedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: Date }),
     __metadata("design:type", Date)
 ], PatientImagingOrder.prototype, "completedAt", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         type: mongoose_2.Types.ObjectId,
         ref: "Employee",
-        required: true,
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], PatientImagingOrder.prototype, "completedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientImagingOrder.prototype, "modifiedBy", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)

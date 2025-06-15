@@ -11,16 +11,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TransferModule = exports.TransferSchema = exports.PatientTransfer = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientTransfer = class PatientTransfer extends props_1.ConfirmableProps {
+let PatientTransfer = class PatientTransfer {
+    requestedBy;
+    isConfirmed;
+    confirmedBy;
     transferFrom;
     transferTo;
     status;
     hospital;
 };
 exports.PatientTransfer = PatientTransfer;
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientTransfer.prototype, "requestedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], PatientTransfer.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientTransfer.prototype, "confirmedBy", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         ref: "Unit",

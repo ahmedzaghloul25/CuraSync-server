@@ -11,14 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HospitalDisposableModule = exports.HospitalDisposableSchema = exports.HospitalDisposable = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let HospitalDisposable = class HospitalDisposable extends props_1.ConfirmableProps {
+let HospitalDisposable = class HospitalDisposable {
     disposableCatalogId;
     price;
     hospital;
     inventory;
+    isConfirmed;
+    confirmedBy;
+    createdBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.HospitalDisposable = HospitalDisposable;
 __decorate([
@@ -48,6 +53,42 @@ __decorate([
     }),
     __metadata("design:type", Number)
 ], HospitalDisposable.prototype, "inventory", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], HospitalDisposable.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalDisposable.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: mongoose_2.Types.ObjectId,
+        ref: "Employee",
+        required: true
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalDisposable.prototype, "createdBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], HospitalDisposable.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalDisposable.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalDisposable.prototype, "modifiedBy", void 0);
 exports.HospitalDisposable = HospitalDisposable = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,

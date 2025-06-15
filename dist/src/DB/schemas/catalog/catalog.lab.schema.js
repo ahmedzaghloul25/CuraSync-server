@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LabCatalogModule = exports.LabCatalogSchema = exports.LabCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let LabCatalog = class LabCatalog extends props_1.CatalogProps {
+const mongoose_2 = require("mongoose");
+let LabCatalog = class LabCatalog {
     name;
     slug;
     code;
@@ -27,6 +27,13 @@ let LabCatalog = class LabCatalog extends props_1.CatalogProps {
     referenceValues;
     requiresConsent;
     requiredFasting;
+    addedByHospitalId;
+    addedByEmployeeId;
+    isConfirmed;
+    confirmedBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.LabCatalog = LabCatalog;
 __decorate([
@@ -35,7 +42,7 @@ __decorate([
 ], LabCatalog.prototype, "name", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        unique: true
+        unique: true,
     }),
     __metadata("design:type", String)
 ], LabCatalog.prototype, "slug", void 0);
@@ -85,6 +92,36 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Array)
 ], LabCatalog.prototype, "requiredFasting", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], LabCatalog.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], LabCatalog.prototype, "addedByEmployeeId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], LabCatalog.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], LabCatalog.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], LabCatalog.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], LabCatalog.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], LabCatalog.prototype, "modifiedBy", void 0);
 exports.LabCatalog = LabCatalog = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,

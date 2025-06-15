@@ -1,12 +1,18 @@
-import { CatalogProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class MedicineCatalog extends CatalogProps {
+export declare class MedicineCatalog {
     genericName: string;
     brandName: string[];
     form: string;
     unit: string;
     pharmaceuticalForm: string;
     concentration: string;
+    addedByHospitalId: Types.ObjectId;
+    addedByEmployeeId: Types.ObjectId;
+    isConfirmed: boolean;
+    confirmedBy: Types.ObjectId;
+    isFreezed: boolean;
+    freezedBy: Types.ObjectId;
+    modifiedBy: Types.ObjectId;
 }
 export declare const MedicineCatalogSchema: import("mongoose").Schema<MedicineCatalog, import("mongoose").Model<MedicineCatalog, any, any, any, import("mongoose").Document<unknown, any, MedicineCatalog, any> & MedicineCatalog & {
     _id: Types.ObjectId;

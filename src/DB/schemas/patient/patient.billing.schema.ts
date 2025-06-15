@@ -5,12 +5,11 @@ import {
   SchemaFactory,
   Virtual,
 } from "@nestjs/mongoose";
-import { ConfirmableProps } from "common/props";
 import { BillingStatusType, connectionNameString } from "common/types";
 import { Decimal128, HydratedDocument, Types } from "mongoose";
 
-@Schema()
-export class Billing extends ConfirmableProps {
+@Schema({ timestamps: true })
+export class Billing {
   @Prop({
     ref: "File",
     required: true,
@@ -53,6 +52,15 @@ export class Billing extends ConfirmableProps {
     default: BillingStatusType.PENDING,
   })
   status: string;
+  
+  @Prop({
+    default: false,
+  })
+  isConfirmed: boolean;
+  @Prop({
+    ref: "Employee",
+  })
+  confirmedBy: Types.ObjectId;
 }
 export const BillingSchema = SchemaFactory.createForClass(Billing);
 BillingSchema.pre("save", function (next) {

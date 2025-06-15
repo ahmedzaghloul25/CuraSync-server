@@ -11,13 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ServiceCatalogModule = exports.ServiceCatalogSchema = exports.ServiceCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let ServiceCatalog = class ServiceCatalog extends props_1.CatalogProps {
+const mongoose_2 = require("mongoose");
+let ServiceCatalog = class ServiceCatalog {
     name;
     slug;
     description;
+    addedByHospitalId;
+    addedByEmployeeId;
+    isConfirmed;
+    confirmedBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.ServiceCatalog = ServiceCatalog;
 __decorate([
@@ -40,6 +47,36 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], ServiceCatalog.prototype, "description", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ServiceCatalog.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ServiceCatalog.prototype, "addedByEmployeeId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], ServiceCatalog.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ServiceCatalog.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], ServiceCatalog.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ServiceCatalog.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ServiceCatalog.prototype, "modifiedBy", void 0);
 exports.ServiceCatalog = ServiceCatalog = __decorate([
     (0, mongoose_1.Schema)()
 ], ServiceCatalog);

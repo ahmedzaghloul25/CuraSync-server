@@ -1,7 +1,5 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { CONTAINS } from "class-validator";
 import { MIN_MAX_LENGTH } from "common/constants";
-import { ConfirmableProps } from "common/props";
 import { connectionNameString } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
@@ -10,7 +8,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class Hospital extends ConfirmableProps {
+export class Hospital {
   @Prop({
     unique: true,
     required: true,
@@ -54,7 +52,7 @@ export class Hospital extends ConfirmableProps {
   TIN: string;
   @Prop({
     type: { secure_url: String, Public_id: String },
-    required:  true
+    required: true,
   })
   medicalLicenseDoc: {
     secure_url: string;
@@ -62,7 +60,7 @@ export class Hospital extends ConfirmableProps {
   };
   @Prop({
     type: { secure_url: String, Public_id: String },
-    required:  true
+    required: true,
   })
   commercialRegDoc: {
     secure_url: string;
@@ -70,7 +68,7 @@ export class Hospital extends ConfirmableProps {
   };
   @Prop({
     type: { secure_url: String, Public_id: String },
-    required:  true
+    required: true,
   })
   TINdoc: {
     secure_url: string;
@@ -83,6 +81,29 @@ export class Hospital extends ConfirmableProps {
     secure_url: string;
     public_id: string;
   };
+  @Prop({
+    default: false,
+  })
+  isConfirmed: boolean;
+  @Prop({
+    ref: "Employee",
+  })
+  confirmedBy: Types.ObjectId;
+
+  @Prop({
+    type: Types.ObjectId,
+    ref: "Employee",
+    required: true,
+  })
+  createdBy: Types.ObjectId;
+  @Prop()
+  isFreezed: boolean;
+  @Prop()
+  freezedBy: Types.ObjectId;
+  @Prop({
+    ref: "Employee",
+  })
+  modifiedBy: Types.ObjectId;
 }
 
 export const HospitalSchema = SchemaFactory.createForClass(Hospital);

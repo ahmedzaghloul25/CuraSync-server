@@ -5,7 +5,7 @@ import {
   SchemaFactory,
   Virtual,
 } from "@nestjs/mongoose";
-import { CoreProps } from "common/props";
+import { MIN_MAX_LENGTH } from "common/constants";
 import { connectionNameString } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
@@ -14,31 +14,31 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class Patient extends CoreProps {
+export class Patient {
   @Prop({
     trim: true,
-    minlength: 2,
-    maxlength: 50,
+    minlength: MIN_MAX_LENGTH.nameMinInput,
+    maxlength: MIN_MAX_LENGTH.nameMaxInput,
     required: true,
   })
   firstName: string;
   @Prop({
     trim: true,
-    minlength: 2,
-    maxlength: 50,
+    minlength: MIN_MAX_LENGTH.nameMinInput,
+    maxlength: MIN_MAX_LENGTH.nameMaxInput,
     required: true,
   })
   middleName: string;
   @Prop({
     trim: true,
-    minlength: 2,
-    maxlength: 50,
+    minlength: MIN_MAX_LENGTH.nameMinInput,
+    maxlength: MIN_MAX_LENGTH.nameMaxInput,
     required: true,
   })
   LastName: string;
   @Prop({
-    minlength: 2,
-    maxlength: 400,
+    minlength: MIN_MAX_LENGTH.descMinInput,
+    maxlength: MIN_MAX_LENGTH.descMaxInput,
   })
   address: string;
   @Prop({
@@ -52,15 +52,8 @@ export class Patient extends CoreProps {
   @Prop({
     length: 14,
     required: true,
-    unique: true,
   })
   identification: string;
-  @Prop({
-    minlength: 2,
-    maxlength: 500,
-    required: true,
-  })
-  initialDiagnosis: string;
   @Prop()
   relative: [{ name: string; phone: string; relation: string }];
   @Prop({
@@ -69,14 +62,19 @@ export class Patient extends CoreProps {
   })
   hospital: Types.ObjectId;
   @Prop({
-    ref: "File",
+    type: Types.ObjectId,
+    ref: "Employee",
     required: true,
   })
-  file: Types.ObjectId;
+  createdBy: Types.ObjectId;
+  @Prop()
+  modifiedBy: Types.ObjectId;
 }
 
 export const PatientSchema = SchemaFactory.createForClass(Patient);
+PatientSchema.index({ identification: 1, hospital: 1 }, { unique: true });
 export const PatientModule = MongooseModule.forFeature(
   [{ name: Patient.name, schema: PatientSchema }],
-connectionNameString.HOSPITAL);
+  connectionNameString.HOSPITAL
+);
 export type PatientDocument = HydratedDocument<Patient>;

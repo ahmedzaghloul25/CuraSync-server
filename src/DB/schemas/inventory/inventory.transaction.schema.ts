@@ -1,10 +1,13 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { ConfirmableProps } from "common/props";
-import { connectionNameString, InventoryItemTypes, TransactionTypes } from "common/types";
+import {
+  connectionNameString,
+  InventoryItemTypes,
+  TransactionTypes,
+} from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({ timestamps: true })
-export class InventoryTransaction extends ConfirmableProps {
+export class InventoryTransaction {
   @Prop({
     ref: "HospitalMedicine",
   })
@@ -88,6 +91,21 @@ export class InventoryTransaction extends ConfirmableProps {
 
   @Prop()
   notes: string;
+
+  @Prop({
+    type: Types.ObjectId,
+    ref: "Employee",
+    required: true,
+  })
+  createdBy: Types.ObjectId;
+  @Prop({
+    default: false,
+  })
+  isConfirmed: boolean;
+  @Prop({
+    ref: "Employee",
+  })
+  confirmedBy: Types.ObjectId;
 }
 
 export const InventoryTransactionSchema =

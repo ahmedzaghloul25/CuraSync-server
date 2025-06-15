@@ -1,9 +1,14 @@
-import { ConfirmableProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class HospitalDepartment extends ConfirmableProps {
+export declare class HospitalDepartment {
     departmentCatalogId: Types.ObjectId;
     head: Types.ObjectId;
     hospital: Types.ObjectId;
+    isConfirmed: boolean;
+    confirmedBy: Types.ObjectId;
+    createdBy: Types.ObjectId;
+    isFreezed: boolean;
+    freezedBy: Types.ObjectId;
+    modifiedBy: Types.ObjectId;
 }
 export declare const HospitalDepartmentSchema: import("mongoose").Schema<HospitalDepartment, import("mongoose").Model<HospitalDepartment, any, any, any, import("mongoose").Document<unknown, any, HospitalDepartment, any> & HospitalDepartment & {
     _id: Types.ObjectId;

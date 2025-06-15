@@ -11,10 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BillingModule = exports.BillingSchema = exports.Billing = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let Billing = class Billing extends props_1.ConfirmableProps {
+let Billing = class Billing {
     file;
     medicine;
     lab;
@@ -25,6 +24,8 @@ let Billing = class Billing extends props_1.ConfirmableProps {
     tax;
     amountPaid;
     status;
+    isConfirmed;
+    confirmedBy;
 };
 exports.Billing = Billing;
 __decorate([
@@ -87,8 +88,20 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], Billing.prototype, "status", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], Billing.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Billing.prototype, "confirmedBy", void 0);
 exports.Billing = Billing = __decorate([
-    (0, mongoose_1.Schema)()
+    (0, mongoose_1.Schema)({ timestamps: true })
 ], Billing);
 exports.BillingSchema = mongoose_1.SchemaFactory.createForClass(Billing);
 exports.BillingSchema.pre("save", function (next) {

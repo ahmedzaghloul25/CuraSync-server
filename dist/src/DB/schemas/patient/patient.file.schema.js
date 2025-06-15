@@ -11,13 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PatientFileModule = exports.PatientFileSchema = exports.PatientFile = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
+const constants_1 = require("../../../../common/constants");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientFile = class PatientFile extends props_1.CoreProps {
+let PatientFile = class PatientFile {
     patient;
     hospital;
     status;
+    currentUnit;
+    initialDiagnosis;
     admissions;
     discharges;
 };
@@ -45,6 +47,31 @@ __decorate([
 ], PatientFile.prototype, "status", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
+        ref: "HospitalUnit"
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientFile.prototype, "currentUnit", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        minlength: 2,
+        maxlength: 500,
+        required: true,
+        type: [
+            {
+                date: { type: Date, required: true },
+                diagnosis: {
+                    type: String,
+                    minlength: constants_1.MIN_MAX_LENGTH.descMinInput,
+                    maxlength: constants_1.MIN_MAX_LENGTH.descMaxInput,
+                    required: true,
+                },
+            },
+        ],
+    }),
+    __metadata("design:type", Array)
+], PatientFile.prototype, "initialDiagnosis", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
         type: [
             {
                 date: { type: Date, required: true },
@@ -61,9 +88,12 @@ __decorate([
                 date: { type: Date, required: true },
                 fromUnit: { type: mongoose_2.Types.ObjectId, ref: "Unit" },
                 reasonOfDischarge: {
-                    enum: ["Improvement", "deceased"],
+                    enum: ["Improvement", "Deceased", "Own request"],
                     required: true,
                 },
+                requestedBy: { type: mongoose_2.Types.ObjectId, ref: "Employee", required: true },
+                isApproved: { type: Boolean, default: false },
+                approvedBy: { type: mongoose_2.Types.ObjectId, ref: "Employee" },
             },
         ],
     }),
@@ -72,10 +102,9 @@ __decorate([
 exports.PatientFile = PatientFile = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,
-        toJSON: { virtuals: true },
-        toObject: { virtuals: true },
     })
 ], PatientFile);
 exports.PatientFileSchema = mongoose_1.SchemaFactory.createForClass(PatientFile);
+exports.PatientFileSchema.index({ patient: 1, hospital: 1 }, { unique: true });
 exports.PatientFileModule = mongoose_1.MongooseModule.forFeature([{ name: PatientFile.name, schema: exports.PatientFileSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=patient.file.schema.js.map

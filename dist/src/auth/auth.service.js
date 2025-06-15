@@ -78,7 +78,7 @@ let AuthService = class AuthService {
             isEmailConfirmed: true,
             $unset: { otp: "", otpExpireAt: "", otpFor: "" },
         });
-        return { message: "success" };
+        return { message: "success", employee: employee._id };
     }
     async requestNewOtp(body) {
         const employee = await this.employeeRepoService.findOne({
@@ -114,7 +114,7 @@ let AuthService = class AuthService {
         const employee = await this.employeeRepoService.findOne({
             email: body.email,
             isEmailConfirmed: true,
-            isDeleted: { $exists: false },
+            isFreezed: { $exists: false },
         });
         if (!employee ||
             !this.hashing.verifyHash(body.password, employee.password)) {
@@ -125,7 +125,7 @@ let AuthService = class AuthService {
             occupation: employee.occupation,
         });
         res.cookie("auth-token", token, {
-            maxAge: 30 * 60 * 1000,
+            maxAge: 120 * 60 * 1000,
             httpOnly: true,
             sameSite: process.env.MODE === "DEV" ? "lax" : "strict",
             secure: process.env.MODE === "DEV" ? false : true,
@@ -136,10 +136,10 @@ let AuthService = class AuthService {
         const employee = await this.employeeRepoService.findOne({
             email,
             isEmailConfirmed: true,
-            isDeleted: { $exists: false },
+            isFreezed: { $exists: false },
         });
         if (!employee || employee.otpExpireAt > new Date()) {
-            this.logger.warn(`[AuthService] failed attempt to forgotPassword, input: ${email}`, "AuthService");
+            this.logger.warn(`[Auth Service] failed attempt to forgotPassword, input: ${email}`, "AuthService");
             await (0, fakeDelay_1.fakeDelay)(200);
             return { message: "OTP sent to your email" };
         }
@@ -175,7 +175,7 @@ let AuthService = class AuthService {
             passwordChangedAt: new Date(),
             $unset: { otp: "", otpFor: "", otpExpireAt: "" },
         });
-        this.logger.warn(`[AuthService] password reset for employee: ${employee._id}`, "AuthService");
+        this.logger.warn(`[Auth Service] password reset for employee: ${employee._id}`, "AuthService");
         return { message: "success" };
     }
 };

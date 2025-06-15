@@ -12,13 +12,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.DepartmentCatalogModule = exports.DepartmentCatalogSchema = exports.DepartmentCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const constants_1 = require("../../../../common/constants");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let DepartmentCatalog = class DepartmentCatalog extends props_1.CatalogProps {
+const mongoose_2 = require("mongoose");
+let DepartmentCatalog = class DepartmentCatalog {
     name;
     slug;
     description;
+    addedByHospitalId;
+    addedByEmployeeId;
+    isConfirmed;
+    confirmedBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.DepartmentCatalog = DepartmentCatalog;
 __decorate([
@@ -30,7 +37,7 @@ __decorate([
 ], DepartmentCatalog.prototype, "name", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        unique: true
+        unique: true,
     }),
     __metadata("design:type", String)
 ], DepartmentCatalog.prototype, "slug", void 0);
@@ -41,6 +48,36 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], DepartmentCatalog.prototype, "description", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DepartmentCatalog.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DepartmentCatalog.prototype, "addedByEmployeeId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], DepartmentCatalog.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DepartmentCatalog.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], DepartmentCatalog.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DepartmentCatalog.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DepartmentCatalog.prototype, "modifiedBy", void 0);
 exports.DepartmentCatalog = DepartmentCatalog = __decorate([
     (0, mongoose_1.Schema)()
 ], DepartmentCatalog);

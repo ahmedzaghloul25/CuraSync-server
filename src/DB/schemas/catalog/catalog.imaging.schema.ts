@@ -1,18 +1,21 @@
 // src/catalog/schemas/imaging-procedure.schema.ts
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { CatalogProps } from "common/props";
-import { connectionNameString, ImagingBodyRegions, ImagingTypes } from "common/types";
+import {
+  connectionNameString,
+  ImagingBodyRegions,
+  ImagingTypes,
+} from "common/types";
 import { _slugify } from "common/utils";
-import { HydratedDocument } from "mongoose";
+import { HydratedDocument, Types } from "mongoose";
 
 @Schema({ timestamps: true })
-export class ImagingCatalog extends CatalogProps {
+export class ImagingCatalog {
   @Prop({ required: true })
   name: string;
   @Prop({
-    unique : true
+    unique: true,
   })
-  slug : string
+  slug: string;
   @Prop({ required: true, unique: true })
   code: string;
   @Prop({
@@ -39,6 +42,25 @@ export class ImagingCatalog extends CatalogProps {
   contrastDetails: string;
   @Prop({ type: Boolean, default: false })
   requiresConsent: boolean;
+
+  @Prop()
+  addedByHospitalId: Types.ObjectId;
+  @Prop()
+  addedByEmployeeId: Types.ObjectId;
+
+  @Prop({
+    default: false,
+  })
+  isConfirmed: boolean;
+  @Prop()
+  confirmedBy: Types.ObjectId;
+
+  @Prop()
+  isFreezed: boolean;
+  @Prop()
+  freezedBy: Types.ObjectId;
+  @Prop()
+  modifiedBy: Types.ObjectId;
 }
 
 export const ImagingCatalogSchema =

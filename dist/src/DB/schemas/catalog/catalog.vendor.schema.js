@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VendorCatalogModule = exports.VendorCatalogSchema = exports.VendorCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let VendorCatalog = class VendorCatalog extends props_1.CatalogProps {
+const mongoose_2 = require("mongoose");
+let VendorCatalog = class VendorCatalog {
     name;
     slug;
     phone;
@@ -22,6 +22,13 @@ let VendorCatalog = class VendorCatalog extends props_1.CatalogProps {
     email;
     commercialRegNum;
     TIN;
+    addedByHospitalId;
+    addedByEmployeeId;
+    isConfirmed;
+    confirmedBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.VendorCatalog = VendorCatalog;
 __decorate([
@@ -70,6 +77,36 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], VendorCatalog.prototype, "TIN", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], VendorCatalog.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], VendorCatalog.prototype, "addedByEmployeeId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], VendorCatalog.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], VendorCatalog.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], VendorCatalog.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], VendorCatalog.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], VendorCatalog.prototype, "modifiedBy", void 0);
 exports.VendorCatalog = VendorCatalog = __decorate([
     (0, mongoose_1.Schema)()
 ], VendorCatalog);

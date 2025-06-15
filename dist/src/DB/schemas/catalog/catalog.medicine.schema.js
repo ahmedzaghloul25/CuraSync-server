@@ -11,15 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MedicineCatalogModule = exports.MedicineCatalogSchema = exports.MedicineCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
-let MedicineCatalog = class MedicineCatalog extends props_1.CatalogProps {
+const mongoose_2 = require("mongoose");
+let MedicineCatalog = class MedicineCatalog {
     genericName;
     brandName;
     form;
     unit;
     pharmaceuticalForm;
     concentration;
+    addedByHospitalId;
+    addedByEmployeeId;
+    isConfirmed;
+    confirmedBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.MedicineCatalog = MedicineCatalog;
 __decorate([
@@ -57,6 +64,36 @@ __decorate([
     }),
     __metadata("design:type", String)
 ], MedicineCatalog.prototype, "concentration", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], MedicineCatalog.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], MedicineCatalog.prototype, "addedByEmployeeId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], MedicineCatalog.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], MedicineCatalog.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], MedicineCatalog.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], MedicineCatalog.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], MedicineCatalog.prototype, "modifiedBy", void 0);
 exports.MedicineCatalog = MedicineCatalog = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,

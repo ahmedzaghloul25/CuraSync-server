@@ -11,14 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UnitCatalogModule = exports.UnitCatalogSchema = exports.UnitCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let UnitCatalog = class UnitCatalog extends props_1.CatalogProps {
+const mongoose_2 = require("mongoose");
+let UnitCatalog = class UnitCatalog {
     name;
     slug;
     description;
     departmentSlug;
+    addedByHospitalId;
+    addedByEmployeeId;
+    isConfirmed;
+    confirmedBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.UnitCatalog = UnitCatalog;
 __decorate([
@@ -43,10 +50,40 @@ __decorate([
 ], UnitCatalog.prototype, "description", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        required: true
+        required: true,
     }),
     __metadata("design:type", String)
 ], UnitCatalog.prototype, "departmentSlug", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], UnitCatalog.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], UnitCatalog.prototype, "addedByEmployeeId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], UnitCatalog.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], UnitCatalog.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], UnitCatalog.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], UnitCatalog.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], UnitCatalog.prototype, "modifiedBy", void 0);
 exports.UnitCatalog = UnitCatalog = __decorate([
     (0, mongoose_1.Schema)()
 ], UnitCatalog);

@@ -1,6 +1,5 @@
-import { CoreProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class Patient extends CoreProps {
+export declare class Patient {
     firstName: string;
     middleName: string;
     LastName: string;
@@ -8,14 +7,14 @@ export declare class Patient extends CoreProps {
     DOB: Date;
     phone: string;
     identification: string;
-    initialDiagnosis: string;
     relative: [{
         name: string;
         phone: string;
         relation: string;
     }];
     hospital: Types.ObjectId;
-    file: Types.ObjectId;
+    createdBy: Types.ObjectId;
+    modifiedBy: Types.ObjectId;
 }
 export declare const PatientSchema: import("mongoose").Schema<Patient, import("mongoose").Model<Patient, any, any, any, import("mongoose").Document<unknown, any, Patient, any> & Patient & {
     _id: Types.ObjectId;

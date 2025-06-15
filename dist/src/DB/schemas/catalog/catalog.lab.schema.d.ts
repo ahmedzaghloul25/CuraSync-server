@@ -1,6 +1,5 @@
-import { CatalogProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class LabCatalog extends CatalogProps {
+export declare class LabCatalog {
     name: string;
     slug: string;
     code: string;
@@ -13,6 +12,13 @@ export declare class LabCatalog extends CatalogProps {
     referenceValues: string;
     requiresConsent: boolean;
     requiredFasting: string[];
+    addedByHospitalId: Types.ObjectId;
+    addedByEmployeeId: Types.ObjectId;
+    isConfirmed: boolean;
+    confirmedBy: Types.ObjectId;
+    isFreezed: boolean;
+    freezedBy: Types.ObjectId;
+    modifiedBy: Types.ObjectId;
 }
 export declare const LabCatalogSchema: import("mongoose").Schema<LabCatalog, import("mongoose").Model<LabCatalog, any, any, any, import("mongoose").Document<unknown, any, LabCatalog, any> & LabCatalog & {
     _id: Types.ObjectId;

@@ -11,10 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PatientLabOrderModule = exports.PatientLabOrderSchema = exports.PatientLabOrder = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let PatientLabOrder = class PatientLabOrder extends props_1.CoreProps {
+let PatientLabOrder = class PatientLabOrder {
+    requestedBy;
+    modifiedBy;
     durationInDays;
     frequentPerDay;
     startDate;
@@ -28,6 +29,19 @@ let PatientLabOrder = class PatientLabOrder extends props_1.CoreProps {
     unit;
 };
 exports.PatientLabOrder = PatientLabOrder;
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientLabOrder.prototype, "requestedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], PatientLabOrder.prototype, "modifiedBy", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         min: 1,

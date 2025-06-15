@@ -1,6 +1,5 @@
-import { ConfirmableProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class InventoryTransaction extends ConfirmableProps {
+export declare class InventoryTransaction {
     medicine: Types.ObjectId;
     labItem: Types.ObjectId;
     disposableItem: Types.ObjectId;
@@ -22,6 +21,9 @@ export declare class InventoryTransaction extends ConfirmableProps {
     unitId: Types.ObjectId;
     patientId: Types.ObjectId;
     notes: string;
+    createdBy: Types.ObjectId;
+    isConfirmed: boolean;
+    confirmedBy: Types.ObjectId;
 }
 export declare const InventoryTransactionSchema: import("mongoose").Schema<InventoryTransaction, import("mongoose").Model<InventoryTransaction, any, any, any, import("mongoose").Document<unknown, any, InventoryTransaction, any> & InventoryTransaction & {
     _id: Types.ObjectId;

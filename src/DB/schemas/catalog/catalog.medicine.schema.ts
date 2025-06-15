@@ -1,6 +1,9 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { CatalogProps } from "common/props";
-import { connectionNameString, MedicationForm, MedicineUnits } from "common/types";
+import {
+  connectionNameString,
+  MedicationForm,
+  MedicineUnits,
+} from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
@@ -8,8 +11,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-// Shared Medicine schema across all Hospitals 
-export class MedicineCatalog extends CatalogProps {
+export class MedicineCatalog {
   @Prop({
     minlength: 2,
     maxlength: 100,
@@ -36,6 +38,25 @@ export class MedicineCatalog extends CatalogProps {
     trim: true,
   })
   concentration: string;
+
+  @Prop()
+  addedByHospitalId: Types.ObjectId;
+  @Prop()
+  addedByEmployeeId: Types.ObjectId;
+
+  @Prop({
+    default: false,
+  })
+  isConfirmed: boolean;
+  @Prop()
+  confirmedBy: Types.ObjectId;
+
+  @Prop()
+  isFreezed: boolean;
+  @Prop()
+  freezedBy: Types.ObjectId;
+  @Prop()
+  modifiedBy: Types.ObjectId;
 }
 
 export const MedicineCatalogSchema =

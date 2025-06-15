@@ -1,5 +1,4 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { CatalogProps } from "common/props";
 import { connectionNameString } from "common/types";
 import { _slugify } from "common/utils";
 import { Decimal128, HydratedDocument, Types } from "mongoose";
@@ -9,7 +8,7 @@ import { Decimal128, HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class DisposableCatalog extends CatalogProps {
+export class DisposableCatalog {
   @Prop({
     minlength: 2,
     maxlength: 100,
@@ -18,9 +17,28 @@ export class DisposableCatalog extends CatalogProps {
   })
   name: string;
   @Prop({
-    unique : true
+    unique: true,
   })
   slug: string;
+
+  @Prop()
+  addedByHospitalId: Types.ObjectId;
+  @Prop()
+  addedByEmployeeId: Types.ObjectId;
+
+  @Prop({
+    default: false,
+  })
+  isConfirmed: boolean;
+  @Prop()
+  confirmedBy: Types.ObjectId;
+
+  @Prop()
+  isFreezed: boolean;
+  @Prop()
+  freezedBy: Types.ObjectId;
+  @Prop()
+  modifiedBy: Types.ObjectId;
 }
 
 export const DisposableCatalogSchema =

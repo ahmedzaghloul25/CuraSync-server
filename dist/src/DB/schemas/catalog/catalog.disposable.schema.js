@@ -11,12 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DisposableCatalogModule = exports.DisposableCatalogSchema = exports.DisposableCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let DisposableCatalog = class DisposableCatalog extends props_1.CatalogProps {
+const mongoose_2 = require("mongoose");
+let DisposableCatalog = class DisposableCatalog {
     name;
     slug;
+    addedByHospitalId;
+    addedByEmployeeId;
+    isConfirmed;
+    confirmedBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.DisposableCatalog = DisposableCatalog;
 __decorate([
@@ -30,10 +37,40 @@ __decorate([
 ], DisposableCatalog.prototype, "name", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        unique: true
+        unique: true,
     }),
     __metadata("design:type", String)
 ], DisposableCatalog.prototype, "slug", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DisposableCatalog.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DisposableCatalog.prototype, "addedByEmployeeId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], DisposableCatalog.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DisposableCatalog.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], DisposableCatalog.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DisposableCatalog.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], DisposableCatalog.prototype, "modifiedBy", void 0);
 exports.DisposableCatalog = DisposableCatalog = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,

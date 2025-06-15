@@ -3869,3 +3869,78 @@ info: Mapped {/departments/:departmentId/units/unfreeze/:unitId, PATCH} (version
 info: Mapped {/departments/:departmentId/units/:unitId, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-13T14:28:25.122Z"}
 info: Mapped {/departments/:departmentId/units, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-13T14:28:25.124Z"}
 info: Nest application successfully started {"context":"NestApplication","timestamp":"2025-06-13T14:28:25.169Z"}
+info: Starting Nest application... {"context":"NestFactory","timestamp":"2025-06-15T15:59:17.133Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.169Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.169Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.170Z"}
+info: ThrottlerModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.171Z"}
+info: ConfigHostModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.171Z"}
+info: DiscoveryModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.182Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.183Z"}
+info: ConfigModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.184Z"}
+info: EventEmitterModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.186Z"}
+info: AppModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:17.186Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.137Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.185Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.185Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.186Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.186Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.187Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.187Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.187Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.188Z"}
+info: DbResolverModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.191Z"}
+info: CatalogModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.192Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.217Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.230Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.230Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.231Z"}
+info: MongooseModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.231Z"}
+info: AuthModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.236Z"}
+info: EmployeeModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.238Z"}
+info: HospitalModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.238Z"}
+info: UnitModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.238Z"}
+info: DepartmentModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.238Z"}
+info: MongooseCoreModule dependencies initialized {"context":"InstanceLoader","timestamp":"2025-06-15T15:59:18.354Z"}
+info: AppController {/}: {"context":"RoutesResolver","timestamp":"2025-06-15T15:59:18.386Z"}
+info: Mapped {/, GET} route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.400Z"}
+info: AuthController {/auth} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-15T15:59:18.401Z"}
+info: Mapped {/auth/signup, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.405Z"}
+info: Mapped {/auth/confirm-email, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.407Z"}
+info: Mapped {/auth/otp-new, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.410Z"}
+info: Mapped {/auth/login, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.412Z"}
+info: Mapped {/auth/password-forgot, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.414Z"}
+info: Mapped {/auth/password-reset, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.416Z"}
+info: CatalogController {/catalog} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-15T15:59:18.417Z"}
+info: Mapped {/catalog/departments/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.419Z"}
+info: Mapped {/catalog/units/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.422Z"}
+info: Mapped {/catalog/services/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.425Z"}
+info: Mapped {/catalog/laboratories/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.426Z"}
+info: Mapped {/catalog/imagings/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.427Z"}
+info: Mapped {/catalog/medicines/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.428Z"}
+info: Mapped {/catalog/disposables/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.430Z"}
+info: Mapped {/catalog/vendors/new, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.431Z"}
+info: HospitalController {/hospitals} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-15T15:59:18.432Z"}
+info: Mapped {/hospitals, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.435Z"}
+info: Mapped {/hospitals/:hospitalId, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.439Z"}
+info: DepartmentController {/hospitals/:hospitalId/departments} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-15T15:59:18.439Z"}
+info: Mapped {/hospitals/:hospitalId/departments, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.442Z"}
+info: Mapped {/hospitals/:hospitalId/departments/:departmentId, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.443Z"}
+info: Mapped {/hospitals/:hospitalId/departments/:departmentId, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.445Z"}
+info: Mapped {/hospitals/:hospitalId/departments, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.446Z"}
+info: EmployeeController {/hospitals/:hospitalId/employees} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-15T15:59:18.447Z"}
+info: Mapped {/hospitals/:hospitalId/employees/add-one, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.449Z"}
+info: Mapped {/hospitals/:hospitalId/employees/add-bulk, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.450Z"}
+info: Mapped {/hospitals/:hospitalId/employees/:employeeId, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.451Z"}
+info: Mapped {/hospitals/:hospitalId/employees, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.452Z"}
+info: Mapped {/hospitals/:hospitalId/employees/me, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.454Z"}
+info: Mapped {/hospitals/:hospitalId/employees/:employeeId, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.456Z"}
+info: Mapped {/hospitals/:hospitalId/employees/:employeeId/unfreeze, PUT} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.458Z"}
+info: UnitController {/departments/:departmentId/units} (version: 1): {"context":"RoutesResolver","timestamp":"2025-06-15T15:59:18.459Z"}
+info: Mapped {/departments/:departmentId/units, POST} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.461Z"}
+info: Mapped {/departments/:departmentId/units/:unitId, PATCH} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.463Z"}
+info: Mapped {/departments/:departmentId/units/freeze/:unitId, DELETE} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.465Z"}
+info: Mapped {/departments/:departmentId/units/unfreeze/:unitId, PATCH} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.467Z"}
+info: Mapped {/departments/:departmentId/units/:unitId, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.468Z"}
+info: Mapped {/departments/:departmentId/units, GET} (version: 1) route {"context":"RouterExplorer","timestamp":"2025-06-15T15:59:18.469Z"}
+info: Nest application successfully started {"context":"NestApplication","timestamp":"2025-06-15T15:59:18.512Z"}

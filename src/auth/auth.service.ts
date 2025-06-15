@@ -100,7 +100,7 @@ export class AuthService {
         $unset: { otp: "", otpExpireAt: "", otpFor: "" },
       }
     );
-    return { message: "success" };
+    return { message: "success", employee: employee._id };
   }
   //============================= requestNewOtp ============================
   /**
@@ -155,7 +155,7 @@ export class AuthService {
     const employee = await this.employeeRepoService.findOne({
       email: body.email,
       isEmailConfirmed: true,
-      isDeleted: { $exists: false },
+      isFreezed: { $exists: false },
     });
     if (
       !employee ||
@@ -170,7 +170,7 @@ export class AuthService {
       occupation: employee.occupation,
     });
     res.cookie("auth-token", token, {
-      maxAge: 30 * 60 * 1000, // 30 min
+      maxAge: 120 * 60 * 1000, //  2 hrs
       httpOnly: true,
       sameSite: process.env.MODE === "DEV" ? "lax" : "strict",
       secure: process.env.MODE === "DEV" ? false : true,
@@ -187,11 +187,11 @@ export class AuthService {
     const employee = await this.employeeRepoService.findOne({
       email,
       isEmailConfirmed: true,
-      isDeleted: { $exists: false },
+      isFreezed: { $exists: false },
     });
     if (!employee || employee.otpExpireAt > new Date()) {
       this.logger.warn(
-        `[AuthService] failed attempt to forgotPassword, input: ${email}`,
+        `[Auth Service] failed attempt to forgotPassword, input: ${email}`,
         "AuthService"
       );
       await fakeDelay(200);
@@ -243,7 +243,7 @@ export class AuthService {
       }
     );
     this.logger.warn(
-      `[AuthService] password reset for employee: ${employee._id}`,
+      `[Auth Service] password reset for employee: ${employee._id}`,
       "AuthService"
     );
     return { message: "success" };

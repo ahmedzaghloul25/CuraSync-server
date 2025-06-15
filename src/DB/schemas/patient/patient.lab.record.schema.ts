@@ -1,10 +1,20 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { CoreProps } from "common/props";
 import { connectionNameString, RecordPriorityTypes, RecordStatusTypes } from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema()
-export class PatientLabOrder extends CoreProps {
+export class PatientLabOrder {
+  @Prop({
+    ref: "Employee",
+    required: true,
+  })
+  requestedBy: Types.ObjectId;
+
+  @Prop({
+    ref: "Employee",
+  })
+  modifiedBy: Types.ObjectId;
+
   @Prop({
     min: 1,
     max: 10,

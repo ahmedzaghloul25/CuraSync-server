@@ -12,9 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.hospitalModule = exports.HospitalSchema = exports.Hospital = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const constants_1 = require("../../../../common/constants");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
-let Hospital = class Hospital extends props_1.ConfirmableProps {
+const mongoose_2 = require("mongoose");
+let Hospital = class Hospital {
     name;
     slug;
     address;
@@ -27,6 +27,12 @@ let Hospital = class Hospital extends props_1.ConfirmableProps {
     commercialRegDoc;
     TINdoc;
     logo;
+    isConfirmed;
+    confirmedBy;
+    createdBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.Hospital = Hospital;
 __decorate([
@@ -89,21 +95,21 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         type: { secure_url: String, Public_id: String },
-        required: true
+        required: true,
     }),
     __metadata("design:type", Object)
 ], Hospital.prototype, "medicalLicenseDoc", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         type: { secure_url: String, Public_id: String },
-        required: true
+        required: true,
     }),
     __metadata("design:type", Object)
 ], Hospital.prototype, "commercialRegDoc", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         type: { secure_url: String, Public_id: String },
-        required: true
+        required: true,
     }),
     __metadata("design:type", Object)
 ], Hospital.prototype, "TINdoc", void 0);
@@ -113,6 +119,40 @@ __decorate([
     }),
     __metadata("design:type", Object)
 ], Hospital.prototype, "logo", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], Hospital.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Hospital.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: mongoose_2.Types.ObjectId,
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Hospital.prototype, "createdBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], Hospital.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Hospital.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Hospital.prototype, "modifiedBy", void 0);
 exports.Hospital = Hospital = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,

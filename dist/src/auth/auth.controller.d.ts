@@ -16,6 +16,7 @@ export declare class AuthController {
     }>;
     confirmEmail(Body: ConfirmEmailDto): Promise<{
         message: string;
+        employee: import("mongoose").Types.ObjectId;
     }>;
     requestNewOtp(body: RequestNewOtpDto): Promise<{
         message: string;

@@ -11,10 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.InventoryTransactionModule = exports.InventoryTransactionSchema = exports.InventoryTransaction = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let InventoryTransaction = class InventoryTransaction extends props_1.ConfirmableProps {
+let InventoryTransaction = class InventoryTransaction {
     medicine;
     labItem;
     disposableItem;
@@ -36,6 +35,9 @@ let InventoryTransaction = class InventoryTransaction extends props_1.Confirmabl
     unitId;
     patientId;
     notes;
+    createdBy;
+    isConfirmed;
+    confirmedBy;
 };
 exports.InventoryTransaction = InventoryTransaction;
 __decorate([
@@ -156,6 +158,26 @@ __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", String)
 ], InventoryTransaction.prototype, "notes", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: mongoose_2.Types.ObjectId,
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], InventoryTransaction.prototype, "createdBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], InventoryTransaction.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], InventoryTransaction.prototype, "confirmedBy", void 0);
 exports.InventoryTransaction = InventoryTransaction = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], InventoryTransaction);

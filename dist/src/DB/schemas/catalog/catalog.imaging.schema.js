@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ImagingCatalogModule = exports.ImagingCatalogSchema = exports.ImagingCatalog = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const utils_1 = require("../../../../common/utils");
-let ImagingCatalog = class ImagingCatalog extends props_1.CatalogProps {
+const mongoose_2 = require("mongoose");
+let ImagingCatalog = class ImagingCatalog {
     name;
     slug;
     code;
@@ -27,6 +27,13 @@ let ImagingCatalog = class ImagingCatalog extends props_1.CatalogProps {
     usesContrast;
     contrastDetails;
     requiresConsent;
+    addedByHospitalId;
+    addedByEmployeeId;
+    isConfirmed;
+    confirmedBy;
+    isFreezed;
+    freezedBy;
+    modifiedBy;
 };
 exports.ImagingCatalog = ImagingCatalog;
 __decorate([
@@ -35,7 +42,7 @@ __decorate([
 ], ImagingCatalog.prototype, "name", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        unique: true
+        unique: true,
     }),
     __metadata("design:type", String)
 ], ImagingCatalog.prototype, "slug", void 0);
@@ -85,6 +92,36 @@ __decorate([
     (0, mongoose_1.Prop)({ type: Boolean, default: false }),
     __metadata("design:type", Boolean)
 ], ImagingCatalog.prototype, "requiresConsent", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ImagingCatalog.prototype, "addedByHospitalId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ImagingCatalog.prototype, "addedByEmployeeId", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], ImagingCatalog.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ImagingCatalog.prototype, "confirmedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], ImagingCatalog.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ImagingCatalog.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], ImagingCatalog.prototype, "modifiedBy", void 0);
 exports.ImagingCatalog = ImagingCatalog = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], ImagingCatalog);

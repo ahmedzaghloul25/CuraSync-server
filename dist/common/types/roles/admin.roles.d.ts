@@ -1,5 +1,9 @@
+export declare enum SuperRoles {
+    SUPER_ADMIN = "Super Admin"
+}
 export declare enum AdminRoles {
-    HOSPITAL_ADMINISTRATOR = "Hospital Administrator",
+    SENIOR_HOSPITAL_ADMIN = "Senior Hospital Admin",
+    HOSPITAL_ADMINISTRATOR = "Hospital Admin",
     OFFICE_MANAGER = "Office Manager",
     UNIT_SECRETARY = "Unit Secretary",
     MEDICAL_SECRETARY = "Medical Secretary",

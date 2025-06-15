@@ -1,6 +1,5 @@
-import { CatalogProps } from "common/props";
-import { HydratedDocument } from "mongoose";
-export declare class ImagingCatalog extends CatalogProps {
+import { HydratedDocument, Types } from "mongoose";
+export declare class ImagingCatalog {
     name: string;
     slug: string;
     code: string;
@@ -13,13 +12,20 @@ export declare class ImagingCatalog extends CatalogProps {
     usesContrast: boolean;
     contrastDetails: string;
     requiresConsent: boolean;
+    addedByHospitalId: Types.ObjectId;
+    addedByEmployeeId: Types.ObjectId;
+    isConfirmed: boolean;
+    confirmedBy: Types.ObjectId;
+    isFreezed: boolean;
+    freezedBy: Types.ObjectId;
+    modifiedBy: Types.ObjectId;
 }
 export declare const ImagingCatalogSchema: import("mongoose").Schema<ImagingCatalog, import("mongoose").Model<ImagingCatalog, any, any, any, import("mongoose").Document<unknown, any, ImagingCatalog, any> & ImagingCatalog & {
-    _id: import("mongoose").Types.ObjectId;
+    _id: Types.ObjectId;
 } & {
     __v: number;
 }, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, ImagingCatalog, import("mongoose").Document<unknown, {}, import("mongoose").FlatRecord<ImagingCatalog>, {}> & import("mongoose").FlatRecord<ImagingCatalog> & {
-    _id: import("mongoose").Types.ObjectId;
+    _id: Types.ObjectId;
 } & {
     __v: number;
 }>;

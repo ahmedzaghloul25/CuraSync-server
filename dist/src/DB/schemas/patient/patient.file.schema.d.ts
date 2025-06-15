@@ -1,17 +1,24 @@
-import { CoreProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class PatientFile extends CoreProps {
+export declare class PatientFile {
     patient: Types.ObjectId;
     hospital: Types.ObjectId;
     status: string;
+    currentUnit: Types.ObjectId;
+    initialDiagnosis: Array<{
+        date: Date;
+        diagnosis: string;
+    }>;
     admissions: Array<{
         date: Date;
         toUnit: Types.ObjectId;
     }>;
     discharges: Array<{
         date: Date;
-        toUnit: Types.ObjectId;
+        fromUnit: Types.ObjectId;
         reasonOfDischarge: string;
+        requestedBy: Types.ObjectId;
+        isApproved: boolean;
+        approvedBy: Types.ObjectId;
     }>;
 }
 export declare const PatientFileSchema: import("mongoose").Schema<PatientFile, import("mongoose").Model<PatientFile, any, any, any, import("mongoose").Document<unknown, any, PatientFile, any> & PatientFile & {

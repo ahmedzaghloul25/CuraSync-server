@@ -11,13 +11,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HospitalImagingModule = exports.HospitalImagingSchema = exports.HospitalImaging = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let HospitalImaging = class HospitalImaging extends props_1.ConfirmableProps {
+let HospitalImaging = class HospitalImaging {
     imagingCatalogId;
     price;
     hospital;
+    createdBy;
+    isFreezed;
+    freezedBy;
+    isConfirmed;
+    confirmedBy;
 };
 exports.HospitalImaging = HospitalImaging;
 __decorate([
@@ -40,10 +44,40 @@ __decorate([
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], HospitalImaging.prototype, "hospital", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: mongoose_2.Types.ObjectId,
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalImaging.prototype, "createdBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], HospitalImaging.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalImaging.prototype, "freezedBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        default: false,
+    }),
+    __metadata("design:type", Boolean)
+], HospitalImaging.prototype, "isConfirmed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], HospitalImaging.prototype, "confirmedBy", void 0);
 exports.HospitalImaging = HospitalImaging = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], HospitalImaging);
 exports.HospitalImagingSchema = mongoose_1.SchemaFactory.createForClass(HospitalImaging);
-exports.HospitalImagingSchema.index({ catalogId: 1, hospital: 1 }, { unique: true });
+exports.HospitalImagingSchema.index({ imagingCatalogId: 1, hospital: 1 }, { unique: true });
 exports.HospitalImagingModule = mongoose_1.MongooseModule.forFeature([{ name: HospitalImaging.name, schema: exports.HospitalImagingSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.imaging.schema.js.map

@@ -1,6 +1,7 @@
-import { CoreProps } from "common/props";
 import { HydratedDocument, Types } from "mongoose";
-export declare class PatientMedicineOrder extends CoreProps {
+export declare class PatientMedicineOrder {
+    requestedBy: Types.ObjectId;
+    modifiedBy: Types.ObjectId;
     medicine: Types.ObjectId;
     durationInDays: number;
     frequentPerDay: number;

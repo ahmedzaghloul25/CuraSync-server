@@ -1,14 +1,26 @@
 import { MongooseModule, Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { CoreProps } from "common/props";
-import { connectionNameString, RecordPriorityTypes, RecordStatusTypes } from "common/types";
+import {
+  connectionNameString,
+  RecordPriorityTypes,
+  RecordStatusTypes,
+} from "common/types";
 import { HydratedDocument, Types } from "mongoose";
 
 @Schema({
   timestamps: true,
-  toJSON: { virtuals: true },
-  toObject: { virtuals: true },
 })
-export class PatientMedicineOrder extends CoreProps {
+export class PatientMedicineOrder {
+  @Prop({
+    ref: "Employee",
+    required: true,
+  })
+  requestedBy: Types.ObjectId;
+
+  @Prop({
+    ref: "Employee",
+  })
+  modifiedBy: Types.ObjectId;
+
   @Prop({
     ref: "HospitalMedicine",
     required: true,

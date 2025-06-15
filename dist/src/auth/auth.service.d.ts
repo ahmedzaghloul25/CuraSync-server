@@ -23,6 +23,7 @@ export declare class AuthService {
     }>;
     confirmEmail(body: ConfirmEmailDto): Promise<{
         message: string;
+        employee: import("mongoose").Types.ObjectId;
     }>;
     requestNewOtp(body: RequestNewOtpDto): Promise<{
         message: string;

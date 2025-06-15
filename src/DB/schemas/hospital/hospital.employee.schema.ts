@@ -6,7 +6,6 @@ import {
   Virtual,
 } from "@nestjs/mongoose";
 import { MIN_MAX_LENGTH } from "common/constants";
-import { CoreProps } from "common/props";
 import { connectionNameString, OtpType } from "common/types";
 import { AllRoles } from "common/types/roles";
 
@@ -17,7 +16,7 @@ import { HydratedDocument, Types } from "mongoose";
   toJSON: { virtuals: true },
   toObject: { virtuals: true },
 })
-export class Employee extends CoreProps {
+export class Employee {
   @Prop({
     trim: true,
     required: true,
@@ -34,7 +33,6 @@ export class Employee extends CoreProps {
   lastName: string;
   @Prop({
     required: true,
-    unique: true,
   })
   email: string;
   @Prop({
@@ -78,8 +76,22 @@ export class Employee extends CoreProps {
     ref: "Hospital",
   })
   hospital: Types.ObjectId;
+
+  @Prop({
+    type: Types.ObjectId,
+    ref: "Employee",
+    required: true,
+  })
+  createdBy: Types.ObjectId;
+  @Prop()
+  isFreezed: boolean;
+  @Prop({
+    ref: "Employee",
+  })
+  freezedBy: Types.ObjectId;
 }
 export const EmployeeSchema = SchemaFactory.createForClass(Employee);
+EmployeeSchema.index({ email: 1, hospital: 1 }, { unique: true });
 export const employeeModule = MongooseModule.forFeature(
   [{ name: Employee.name, schema: EmployeeSchema }],
   connectionNameString.HOSPITAL

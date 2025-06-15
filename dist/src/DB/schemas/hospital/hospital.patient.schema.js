@@ -11,10 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PatientModule = exports.PatientSchema = exports.Patient = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
-const props_1 = require("../../../../common/props");
+const constants_1 = require("../../../../common/constants");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let Patient = class Patient extends props_1.CoreProps {
+let Patient = class Patient {
     firstName;
     middleName;
     LastName;
@@ -22,17 +22,17 @@ let Patient = class Patient extends props_1.CoreProps {
     DOB;
     phone;
     identification;
-    initialDiagnosis;
     relative;
     hospital;
-    file;
+    createdBy;
+    modifiedBy;
 };
 exports.Patient = Patient;
 __decorate([
     (0, mongoose_1.Prop)({
         trim: true,
-        minlength: 2,
-        maxlength: 50,
+        minlength: constants_1.MIN_MAX_LENGTH.nameMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.nameMaxInput,
         required: true,
     }),
     __metadata("design:type", String)
@@ -40,8 +40,8 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         trim: true,
-        minlength: 2,
-        maxlength: 50,
+        minlength: constants_1.MIN_MAX_LENGTH.nameMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.nameMaxInput,
         required: true,
     }),
     __metadata("design:type", String)
@@ -49,16 +49,16 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         trim: true,
-        minlength: 2,
-        maxlength: 50,
+        minlength: constants_1.MIN_MAX_LENGTH.nameMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.nameMaxInput,
         required: true,
     }),
     __metadata("design:type", String)
 ], Patient.prototype, "LastName", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        minlength: 2,
-        maxlength: 400,
+        minlength: constants_1.MIN_MAX_LENGTH.descMinInput,
+        maxlength: constants_1.MIN_MAX_LENGTH.descMaxInput,
     }),
     __metadata("design:type", String)
 ], Patient.prototype, "address", void 0);
@@ -78,18 +78,9 @@ __decorate([
     (0, mongoose_1.Prop)({
         length: 14,
         required: true,
-        unique: true,
     }),
     __metadata("design:type", String)
 ], Patient.prototype, "identification", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({
-        minlength: 2,
-        maxlength: 500,
-        required: true,
-    }),
-    __metadata("design:type", String)
-], Patient.prototype, "initialDiagnosis", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
     __metadata("design:type", Array)
@@ -103,11 +94,16 @@ __decorate([
 ], Patient.prototype, "hospital", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
-        ref: "File",
+        type: mongoose_2.Types.ObjectId,
+        ref: "Employee",
         required: true,
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
-], Patient.prototype, "file", void 0);
+], Patient.prototype, "createdBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Patient.prototype, "modifiedBy", void 0);
 exports.Patient = Patient = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,
@@ -116,5 +112,6 @@ exports.Patient = Patient = __decorate([
     })
 ], Patient);
 exports.PatientSchema = mongoose_1.SchemaFactory.createForClass(Patient);
+exports.PatientSchema.index({ identification: 1, hospital: 1 }, { unique: true });
 exports.PatientModule = mongoose_1.MongooseModule.forFeature([{ name: Patient.name, schema: exports.PatientSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.patient.schema.js.map

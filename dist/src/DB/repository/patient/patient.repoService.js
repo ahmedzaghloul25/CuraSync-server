@@ -17,36 +17,17 @@ const db_repo_service_1 = require("../db.repo.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const hospital_patient_schema_1 = require("../../schemas/hospital/hospital.patient.schema");
 const mongoose_2 = require("mongoose");
-const patient_file_repoService_1 = require("./patient.file.repoService");
 let PatientRepoService = class PatientRepoService extends db_repo_service_1.DbRepoService {
     patientModel;
-    fileRepoService;
-    constructor(patientModel, fileRepoService) {
+    constructor(patientModel) {
         super(patientModel);
         this.patientModel = patientModel;
-        this.fileRepoService = fileRepoService;
-    }
-    onModuleInit() {
-        this.patientModel.schema.post("save", async (doc) => {
-            try {
-                if (!doc.file) {
-                    const newFile = await this.fileRepoService.create({
-                        patient: doc._id,
-                    });
-                    await this.patientModel.updateOne({ _id: doc._id }, { file: newFile[0]._id });
-                }
-            }
-            catch (error) {
-                throw new common_1.InternalServerErrorException(`Error creating file for patient. ${error}`);
-            }
-        });
     }
 };
 PatientRepoService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(hospital_patient_schema_1.Patient.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model,
-        patient_file_repoService_1.default])
+    __metadata("design:paramtypes", [mongoose_2.Model])
 ], PatientRepoService);
 exports.default = PatientRepoService;
 //# sourceMappingURL=patient.repoService.js.map

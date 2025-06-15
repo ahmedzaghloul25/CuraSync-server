@@ -12,10 +12,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.employeeModule = exports.EmployeeSchema = exports.Employee = void 0;
 const mongoose_1 = require("@nestjs/mongoose");
 const constants_1 = require("../../../../common/constants");
-const props_1 = require("../../../../common/props");
 const types_1 = require("../../../../common/types");
 const mongoose_2 = require("mongoose");
-let Employee = class Employee extends props_1.CoreProps {
+let Employee = class Employee {
     firstName;
     lastName;
     email;
@@ -30,6 +29,9 @@ let Employee = class Employee extends props_1.CoreProps {
     passwordChangedAt;
     fullName;
     hospital;
+    createdBy;
+    isFreezed;
+    freezedBy;
 };
 exports.Employee = Employee;
 __decorate([
@@ -53,7 +55,6 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({
         required: true,
-        unique: true,
     }),
     __metadata("design:type", String)
 ], Employee.prototype, "email", void 0);
@@ -120,6 +121,24 @@ __decorate([
     }),
     __metadata("design:type", mongoose_2.Types.ObjectId)
 ], Employee.prototype, "hospital", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        type: mongoose_2.Types.ObjectId,
+        ref: "Employee",
+        required: true,
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Employee.prototype, "createdBy", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Boolean)
+], Employee.prototype, "isFreezed", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({
+        ref: "Employee",
+    }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Employee.prototype, "freezedBy", void 0);
 exports.Employee = Employee = __decorate([
     (0, mongoose_1.Schema)({
         timestamps: true,
@@ -128,5 +147,6 @@ exports.Employee = Employee = __decorate([
     })
 ], Employee);
 exports.EmployeeSchema = mongoose_1.SchemaFactory.createForClass(Employee);
+exports.EmployeeSchema.index({ email: 1, hospital: 1 }, { unique: true });
 exports.employeeModule = mongoose_1.MongooseModule.forFeature([{ name: Employee.name, schema: exports.EmployeeSchema }], types_1.connectionNameString.HOSPITAL);
 //# sourceMappingURL=hospital.employee.schema.js.map
